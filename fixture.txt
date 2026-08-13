@@ -1,0 +1,236 @@
+Fixture	Venue	Time
+Opening Round		
+Sydney Swans vs. Carlton	SCG	19:30
+Gold Coast Suns vs. Geelong Cats	People First Stadium	20:05
+GWS Giants vs. Hawthorn	ENGIE Stadium	16:15
+Brisbane Lions vs. Western Bulldogs	Gabba	19:35
+St Kilda vs. Collingwood	MCG	19:20
+Round 1		
+Carlton vs. Richmond	MCG	19:30
+Essendon vs. Hawthorn	MCG	19:40
+Western Bulldogs vs. GWS Giants	Marvel Stadium	13:15
+Geelong Cats vs. Fremantle	GMHBA Stadium	16:15
+Sydney Swans vs. Brisbane Lions	SCG	19:10
+Collingwood vs. Adelaide Crows	MCG	19:35
+North Melbourne vs. Port Adelaide	Marvel Stadium	13:10
+Melbourne vs. St Kilda	MCG	15:15
+Gold Coast Suns vs. West Coast Eagles	People First Stadium	18:10
+Round 2		
+Hawthorn vs. Sydney Swans	MCG	19:30
+Adelaide Crows vs. Western Bulldogs	Adelaide Oval	19:40
+Richmond vs. Gold Coast Suns	MCG	13:15
+GWS Giants vs. St Kilda	ENGIE Stadium	16:15
+Fremantle vs. Melbourne	Optus Stadium	19:35
+Port Adelaide vs. Essendon	Adelaide Oval	15:15
+West Coast Eagles vs. North Melbourne	Optus Stadium	18:10
+Round 3		
+Geelong Cats vs. Adelaide Crows	GMHBA Stadium	19:30
+Collingwood vs. GWS Giants	Marvel Stadium	19:40
+St Kilda vs. Brisbane Lions	Marvel Stadium	12:35
+Fremantle vs. Richmond	Optus Stadium	16:15
+Essendon vs. North Melbourne	Marvel Stadium	19:35
+Port Adelaide vs. West Coast Eagles	Adelaide Oval	12:30
+Carlton vs. Melbourne	MCG	15:15
+Round 4		
+Brisbane Lions vs. Collingwood	Gabba	19:30
+North Melbourne vs. Carlton	Marvel Stadium	15:15
+Adelaide Crows vs. Fremantle	Adelaide Oval	19:15
+Richmond vs. Port Adelaide	MCG	16:15
+West Coast Eagles vs. Sydney Swans	OptusStadium	19:35
+Melbourne vs. Gold Coast Suns	MCG	15:15
+Western Bulldogs vs. Essendon	Marvel Stadium	19:20
+Hawthorn vs. Geelong Cats	MCG	15:15
+Round 5		
+Adelaide Crows vs. Carlton	Adelaide Oval	19:40
+Collingwood vs. Fremantle	Adelaide Oval	19:40
+North Melbourne vs. Brisbane Lions	Barossa Park	12:35
+Essendon vs. Melbourne	Adelaide Oval	13:15
+Sydney Swans vs. Gold Coast Suns	Norwood Oval	16:15
+Hawthorn vs. Western Bulldogs	Adelaide Oval	19:35
+Geelong Cats vs. West Coast Eagles	Norwood Oval	12:30
+GWS Giants vs. Richmond	Barossa Park	15:15
+Port Adelaide vs. St Kilda	Adelaide Oval	19:15
+Round 6		
+Carlton vs. Collingwood	MCG	19:30
+Geelong Cats vs. Western Bulldogs	GMHBA Stadium	19:20
+Sydney Swans vs. GWS Giants	SCG	19:50
+Gold Coast Suns vs. Essendon	People First Stadium	13:15
+Hawthorn vs. Port Adelaide	Marvel Stadium	16:15
+Adelaide Crows vs. St Kilda	Adelaide Oval	19:35
+North Melbourne vs. Richmond	Marvel Stadium	13:10
+Melbourne vs. Brisbane Lions	MCG	15:15
+West Coast Eagles vs. Fremantle	Optus Stadium	17:10
+Round 7		
+Western Bulldogs vs. Sydney Swans	Marvel Stadium	19:30
+Richmond vs. Melbourne	MCG	19:40
+Hawthorn vs. Gold Coast Suns	UTAS Stadium	12:15
+Essendon vs. Collingwood	MCG	15:15
+Port Adelaide vs. Geelong Cats	Adelaide Oval	18:35
+Fremantle vs. Carlton	Optus Stadium	20:15
+St Kilda vs. West Coast Eagles	Marvel Stadium	13:10
+Brisbane Lions vs. Adelaide Crows	Gabba	15:15
+GWS Giants vs. North Melbourne	Manuka Oval	16:40
+Round 8		
+Collingwood vs. Hawthorn	MCG	19:30
+Western Bulldogs vs. Fremantle	Marvel Stadium	19:30
+Adelaide Crows vs. Port Adelaide	Adelaide Oval	20:10
+Essendon vs. Brisbane Lions	Marvel Stadium	12:35
+West Coast Eagles vs. Richmond	Optus Stadium	16:15
+Geelong Cats vs. North Melbourne	GMHBA Stadium	16:35
+Carlton vs. St Kilda	Marvel Stadium	19:35
+Sydney Swans vs. Melbourne	SCG	15:15
+Gold Coast Suns vs. GWS Giants	People First Stadium	19:20
+Round 9		
+Fremantle vs. Hawthorn	Optus Stadium	20:10
+Brisbane Lions vs. Carlton	Gabba	19:30
+Port Adelaide vs. Western Bulldogs	Adelaide Oval	20:10
+North Melbourne vs. Sydney Swans	Marvel Stadium	12:35
+GWS Giants vs. Essendon	ENGIE Stadium	16:15
+Gold Coast Suns vs. St Kilda	TIO Stadium	19:10
+Geelong Cats vs. Collingwood	MCG	19:35
+Melbourne vs. West Coast Eagles	MCG	13:10
+Richmond vs. Adelaide Crows	MCG	15:15
+Round 10		
+Gold Coast Suns vs. Hawthorn	TIO Stadium	19:30
+Sydney Swans vs. Collingwood	SCG	19:30
+Gold Coast Suns vs. Port Adelaide	TIO Stadium	20:10
+Adelaide Crows vs. North Melbourne	Adelaide Oval	13:15
+Melbourne vs. Hawthorn	MCG	16:15
+Carlton vs. Western Bulldogs	Marvel Stadium	19:35
+Essendon vs. Fremantle	MCG	13:10
+St Kilda vs. Richmond	Marvel Stadium	15:15
+West Coast Eagles vs. GWS Giants	Optus Stadium	18:15
+Round 11		
+Hawthorn vs. Adelaide Crows	UTAS Stadium	19:30
+Richmond vs. Essendon	MCG	19:40
+Fremantle vs. St Kilda	Optus Stadium	20:30
+North Melbourne vs. Gold Coast Suns	Marvel Stadium	13:15
+Geelong Cats vs. Sydney Swans	GMHBA Stadium	16:15
+Collingwood vs. West Coast Eagles	MCG	16:35
+Port Adelaide vs. Carlton	Adelaide Oval	19:35
+GWS Giants vs. Brisbane Lions	ENGIE Stadium	12:30
+Western Bulldogs vs. Melbourne	Marvel Stadium	15:20
+Round 12		
+St Kilda vs. Hawthorn	Marvel Stadium	19:30
+Carlton vs. Geelong Cats	MCG	19:40
+Sydney Swans vs. Richmond	SCG	13:15
+Brisbane Lions vs. Fremantle	Gabba	16:15
+Western Bulldogs vs. Collingwood	Marvel Stadium	19:35
+Melbourne vs. GWS Giants	TIO Traeger Park	15:15
+West Coast Eagles vs. Essendon	Optus Stadium	19:20
+Round 13		
+Adelaide Crows vs. Geelong Cats	Adelaide Oval	19:30
+Hawthorn vs. Western Bulldogs	MCG	19:40
+North Melbourne vs. Fremantle	Hands Oval, Bunbury	14:15
+Gold Coast Suns vs. Brisbane Lions	People First Stadium	17:15
+West Coast Eagles vs. Port Adelaide	Optus Stadium	20:15
+Sydney Swans vs. St Kilda	SCG	15:15
+Essendon vs. Carlton	MCG	19:20
+Collingwood vs. Melbourne	MCG	15:15
+Round 14		
+Western Bulldogs vs. Adelaide Crows	Marvel Stadium	19:30
+Geelong Cats vs. Gold Coast Suns	GMHBA Stadium	19:40
+Melbourne vs. Essendon	MCG	13:15
+North Melbourne vs. West Coast Eagles	Optus Stadium	16:15
+Port Adelaide vs. Sydney Swans	Adelaide Oval	19:35
+Richmond vs. Brisbane Lions	Ninja Stadium	13:10
+St Kilda vs. GWS Giants	Marvel Stadium	15:15
+Round 15		
+Fremantle vs. Geelong Cats	Optus Stadium	20:10
+Gold Coast Suns vs. Hawthorn	People First Stadium	19:40
+Adelaide Crows vs. Melbourne	Adelaide Oval	13:15
+GWS Giants vs. Carlton	ENGIE Stadium	16:15
+Collingwood vs. Port Adelaide	MCG	19:35
+Richmond vs. North Melbourne	MCG	13:10
+St Kilda vs. Western Bulldogs	Marvel Stadium	15:15
+Round 16		
+Thursday, Jun 25- Sunday, Jun 28		
+Brisbane Lions vs. Sydney Swans	Gabba	TBD
+Carlton vs. West Coast Eagles	Marvel Stadium	
+Collingwood vs. Richmond	MCG	
+Hawthorn vs. GWS Giants	MCG	
+North Melbourne vs. Essendon	Marvel Stadium	
+Port Adelaide vs. Adelaide Crows	Adelaide Oval	
+Fremantle vs. Gold Coast Suns	Optus Stadium	
+Round 17		
+Thursday, Jul 2 – Sunday, Jul 5		
+Essendon vs. St Kilda	Marvel Stadium	TBD
+Geelong Cats vs. Brisbane Lions	GMHBA Stadium	
+Gold Coast Suns vs. Collingwood	People First Stadium	
+GWS Giants vs. Fremantle	Manuka Oval	
+Hawthorn vs. Melbourne	UTAS Stadium	
+Richmond vs. Carlton	MCG	
+Sydney Swans vs. Western Bulldogs	SCG	
+Port Adelaide vs. North Melbourne	Adelaide Oval	
+West Coast Eagles vs. Adelaide Crows	Optus Stadium	
+Round 18		
+Thursday, Jul 9 – Sunday, Jul 12		
+Brisbane Lions vs. Essendon	Gabba	TBD
+Carlton vs. Hawthorn	MCG	
+Collingwood vs. North Melbourne	Marvel Stadium	
+GWS Giants vs. Geelong Cats	ENGIE Stadium	
+Melbourne vs. Richmond	MCG	
+St Kilda vs. Port Adelaide	Marvel Stadium	
+Western Bulldogs vs. West Coast Eagles	Marvel Stadium	
+Adelaide Crows vs. Gold Coast Suns	Adelaide Oval	
+Fremantle vs. Sydney Swans	Optus Stadium	
+Round 19		
+Collingwood vs. Carlton	MCG	TBD
+Essendon vs. GWS Giants	Marvel Stadium	
+Geelong Cats vs. St Kilda	GMHBA Stadium	
+Gold Coast Suns vs. Western Bulldogs	People First Stadium	
+North Melbourne vs. Melbourne	Marvel Stadium	
+Richmond vs. Hawthorn	MCG	
+Sydney Swans vs. Adelaide Crows	SCG	
+Port Adelaide vs. Fremantle	Adelaide Oval	
+West Coast Eagles vs. Brisbane Lions	Optus Stadium	
+Round 20		
+Brisbane Lions vs. Port Adelaide	Gabba	TBD
+Carlton vs. Gold Coast Suns	Marvel Stadium	
+GWS Giants vs. Sydney Swans	ENGIE Stadium	
+Hawthorn vs. Essendon	MCG	
+North Melbourne vs. St Kilda	Marvel Stadium	
+Melbourne vs. Geelong Cats	MCG	
+Western Bulldogs vs. Richmond	Marvel Stadium	
+Adelaide Crows vs. Collingwood	Adelaide Oval	
+Fremantle vs. West Coast Eagles	Adelaide Oval	
+Round 21		
+Carlton vs. Brisbane Lions	Marvel Stadium	TBD
+Collingwood vs. Geelong Cats	MCG	
+Essendon vs. Adelaide Crows	Marvel Stadium	
+Gold Coast Suns vs. Melbourne	People First Stadium	
+Hawthorn vs. North Melbourne	UTAS Stadium	
+Richmond vs. West Coast Eagles	MCG	
+St Kilda vs. Sydney Swans	Marvel Stadium	
+Port Adelaide vs. GWS Giants	Adelaide Oval	
+Fremantle vs. Western Bulldogs	Optus Stadium	
+Round 22		
+Brisbane Lions vs. Hawthorn	Gabba	TBD
+Geelong Cats vs. Essendon	GMHBA Stadium	
+GWS Giants vs. Gold Coast Suns	Manuka Oval	
+Melbourne vs. Fremantle	MCG	
+St Kilda vs. Carlton	Marvel Stadium	
+Sydney Swans vs. Port Adelaide	SCG	
+Western Bulldogs vs. North Melbourne	Marvel Stadium	
+Adelaide Crows vs. Richmond	Adelaide Oval	
+West Coast Eagles vs. Collingwood	Optus Stadium	
+Round 23		
+Brisbane Lions vs. Gold Coast Suns	Gabba	TBD
+Essendon vs. Sydney Swans	MCG	
+GWS Giants vs. West Coast Eagles	ENGIE Stadium	
+Hawthorn vs. Collingwood	MCG	
+North Melbourne vs. Geelong Cats	Marvel Stadium	
+Richmond vs. St Kilda	MCG	
+Western Bulldogs vs. Carlton	Marvel Stadium	
+Port Adelaide vs. Melbourne	Adelaide Oval	
+Fremantle vs. Adelaide Crows	Optus Stadium	
+Round 24		
+Collingwood vs. Brisbane Lions	MCG	TBD
+Carlton vs. Fremantle	Marvel Stadium	
+Essendon vs. Port Adelaide	Marvel Stadium	
+Geelong Cats vs. Richmond	GMHBA Stadium	
+Melbourne vs. Western Bulldogs	MCG	
+St Kilda vs. Gold Coast Suns	Marvel Stadium	
+Sydney Swans vs. North Melbourne	SCG	
+Adelaide Crows vs. GWS Giants	Adelaide Oval	
+West Coast Eagles vs. Hawthorn	Optus Stadium	

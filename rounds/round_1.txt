@@ -1,0 +1,416 @@
+Fantasy Scores: Round 1
+
+1	Lachlan Ash	Giants	$994,000	$1,050,000	136	13.0
+2	Marcus Bontempelli	Bulldogs	$1,006,000	$1,167,000	135	11.6
+2	Dylan Stephens	Kangaroos	$662,000	$670,000	135	20.1
+4	Max Holmes	Cats	$957,000	$1,059,000	132	12.5
+5	Bailey Smith	Cats	$1,151,000	$1,220,000	130	10.7
+6	Nick Daicos	Magpies	$1,111,000	$1,134,000	127	11.2
+7	Luke Jackson	Dockers	$1,001,000	$995,000	125	12.6
+8	Jeremy Cameron	Cats	$881,000	$877,000	123	14.0
+8	Aaron Naughton	Bulldogs	$613,000	$753,000	123	16.3
+10	Thomas Liberatore Injured	Bulldogs	$1,003,000	$1,044,000	122	11.7
+11	Dayne Zorko Injured	Lions	$963,000	$1,065,000	121	11.4
+11	Timothy English	Bulldogs	$903,000	$1,162,000	121	10.4
+13	James Sicily	Hawks	$836,000	$830,000	120	14.5
+14	Dan Houston	Magpies	$823,000	$701,000	119	17.0
+15	Harry Sheezel	Kangaroos	$1,058,000	$1,145,000	118	10.3
+16	Callum Wilkie	Saints	$872,000	$846,000	117	13.8
+17	Jarrod Witts	Suns	$744,000	$969,000	115	11.9
+17	Max Hall	Saints	$818,000	$694,000	115	16.6
+19	Jayden Short	Tigers	$915,000	$913,000	114	12.5
+19	Jarman Impey	Hawks	$875,000	$810,000	114	14.1
+21	Zachary Merrett	Bombers	$1,060,000	$1,078,000	112	10.4
+21	Lachie Jaques	Bulldogs	$529,000	$230,000	112	48.7
+23	Wayne Milera	Crows	$915,000	$756,000	111	14.7
+23	Nick Watson	Hawks	$602,000	$523,000	111	21.2
+25	Matthew Kennedy	Bulldogs	$846,000	$1,013,000	110	10.9
+25	Jack Sinclair	Saints	$1,007,000	$1,057,000	110	10.4
+25	Bradley Hill	Saints	$800,000	$782,000	110	14.1
+28	Max Gawn	Demons	$992,000	$1,188,000	109	9.2
+28	Finn Callaghan	Giants	$924,000	$1,038,000	109	10.5
+30	Josh Dunkley	Lions	$823,000	$1,128,000	108	9.6
+30	Christian Petracca	Suns	$947,000	$948,000	108	11.4
+30	Caleb Serong Injured	Dockers	$864,000	$970,000	108	11.1
+33	Thomas Stewart	Cats	$732,000	$844,000	107	12.7
+33	Josh Ward	Hawks	$738,000	$796,000	107	13.4
+35	Noah Anderson	Suns	$956,000	$1,044,000	106	10.2
+36	Deven Robertson Injured	Eagles	$511,000	$232,000	104	44.8
+37	Jacob Van Rooyen	Demons	$526,000	$563,000	103	18.3
+37	Darcy Wilmot	Lions	$898,000	$835,000	103	12.3
+37	Rory Laird	Crows	$864,000	$971,000	103	10.6
+37	Riley Bice	Swans	$728,000	$595,000	103	17.3
+37	Alex Neal-Bullen	Crows	$746,000	$728,000	103	14.1
+42	Josh Daicos	Magpies	$865,000	$988,000	102	10.3
+42	Mason Redman	Bombers	$732,000	$900,000	102	11.3
+44	Errol Gulden Injured	Swans	$1,098,000	$1,073,000	101	9.4
+45	Sam Walsh	Blues	$932,000	$977,000	100	10.2
+45	Joel Amartey	Swans	$505,000	$534,000	100	18.7
+45	Luke Parker	Kangaroos	$894,000	$909,000	100	11.0
+48	Jagga Smith	Blues	$741,000	$230,000	99	43.0
+48	Jack Ginnivan	Hawks	$755,000	$790,000	99	12.5
+48	Dylan Moore	Hawks	$721,000	$858,000	99	11.5
+51	Josh Rachele	Crows	$720,000	$655,000	98	15.0
+52	Joel Jeffrey	Suns	$717,000	$794,000	96	12.1
+52	Sam Flanders Injured	Saints	$897,000	$716,000	96	13.4
+52	Patrick Cripps	Blues	$881,000	$931,000	96	10.3
+52	Tristan Xerri	Kangaroos	$1,008,000	$1,101,000	96	8.7
+52	Isaac Cumming Injured	Crows	$579,000	$644,000	96	14.9
+57	Jordan Dawson	Crows	$1,082,000	$1,156,000	95	8.2
+57	Jake Riccardi Injured	Giants	$573,000	$715,000	95	13.3
+57	Milan Murdock	Eagles	$689,000	$230,000	95	41.3
+57	Cameron Mackenzie	Hawks	$742,000	$656,000	95	14.5
+61	Josh Battle	Hawks	$820,000	$737,000	94	12.8
+61	Tanner Bruhn	Cats	$809,000	$517,000	94	18.2
+61	Sam Durham	Bombers	$669,000	$822,000	94	11.4
+61	Jayden Laverde	Giants	$632,000	$689,000	94	13.6
+61	Charlie Comben	Kangaroos	$483,000	$500,000	94	18.8
+61	Joshua Weddle	Hawks	$618,000	$731,000	94	12.9
+61	Josh Worrell	Crows	$826,000	$790,000	94	11.9
+61	Luke Davies-Uniacke	Kangaroos	$892,000	$920,000	94	10.2
+69	Jack Crisp	Magpies	$905,000	$883,000	93	10.5
+69	Jack Ross Injured	Tigers	$869,000	$767,000	93	12.1
+69	Marcus Windhager	Saints	$753,000	$860,000	93	10.8
+72	Bodhi Uwland	Suns	$896,000	$662,000	92	13.9
+72	Lachie Whitfield	Giants	$998,000	$1,104,000	92	8.3
+72	Zak Butters	Power	$1,038,000	$1,047,000	92	8.8
+72	Toby Greene	Giants	$803,000	$850,000	92	10.8
+72	Touk Miller	Suns	$833,000	$955,000	92	9.6
+72	George Hewett	Blues	$802,000	$1,037,000	92	8.9
+72	Riley Thilthorpe Suspended	Crows	$635,000	$870,000	92	10.6
+79	Lawson Humphries Injured	Cats	$843,000	$740,000	91	12.3
+79	Jack Graham Injured	Eagles	$784,000	$867,000	91	10.5
+79	Jye Caldwell Injured	Bombers	$707,000	$1,087,000	91	8.4
+79	Jai Newcombe	Hawks	$802,000	$907,000	91	10.0
+79	Liam Duggan	Eagles	$804,000	$830,000	91	11.0
+79	Kysaiah Pickett	Demons	$868,000	$915,000	91	9.9
+85	Tom McCartin	Swans	$793,000	$583,000	90	15.4
+85	Samuel Grlj	Tigers	$560,000	$322,000	90	28.0
+85	Gryan Miers	Cats	$823,000	$984,000	90	9.1
+85	Nick Blakey	Swans	$846,000	$892,000	90	10.1
+85	Wil Powell	Suns	$742,000	$701,000	90	12.8
+90	Sam Berry	Crows	$883,000	$655,000	89	13.6
+90	Connor Rozee Injured	Power	$1,025,000	$1,092,000	89	8.2
+90	Isaac Quaynor	Magpies	$719,000	$630,000	89	14.1
+93	Connor Idun	Giants	$752,000	$763,000	88	11.5
+93	Tom McCarthy	Eagles	$835,000	$876,000	88	10.0
+93	Mitchito Owens Injured	Saints	$586,000	$633,000	88	13.9
+96	Darcy Cameron	Magpies	$839,000	$1,070,000	87	8.1
+96	James Rowbottom	Swans	$652,000	$824,000	87	10.6
+96	Angus Sheldrick	Swans	$666,000	$651,000	87	13.4
+96	Connor Budarick	Bulldogs	$748,000	$506,000	87	17.2
+100	Conor Nash Injured	Hawks	$717,000	$777,000	86	11.1
+100	Sam Banks	Tigers	$577,000	$831,000	86	10.3
+100	Sam Darcy Injured	Bulldogs	$707,000	$863,000	86	10.0
+100	John Noble	Suns	$1,004,000	$953,000	86	9.0
+104	Jack Steele	Demons	$851,000	$1,006,000	85	8.4
+104	Patrick Lipinski	Magpies	$707,000	$702,000	85	12.1
+104	Blake Hardwick	Hawks	$713,000	$658,000	85	12.9
+107	Connor MacDonald	Hawks	$788,000	$714,000	84	11.8
+107	Justin McInerney Injured	Swans	$802,000	$824,000	84	10.2
+107	Matthew Roberts Injured	Swans	$726,000	$868,000	84	9.7
+107	Jack Gunston	Hawks	$752,000	$777,000	84	10.8
+107	Joseph Fonti	Giants	$649,000	$521,000	84	16.1
+107	Brayden Cook	Crows	$686,000	$344,000	84	24.4
+107	Tom De Koning	Saints	$637,000	$889,000	84	9.4
+114	Ed Richards	Bulldogs	$954,000	$1,014,000	83	8.2
+114	Tom Atkins	Cats	$667,000	$921,000	83	9.0
+114	Lachie Neale	Lions	$1,015,000	$992,000	83	8.4
+117	Darcy Fort	Lions	$612,000	$726,000	82	11.3
+117	Andrew McGrath Injured	Bombers	$646,000	$786,000	82	10.4
+117	Alex Davies Injured	Suns	$595,000	$611,000	82	13.4
+120	Tim Taranto	Tigers	$804,000	$985,000	81	8.2
+120	Caleb Daniel	Kangaroos	$837,000	$892,000	81	9.1
+122	Shaun Mannagh	Cats	$746,000	$924,000	80	8.7
+122	Jake Waterman	Eagles	$716,000	$755,000	80	10.6
+122	Sam Clohesy	Suns	$616,000	$652,000	80	12.3
+122	Cooper Lord	Blues	$671,000	$630,000	80	12.7
+126	Toby Nankervis Injured	Tigers	$918,000	$956,000	79	8.3
+126	Luke McDonald	Kangaroos	$610,000	$636,000	79	12.4
+126	Callum Mills Injured	Swans	$859,000	$944,000	79	8.4
+126	Clayton Oliver	Giants	$971,000	$941,000	79	8.4
+126	Rhyan Mansell Injured	Tigers	$626,000	$613,000	79	12.9
+131	Willem Drew	Power	$793,000	$788,000	78	9.9
+131	Murphy Reid	Dockers	$785,000	$581,000	78	13.4
+131	Marc Pittonet	Blues	$632,000	$671,000	78	11.6
+131	Max Michalanney	Crows	$555,000	$575,000	78	13.6
+135	Karl Amon	Hawks	$906,000	$930,000	77	8.3
+135	Tom Blamires	Kangaroos	$579,000	$230,000	77	33.5
+135	Hugo Garcia	Saints	$782,000	$687,000	77	11.2
+135	Shannon Neale	Cats	$655,000	$643,000	77	12.0
+135	Changkuoth Jiath Injured	Demons	$578,000	$563,000	77	13.7
+135	Jaspa Fletcher	Lions	$633,000	$871,000	77	8.8
+135	Brody Mihocek	Demons	$474,000	$616,000	77	12.5
+135	Joel Freijah	Bulldogs	$766,000	$748,000	77	10.3
+135	Jackson Macrae	Saints	$758,000	$954,000	77	8.1
+135	Nasiah Wanganeen-Milera Injured	Saints	$1,023,000	$1,163,000	77	6.6
+145	Jake Soligo	Crows	$622,000	$868,000	76	8.8
+145	Mason Wood	Saints	$639,000	$721,000	76	10.5
+145	Tom Lynch Injured	Tigers	$519,000	$551,000	76	13.8
+145	Bailey Williams Injured	Bulldogs	$784,000	$805,000	76	9.4
+149	Oliver Florent	Blues	$814,000	$629,000	75	11.9
+149	Will Hayward	Blues	$766,000	$585,000	75	12.8
+149	Hamish Davis	Eagles	$533,000	$424,000	75	17.7
+149	Noah Balta	Tigers	$616,000	$553,000	75	13.6
+149	Ryan Maric	Eagles	$678,000	$789,000	75	9.5
+149	Darcy Parish	Bombers	$886,000	$759,000	75	9.9
+149	Bailey Dale	Bulldogs	$934,000	$965,000	75	7.8
+149	Mitch McGovern	Blues	$524,000	$657,000	75	11.4
+149	Mabior Chol	Hawks	$526,000	$627,000	75	12.0
+149	Beau McCreery	Magpies	$610,000	$568,000	75	13.2
+149	Lachlan Schultz	Magpies	$703,000	$804,000	75	9.3
+160	Brayden Fiorini Injured	Bombers	$824,000	$900,000	74	8.2
+160	Darcy Wilson	Saints	$773,000	$668,000	74	11.1
+160	Jack Darling	Kangaroos	$588,000	$536,000	74	13.8
+160	Cameron Rayner	Lions	$634,000	$736,000	74	10.1
+160	Levi Ashcroft	Lions	$774,000	$781,000	74	9.5
+160	Kade Chandler	Demons	$686,000	$720,000	74	10.3
+166	Ned Reeves	Hawks	$519,000	$482,000	73	15.1
+167	Christian Salem Injured	Demons	$816,000	$975,000	72	7.4
+167	Charlie Cameron	Lions	$652,000	$559,000	72	12.9
+167	Harry Perryman Injured	Magpies	$696,000	$660,000	72	10.9
+167	Harry McKay	Blues	$716,000	$821,000	72	8.8
+171	Cameron Zurhaar	Kangaroos	$637,000	$605,000	71	11.7
+171	Jy Simpkin	Kangaroos	$763,000	$872,000	71	8.1
+171	Elliot Yeo	Eagles	$792,000	$667,000	71	10.6
+171	Steele Sidebottom	Magpies	$568,000	$905,000	71	7.8
+171	Jack Scrimshaw Injured	Hawks	$588,000	$564,000	71	12.6
+171	Lachlan McAndrew	Crows	$751,000	$286,000	71	24.8
+177	Harrison Himmelberg	Giants	$603,000	$820,000	70	8.5
+177	Harvey Thomas	Giants	$725,000	$537,000	70	13.0
+177	Karl Worner	Dockers	$723,000	$579,000	70	12.1
+177	Matt Carroll Injured	Blues	$549,000	$519,000	70	13.5
+177	Tom Powell Injured	Kangaroos	$713,000	$912,000	70	7.7
+177	Nathan Broad	Tigers	$519,000	$638,000	70	11.0
+183	Willem Duursma	Eagles	$756,000	$350,000	69	19.7
+183	Mark Blicavs	Cats	$551,000	$744,000	69	9.3
+183	Jase Burgoyne	Power	$776,000	$778,000	69	8.9
+183	Zachary Williams	Blues	$644,000	$643,000	69	10.7
+183	Jordan Clark	Dockers	$768,000	$946,000	69	7.3
+188	Jack Buckley Injured	Giants	$419,000	$579,000	68	11.7
+188	Taylor Walker	Crows	$562,000	$645,000	68	10.5
+188	James Peatling	Crows	$860,000	$815,000	68	8.3
+188	Ben Miller	Tigers	$643,000	$607,000	68	11.2
+188	Sam Lalor Injured	Tigers	$660,000	$567,000	68	12.0
+188	Dante Visentini	Power	$465,000	$539,000	68	12.6
+188	Hayden Young Injured	Dockers	$813,000	$916,000	68	7.4
+188	Zach Guthrie	Cats	$709,000	$805,000	68	8.4
+188	Jack Henry	Cats	$455,000	$632,000	68	10.8
+188	Ben King	Suns	$452,000	$528,000	68	12.9
+198	Will Ashcroft	Lions	$893,000	$1,002,000	67	6.7
+198	Phoenix Gothard	Giants	$587,000	$230,000	67	29.1
+198	Finn O'Sullivan	Kangaroos	$718,000	$564,000	67	11.9
+201	Josh Treacy	Dockers	$783,000	$658,000	66	10.0
+201	James Tunstill	Lions	$392,000	$254,000	66	26.0
+201	Josh Lindsay	Eagles	$681,000	$278,000	66	23.7
+201	Jonty Faull Injured	Tigers	$360,000	$370,000	66	17.8
+201	Matt Johnson Injured	Dockers	$526,000	$740,000	66	8.9
+201	Archie Perkins	Bombers	$617,000	$597,000	66	11.1
+201	Logan McDonald	Swans	$487,000	$432,000	66	15.3
+201	Steely Green	Tigers	$523,000	$381,000	66	17.3
+209	Neil Erasmus	Dockers	$620,000	$596,000	65	10.9
+209	Lloyd Meek	Hawks	$581,000	$978,000	65	6.6
+209	Isaac Heeney	Swans	$1,042,000	$1,016,000	65	6.4
+209	Tom Papley Injured	Swans	$659,000	$650,000	65	10.0
+209	Toby Pink	Kangaroos	$484,000	$496,000	65	13.1
+209	Ryan Angwin Injured	Giants	$594,000	$695,000	65	9.4
+209	Hugh Boxshall	Saints	$555,000	$576,000	65	11.3
+209	Caleb Windsor	Demons	$611,000	$565,000	65	11.5
+209	Bruce Reville	Lions	$582,000	$461,000	65	14.1
+209	Jack Martin	Cats	$638,000	$766,000	65	8.5
+209	Bayley Fritsch	Demons	$558,000	$665,000	65	9.8
+209	Jamie Cripps Injured	Eagles	$524,000	$610,000	65	10.7
+209	Stephen Coniglio Injured	Giants	$557,000	$783,000	65	8.3
+222	Kane Farrell Injured	Power	$806,000	$818,000	64	7.8
+223	Trent Rivers	Demons	$772,000	$865,000	63	7.3
+223	Isaiah Dudley	Dockers	$394,000	$385,000	63	16.4
+223	Scott Pendlebury	Magpies	$875,000	$908,000	63	6.9
+223	Ned Long	Magpies	$694,000	$808,000	63	7.8
+223	Daniel Turner	Demons	$600,000	$610,000	63	10.3
+228	Sam De Koning	Cats	$532,000	$586,000	62	10.6
+228	Joe Richards	Power	$700,000	$685,000	62	9.1
+228	Buku Khamis	Bulldogs	$455,000	$501,000	62	12.4
+228	Harley Reid	Eagles	$784,000	$700,000	62	8.9
+228	Cooper Trembath	Kangaroos	$492,000	$500,000	62	12.4
+228	Shai Bolton	Dockers	$805,000	$734,000	62	8.4
+234	Harry Rowston	Giants	$609,000	$544,000	61	11.2
+234	Xavier Duursma	Bombers	$642,000	$826,000	61	7.4
+234	Brodie Kemp	Blues	$612,000	$594,000	61	10.3
+234	Brayden Maynard	Magpies	$782,000	$696,000	61	8.8
+234	Campbell Chesser	Blues	$575,000	$555,000	61	11.0
+239	Xavier Lindsay Injured	Demons	$589,000	$550,000	60	10.9
+239	Patrick Voss	Dockers	$582,000	$575,000	60	10.4
+239	Leo Lombard	Suns	$513,000	$230,000	60	26.1
+239	Sam Davidson	Bulldogs	$536,000	$693,000	60	8.7
+243	Jai Serong	Swans	$707,000	$274,000	59	21.5
+243	Archie Roberts	Bombers	$1,081,000	$901,000	59	6.5
+243	Jake Rogers Injured	Suns	$395,000	$362,000	59	16.3
+243	Charlie Curnow	Swans	$604,000	$690,000	59	8.6
+247	Harry Sharp	Demons	$570,000	$321,000	58	18.1
+247	Jack Carroll	Saints	$639,000	$332,000	58	17.5
+247	Xavier O'Halloran Injured	Giants	$559,000	$603,000	58	9.6
+247	Oskar Baker	Bulldogs	$517,000	$590,000	58	9.8
+247	Keidean Coleman Injured	Lions	$646,000	$559,000	58	10.4
+252	Jack Higgins Injured	Saints	$525,000	$545,000	57	10.5
+252	Ben Keays	Crows	$647,000	$831,000	57	6.9
+252	Tylar Young	Eagles	$593,000	$558,000	57	10.2
+252	Jack Silvagni	Saints	$614,000	$680,000	57	8.4
+256	Nate Caddy	Bombers	$616,000	$562,000	56	10.0
+256	Lachy Dovaston	Kangaroos	$348,000	$290,000	56	19.3
+256	Lachlan Bramble	Bulldogs	$537,000	$696,000	56	8.0
+259	Aliir Aliir	Power	$706,000	$597,000	55	9.2
+259	Rory Lobb	Bulldogs	$617,000	$578,000	55	9.5
+259	Griffin Logue	Kangaroos	$395,000	$494,000	55	11.1
+259	Kieren Briggs	Giants	$681,000	$738,000	55	7.5
+263	Logan Evans	Power	$694,000	$518,000	54	10.4
+263	Jobe Shanahan	Eagles	$409,000	$487,000	54	11.1
+263	Jordan De Goey	Magpies	$848,000	$812,000	54	6.7
+263	Jai Culley Injured	Demons	$494,000	$514,000	54	10.5
+267	Daniel Annable Injured	Lions	$346,000	$330,000	53	16.1
+267	Sean Darcy	Dockers	$541,000	$674,000	53	7.9
+267	Koltyn Tholstrup	Demons	$613,000	$555,000	53	9.5
+267	Jacob Hopper	Tigers	$654,000	$884,000	53	6.0
+267	Corey Durdin	Power	$531,000	$425,000	53	12.5
+267	Dane Rampe Injured	Swans	$514,000	$582,000	53	9.1
+267	Darcy Byrne-Jones	Power	$707,000	$593,000	53	8.9
+267	Andrew Brayshaw	Dockers	$874,000	$1,060,000	53	5.0
+267	Ben McKay	Bombers	$469,000	$409,000	53	13.0
+267	Daniel McStay	Magpies	$528,000	$593,000	53	8.9
+277	Jake Lever Injured	Demons	$681,000	$553,000	52	9.4
+277	Nick Larkey	Kangaroos	$524,000	$615,000	52	8.5
+277	Miles Bergman Injured	Power	$608,000	$822,000	52	6.3
+277	Heath Chapman	Dockers	$666,000	$562,000	52	9.3
+277	Connor O'Sullivan	Cats	$620,000	$603,000	52	8.6
+277	Massimo D'Ambrosio	Hawks	$779,000	$739,000	52	7.0
+277	Max Kondogiannis	Bombers	$302,000	$230,000	52	22.6
+277	Josh Gibcus Injured	Tigers	$254,000	$230,000	52	22.6
+285	Roan Steele	Magpies	$554,000	$381,000	51	13.4
+285	Cooper Duff-Tytler	Eagles	$405,000	$338,000	51	15.1
+285	Brodie Grundy	Swans	$1,072,000	$1,122,000	51	4.5
+285	James Trezise	Tigers	$661,000	$487,000	51	10.5
+285	Mitchell Lewis	Hawks	$629,000	$420,000	51	12.1
+290	Dyson Sharp Injured	Bombers	$388,000	$302,000	50	16.6
+290	Hugh Bond	Crows	$433,000	$313,000	50	16.0
+290	Kane McAuliffe Injured	Tigers	$711,000	$656,000	50	7.6
+290	Noah Answerth	Lions	$488,000	$608,000	50	8.2
+290	Ed Langdon	Demons	$812,000	$778,000	50	6.4
+290	Zak Johnson Injured	Bombers	$577,000	$513,000	50	9.7
+290	Jason Horne-Francis	Power	$863,000	$862,000	50	5.8
+290	Bo Allan	Eagles	$438,000	$246,000	50	20.3
+298	Zane Zakostelsky	Lions	$325,000	$230,000	49	21.3
+298	Nathan O'Driscoll	Dockers	$662,000	$675,000	49	7.3
+298	Oliver Hollands Injured	Blues	$735,000	$799,000	49	6.1
+298	Mac Andrew	Suns	$764,000	$587,000	49	8.3
+298	Judd McVee	Dockers	$552,000	$571,000	49	8.6
+298	Isaac Keeler	Saints	$386,000	$384,000	49	12.8
+298	Mitch Georgiades	Power	$685,000	$727,000	49	6.7
+298	Jarrod Berry	Lions	$780,000	$892,000	49	5.5
+306	Brady Hough	Eagles	$470,000	$673,000	48	7.1
+306	Ryley Sanders	Bulldogs	$872,000	$694,000	48	6.9
+308	Paul Curtis	Kangaroos	$717,000	$745,000	47	6.3
+308	Tom Cole	Eagles	$539,000	$697,000	47	6.7
+308	Lachlan Blakiston	Bombers	$370,000	$399,000	47	11.8
+308	Jack Watkins	Power	$441,000	$230,000	47	20.4
+308	Alix Tauru	Saints	$406,000	$442,000	47	10.6
+308	Nick Murray	Crows	$447,000	$395,000	47	11.9
+308	Jesse Hogan Injured	Giants	$523,000	$685,000	47	6.9
+315	Sam Butler	Hawks	$574,000	$489,000	46	9.4
+315	Darcy Fogarty	Crows	$564,000	$622,000	46	7.4
+315	Lewis Melican Injured	Swans	$479,000	$483,000	46	9.5
+315	Lachlan Jones	Power	$477,000	$452,000	46	10.2
+315	Oisin Mullin	Cats	$618,000	$489,000	46	9.4
+315	Daniel Rioli	Suns	$744,000	$747,000	46	6.2
+315	Luke Pedlar	Crows	$509,000	$435,000	46	10.6
+322	Jacob Wehr	Power	$558,000	$548,000	45	8.2
+322	Hudson O'Keeffe	Blues	$316,000	$342,000	45	13.2
+322	Reuben Ginbey	Eagles	$588,000	$578,000	45	7.8
+322	Ewan Mackinlay	Power	$544,000	$574,000	45	7.8
+326	Lachlan Cowan	Blues	$605,000	$665,000	44	6.6
+326	Rhylee West	Bulldogs	$563,000	$688,000	44	6.4
+326	Jamie Elliott Injured	Magpies	$572,000	$711,000	44	6.2
+329	Cooper Hynes	Bulldogs	$407,000	$267,000	43	16.1
+329	Callum Brown	Giants	$491,000	$607,000	43	7.1
+329	Todd Marshall	Power	$514,000	$394,000	43	10.9
+329	Blake Howes	Demons	$589,000	$459,000	43	9.4
+329	Jacob Weitering	Blues	$571,000	$645,000	43	6.7
+329	Liam Ryan Injured	Saints	$447,000	$599,000	43	7.2
+329	Elijah Hollands	Blues	$615,000	$668,000	43	6.4
+329	Matthew Flynn	Eagles	$705,000	$826,000	43	5.2
+337	Will Graham	Suns	$496,000	$578,000	42	7.3
+337	Ryan Lester Injured	Lions	$761,000	$601,000	42	7.0
+337	Callum Ah Chee	Crows	$562,000	$656,000	42	6.4
+337	Seth Campbell	Tigers	$618,000	$613,000	42	6.9
+341	Sam Draper	Lions	$615,000	$731,000	41	5.6
+341	Sam Switkowski	Dockers	$465,000	$578,000	41	7.1
+341	Ollie Dempsey	Cats	$718,000	$763,000	41	5.4
+344	Mitchell Edwards	Cats	$438,000	$230,000	40	17.4
+344	Lewis Young	Blues	$404,000	$493,000	40	8.1
+344	Archer Reid	Eagles	$353,000	$375,000	40	10.7
+344	Colby McKercher	Kangaroos	$760,000	$823,000	40	4.9
+344	Jake Lloyd	Swans	$708,000	$883,000	40	4.5
+349	Jy Farrar Injured	Suns	$511,000	$565,000	39	6.9
+349	Michael Sellwood	Bulldogs	$516,000	$230,000	39	17.0
+349	Alex Pearce	Dockers	$362,000	$482,000	39	8.1
+349	Chad Warner	Swans	$805,000	$924,000	39	4.2
+349	Sam Wicks	Swans	$655,000	$587,000	39	6.6
+349	Joe Berry	Power	$562,000	$415,000	39	9.4
+355	Corey Wagner	Dockers	$646,000	$674,000	38	5.6
+355	Josaia Delana	Giants	$248,000	$232,000	38	16.4
+355	Hugo Ralphsmith Suspended	Tigers	$495,000	$594,000	38	6.4
+355	Ollie Lord Injured	Power	$313,000	$308,000	38	12.3
+355	Jacob Newton Injured	Eagles	$268,000	$230,000	38	16.5
+355	Jaxon Prior	Bombers	$632,000	$655,000	38	5.8
+361	Jayden Nguyen	Bombers	$359,000	$314,000	37	11.8
+361	Ethan Read Injured	Suns	$441,000	$453,000	37	8.2
+363	Jhye Clark	Cats	$437,000	$451,000	36	8.0
+363	Maurice Rioli	Tigers	$368,000	$435,000	36	8.3
+363	Lincoln McCarthy Injured	Lions	$592,000	$452,000	36	8.0
+363	Jordon Butts	Crows	$366,000	$276,000	36	13.0
+363	Mark O'Connor	Cats	$593,000	$676,000	36	5.3
+363	Ben Long	Suns	$509,000	$652,000	36	5.5
+363	Samuel Collins	Suns	$601,000	$544,000	36	6.6
+363	Edward Allan	Magpies	$464,000	$508,000	36	7.1
+371	Malcolm Rosas Injured	Swans	$497,000	$350,000	35	10.0
+372	Max Gruzewski	Giants	$420,000	$361,000	34	9.4
+372	Peter Wright Injured	Bombers	$761,000	$776,000	34	4.4
+372	Kai Lohmann	Lions	$593,000	$486,000	34	7.0
+372	Harry Armstrong Injured	Tigers	$282,000	$319,000	34	10.7
+376	Hussien El Achkar	Bombers	$238,000	$230,000	33	14.3
+376	Mattaes Phillipou	Saints	$690,000	$610,000	33	5.4
+376	Harrison Petty	Demons	$546,000	$505,000	33	6.5
+379	Lachlan Weller Injured	Suns	$625,000	$571,000	32	5.6
+379	James Jordon	Swans	$538,000	$597,000	32	5.4
+379	Jack Buller	Magpies	$425,000	$481,000	32	6.7
+382	Tom Barrass Injured	Hawks	$427,000	$432,000	31	7.2
+382	Jack Whitlock	Power	$453,000	$368,000	31	8.4
+384	Kyle Langford	Bombers	$708,000	$718,000	30	4.2
+384	Brandon Walker Injured	Dockers	$425,000	$439,000	30	6.8
+384	Anthony Caminiti	Saints	$312,000	$564,000	30	5.3
+384	Jake Stringer	Giants	$642,000	$561,000	30	5.3
+384	Ben Ainsworth	Blues	$710,000	$615,000	30	4.9
+389	Harvey Langford	Demons	$623,000	$658,000	29	4.4
+389	Oscar McDonald	Dockers	$487,000	$472,000	29	6.1
+389	James O'Donnell	Bulldogs	$397,000	$480,000	29	6.0
+392	Tom Sparrow	Demons	$877,000	$641,000	27	4.2
+393	Jye Amiss	Dockers	$621,000	$430,000	26	6.0
+393	Esava Ratugolea	Power	$451,000	$516,000	26	5.0
+395	Cooper Sharman	Saints	$535,000	$667,000	25	3.7
+395	Latrelle Pickett Injured	Demons	$320,000	$306,000	25	8.2
+397	Patrick Dangerfield	Cats	$517,000	$667,000	24	3.6
+397	Archie May Injured	Bombers	$426,000	$490,000	24	4.9
+397	Lachlan Fogarty	Blues	$524,000	$584,000	24	4.1
+400	Toby Murray	Crows	$464,000	$230,000	23	10.0
+400	Tim Membrey	Magpies	$512,000	$543,000	23	4.2
+400	Jacob Konstanty	Kangaroos	$406,000	$457,000	23	5.0
+400	Zach Reid	Bombers	$551,000	$791,000	23	2.9
+400	Zane Duursma	Kangaroos	$376,000	$325,000	23	7.1
+405	Will Lewis	Bulldogs	$439,000	$230,000	22	9.6
+406	Oscar Adams	Suns	$374,000	$260,000	21	8.1
+407	Zeke Uwland	Suns	$437,000	$346,000	19	5.5
+407	Wil Parker	Magpies	$327,000	$302,000	19	6.3
+407	Oscar Allen Injured	Lions	$527,000	$522,000	19	3.6
+410	Bradley Close	Cats	$455,000	$566,000	18	3.2
+410	Harry Dean	Blues	$422,000	$342,000	18	5.3
+412	Ty Gallop	Lions	$393,000	$263,000	16	6.1
+413	Billy Frampton	Magpies	$485,000	$445,000	15	3.4
+414	Campbell Gray Injured	Tigers	$324,000	$370,000	4	1.1
