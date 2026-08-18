@@ -1005,7 +1005,9 @@ canvas{max-height:340px}
 .price-level-label{font-size:.68rem;font-style:italic}
 /* Leaderboard form boxes */
 .form-boxes{display:flex;gap:3px;align-items:center}
-.form-box{width:20px;height:20px;border-radius:3px;display:inline-flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;border:1px solid rgba(255,255,255,.07)}
+.form-box{width:20px;height:20px;border-radius:3px;display:inline-flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;border:1px solid rgba(255,255,255,.07);cursor:pointer;transition:transform var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease)}
+.form-box:hover{transform:translateY(-2px) scale(1.12);border-color:var(--accent2)}
+.inj-tag{display:inline-block;background:rgba(248,113,113,.2);color:var(--red);font-size:.6rem;font-weight:700;padding:1px 5px;border-radius:3px;vertical-align:middle;margin-left:2px}
 .form-box-0{background:rgba(255,255,255,.04);color:transparent}
 .form-box-1{background:rgba(251,191,36,.25);color:#fbbf24;border-color:rgba(251,191,36,.4)}
 .form-box-2{background:rgba(163,230,53,.25);color:#a3e635;border-color:rgba(163,230,53,.4)}
@@ -1338,7 +1340,6 @@ canvas{max-height:340px}
         <th class="ta-r">Current Price</th><th class="ta-r">Avg FP</th>
         <th class="ta-r">Total FP</th><th class="ta-r">Votes</th>
         <th>Form (L5)</th>
-        <th>Status</th>
       </tr></thead>
       <tbody id="lbBody"></tbody>
     </table>
@@ -1839,25 +1840,26 @@ function toggleVoteRace() {
     prevVotes = e.votes;
     const pc = pos===1?'p1':pos===2?'p2':pos===3?'p3':'';
     const dn = e.display_name || getDisplayName(e.player, e.team);
-    // Form boxes: last 5 rounds' votes
+    const safeKey = e.key.replace(/'/g,"\\'");
+    // Form boxes: last 5 rounds' votes — click one to jump to that game in Fixtures
     var formHtml = '<div class="form-boxes">';
     (e.form_history || []).forEach(function(f) {
       const lbl = f.r === 0 ? 'Op' : 'R' + f.r;
-      if (f.v === 0) formHtml += '<div class="form-box form-box-0" title="' + lbl + ': no votes">&nbsp;</div>';
-      else formHtml += '<div class="form-box form-box-' + f.v + '" title="' + lbl + ': ' + f.v + ' vote' + (f.v>1?'s':'') + '">' + f.v + '</div>';
+      const oc = 'onclick="goToFixtureGame(\'' + safeKey + '\',' + f.r + ')"';
+      if (f.v === 0) formHtml += '<div class="form-box form-box-0" ' + oc + ' title="' + lbl + ': no votes — click to view this game">&nbsp;</div>';
+      else formHtml += '<div class="form-box form-box-' + f.v + '" ' + oc + ' title="' + lbl + ': ' + f.v + ' vote' + (f.v>1?'s':'') + ' — click to view this game">' + f.v + '</div>';
     });
     formHtml += '</div>';
     const tr = document.createElement('tr');
     tr.innerHTML =
       '<td class="pos-num ' + pc + '">' + pos + '</td>' +
-      '<td><span class="player-link" onclick="searchAndShowPlayer(\'' + e.key.replace(/'/g,"\\'") + '\')">' + dn + '</span></td>' +
+      '<td><span class="player-link" onclick="searchAndShowPlayer(\'' + safeKey + '\')">' + dn + '</span>' + (e.is_injured ? ' <span class="inj-tag" title="Injured">INJ</span>' : '') + '</td>' +
       '<td>' + teamTagHtml(e.team) + '</td>' +
       '<td class="ta-r" style="color:#fff;font-family:\'Barlow Condensed\',sans-serif">' + fmtPrice(e.price) + '</td>' +
       '<td class="ta-r" style="font-family:\'Barlow Condensed\',sans-serif;font-weight:700">' + e.avg + '</td>' +
       '<td class="ta-r" style="color:var(--muted);font-family:\'Barlow Condensed\',sans-serif">' + e.total_dt + '</td>' +
       '<td class="ta-r votes-hl">' + e.votes + '</td>' +
-      '<td>' + formHtml + '</td>' +
-      (e.is_injured ? '<td><span style="background:rgba(248,113,113,.2);color:var(--red);font-size:.65rem;font-weight:700;padding:1px 5px;border-radius:3px">INJ</span></td>' : '<td></td>');
+      '<td>' + formHtml + '</td>';
     tbody.appendChild(tr);
   });
 })();
@@ -1965,22 +1967,20 @@ function toggleVoteRace() {
   function buildUpRows(round) {
     const rows = [];
     PLAYERS_DATA.forEach(function(p) {
+      if (INJURED_SET && INJURED_SET.has(p.name)) return; // injured players sit out future fixtures entirely
       const teamFix = (UPCOMING_DIFF||[]).find(function(d){ return d.team === p.team; });
       if (!teamFix || !teamFix.games) return;
       const game = teamFix.games.find(function(g){ return g.round === round; });
       if (!game) return;
       const pos = p.positions && p.positions.length ? p.positions[0] : null;
       const diffRating = (pos && game.pos && game.pos[pos] != null) ? game.pos[pos] : game.overall;
-      const isInj = INJURED_SET && INJURED_SET.has(p.name);
-      const proj = isInj ? null : calcProjectedScore(p.key);
       const posPred = (pos && game.predicted_pos && game.predicted_pos[pos] != null) ? game.predicted_pos[pos] : game.predicted_avg;
-      const projected = proj != null ? proj : posPred;
+      const projected = calcProjectedScore(p.key) || posPred;
       const price = p.current_price;
-      const breakeven = price != null ? price / 10490 : null;
-      const predPriceChange = (projected != null && breakeven != null) ? Math.round((projected - breakeven) * 3700) : null;
+      const predPriceChange = predictedPriceChange(p, projected);
       rows.push({
         key: p.key,
-        name: (p.display_name || getDisplayName(p.name, p.team)) + (isInj ? ' \u{1F691}' : ''),
+        name: p.display_name || getDisplayName(p.name, p.team),
         team: p.team,
         pos: pos || '—',
         opponent: game.opponent,
@@ -2096,6 +2096,7 @@ function toggleVoteRace() {
   loadedRounds.forEach(function(rn) {
     const btn = document.createElement('button');
     btn.className = 'round-tab';
+    btn.dataset.round = rn;
     btn.textContent = rn === 0 ? 'Opening' : 'R' + rn;
     btn.onclick = function(){ loadRound(rn, true, btn); };
     tabsEl.appendChild(btn);
@@ -2105,6 +2106,7 @@ function toggleVoteRace() {
   upcomingRounds.forEach(function(rn) {
     const btn = document.createElement('button');
     btn.className = 'round-tab round-tab-future';
+    btn.dataset.round = rn;
     btn.textContent = 'R' + rn;
     btn.onclick = function(){ loadRound(rn, false, btn); };
     tabsEl.appendChild(btn);
@@ -2113,6 +2115,22 @@ function toggleVoteRace() {
 
   if (defaultBtn) loadRound(loadedRounds[loadedRounds.length-1], true, defaultBtn);
   else if (firstUpcomingBtn) loadRound(upcomingRounds[0], false, firstUpcomingBtn);
+
+  // Jump here from anywhere (e.g. a Leaderboard form box) straight to a specific
+  // player's game for a specific round, with that game already focused.
+  window.goToFixtureGame = function(playerKey, round) {
+    const p = getP(playerKey);
+    const h = p && p.history ? p.history.find(function(x){ return x.round === round; }) : null;
+    showPage('fixtures', document.querySelectorAll('.nav-btn')[1]);
+    const btn = tabsEl.querySelector('.round-tab[data-round="' + round + '"]');
+    if (btn) btn.click();
+    if (p && h && h.opponent) {
+      const pair = [p.team, h.opponent].sort();
+      pastSelectedGame = {team_a: pair[0], team_b: pair[1]};
+      renderGames(round, true);
+      renderPastTable();
+    }
+  };
 })();
 
 // ── Player search ─────────────────────────────────────────────────────────────
@@ -2934,6 +2952,29 @@ function calcProjectedScore(key) {
   return Math.round(baseProj * fixMult);
 }
 
+// Predicted price change for a projected score, calibrated against this dataset's own
+// pre_price/post_price history rather than guessed. Fitting price-delta vs (score minus
+// rolling avg) across every real round in the data gives a "magic number" — $ per point
+// above/below recent form — that clusters around 950 for $300K+ players and ~1500 for
+// sub-$300K players (cheap/rookie prices swing harder per point, not softer). A flat
+// price/10490 "breakeven" wildly overstated moves for cheap players — e.g. it implied
+// a $435K ruck rising $224K off one good game, which just doesn't happen.
+function priceChangeMagicNumber(price) {
+  return (price != null && price < 300000) ? 1500 : 950;
+}
+function predictedPriceChange(p, projectedScore) {
+  if (projectedScore == null || !p.history || !p.history.length) return null;
+  const recent = p.history.slice(-3).map(function(h){return h.score;});
+  const rollingAvg = recent.reduce(function(a,b){return a+b;},0) / recent.length;
+  const magic = priceChangeMagicNumber(p.current_price);
+  var change = Math.round(magic * (projectedScore - rollingAvg));
+  if (p.current_price) { // real single-round moves essentially never exceed ~15% of price
+    const cap = Math.round(p.current_price * 0.15);
+    change = Math.max(-cap, Math.min(cap, change));
+  }
+  return change;
+}
+
 function getPlayerPriceTrend(key) {
   // Returns 'rising', 'falling', 'flat', or null
   const p = getP(key); if (!p) return null;
@@ -3629,7 +3670,7 @@ function renderMyTeam(highlightKeys) {
     const rowWrap = document.createElement('div');
     const meta = document.createElement('div');
     meta.className = 'pitch-pos-meta';
-    meta.innerHTML = players.length + '/' + total + '<span>drag onto a player to swap</span>';
+    meta.innerHTML = players.length + '/' + total;
     rowWrap.appendChild(meta);
 
     const row = document.createElement('div');
@@ -4810,7 +4851,9 @@ canvas{max-height:340px}
 .price-level-label{font-size:.68rem;font-style:italic}
 /* Leaderboard form boxes */
 .form-boxes{display:flex;gap:3px;align-items:center}
-.form-box{width:20px;height:20px;border-radius:3px;display:inline-flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;border:1px solid rgba(255,255,255,.07)}
+.form-box{width:20px;height:20px;border-radius:3px;display:inline-flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;border:1px solid rgba(255,255,255,.07);cursor:pointer;transition:transform var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease)}
+.form-box:hover{transform:translateY(-2px) scale(1.12);border-color:var(--accent2)}
+.inj-tag{display:inline-block;background:rgba(248,113,113,.2);color:var(--red);font-size:.6rem;font-weight:700;padding:1px 5px;border-radius:3px;vertical-align:middle;margin-left:2px}
 .form-box-0{background:rgba(255,255,255,.04);color:transparent}
 .form-box-1{background:rgba(251,191,36,.25);color:#fbbf24;border-color:rgba(251,191,36,.4)}
 .form-box-2{background:rgba(163,230,53,.25);color:#a3e635;border-color:rgba(163,230,53,.4)}
@@ -5144,7 +5187,6 @@ canvas{max-height:340px}
         <th class="ta-r">Current Price</th><th class="ta-r">Avg FP</th>
         <th class="ta-r">Total FP</th><th class="ta-r">Votes</th>
         <th>Form (L5)</th>
-        <th>Status</th>
       </tr></thead>
       <tbody id="lbBody"></tbody>
     </table>
@@ -5644,25 +5686,26 @@ function toggleVoteRace() {
     prevVotes = e.votes;
     const pc = pos===1?'p1':pos===2?'p2':pos===3?'p3':'';
     const dn = e.display_name || getDisplayName(e.player, e.team);
-    // Form boxes: last 5 rounds' votes
+    const safeKey = e.key.replace(/'/g,"\\'");
+    // Form boxes: last 5 rounds' votes — click one to jump to that game in Fixtures
     var formHtml = '<div class="form-boxes">';
     (e.form_history || []).forEach(function(f) {
       const lbl = f.r === 0 ? 'Op' : 'R' + f.r;
-      if (f.v === 0) formHtml += '<div class="form-box form-box-0" title="' + lbl + ': no votes">&nbsp;</div>';
-      else formHtml += '<div class="form-box form-box-' + f.v + '" title="' + lbl + ': ' + f.v + ' vote' + (f.v>1?'s':'') + '">' + f.v + '</div>';
+      const oc = 'onclick="goToFixtureGame(\'' + safeKey + '\',' + f.r + ')"';
+      if (f.v === 0) formHtml += '<div class="form-box form-box-0" ' + oc + ' title="' + lbl + ': no votes — click to view this game">&nbsp;</div>';
+      else formHtml += '<div class="form-box form-box-' + f.v + '" ' + oc + ' title="' + lbl + ': ' + f.v + ' vote' + (f.v>1?'s':'') + ' — click to view this game">' + f.v + '</div>';
     });
     formHtml += '</div>';
     const tr = document.createElement('tr');
     tr.innerHTML =
       '<td class="pos-num ' + pc + '">' + pos + '</td>' +
-      '<td><span class="player-link" onclick="searchAndShowPlayer(\'' + e.key.replace(/'/g,"\\'") + '\')">' + dn + '</span></td>' +
+      '<td><span class="player-link" onclick="searchAndShowPlayer(\'' + safeKey + '\')">' + dn + '</span>' + (e.is_injured ? ' <span class="inj-tag" title="Injured">INJ</span>' : '') + '</td>' +
       '<td>' + teamTagHtml(e.team) + '</td>' +
       '<td class="ta-r" style="color:#fff;font-family:\'Barlow Condensed\',sans-serif">' + fmtPrice(e.price) + '</td>' +
       '<td class="ta-r" style="font-family:\'Barlow Condensed\',sans-serif;font-weight:700">' + e.avg + '</td>' +
       '<td class="ta-r" style="color:var(--muted);font-family:\'Barlow Condensed\',sans-serif">' + e.total_dt + '</td>' +
       '<td class="ta-r votes-hl">' + e.votes + '</td>' +
-      '<td>' + formHtml + '</td>' +
-      (e.is_injured ? '<td><span style="background:rgba(248,113,113,.2);color:var(--red);font-size:.65rem;font-weight:700;padding:1px 5px;border-radius:3px">INJ</span></td>' : '<td></td>');
+      '<td>' + formHtml + '</td>';
     tbody.appendChild(tr);
   });
 })();
@@ -5770,22 +5813,20 @@ function toggleVoteRace() {
   function buildUpRows(round) {
     const rows = [];
     PLAYERS_DATA.forEach(function(p) {
+      if (INJURED_SET && INJURED_SET.has(p.name)) return; // injured players sit out future fixtures entirely
       const teamFix = (UPCOMING_DIFF||[]).find(function(d){ return d.team === p.team; });
       if (!teamFix || !teamFix.games) return;
       const game = teamFix.games.find(function(g){ return g.round === round; });
       if (!game) return;
       const pos = p.positions && p.positions.length ? p.positions[0] : null;
       const diffRating = (pos && game.pos && game.pos[pos] != null) ? game.pos[pos] : game.overall;
-      const isInj = INJURED_SET && INJURED_SET.has(p.name);
-      const proj = isInj ? null : calcProjectedScore(p.key);
       const posPred = (pos && game.predicted_pos && game.predicted_pos[pos] != null) ? game.predicted_pos[pos] : game.predicted_avg;
-      const projected = proj != null ? proj : posPred;
+      const projected = calcProjectedScore(p.key) || posPred;
       const price = p.current_price;
-      const breakeven = price != null ? price / 10490 : null;
-      const predPriceChange = (projected != null && breakeven != null) ? Math.round((projected - breakeven) * 3700) : null;
+      const predPriceChange = predictedPriceChange(p, projected);
       rows.push({
         key: p.key,
-        name: (p.display_name || getDisplayName(p.name, p.team)) + (isInj ? ' \u{1F691}' : ''),
+        name: p.display_name || getDisplayName(p.name, p.team),
         team: p.team,
         pos: pos || '—',
         opponent: game.opponent,
@@ -5901,6 +5942,7 @@ function toggleVoteRace() {
   loadedRounds.forEach(function(rn) {
     const btn = document.createElement('button');
     btn.className = 'round-tab';
+    btn.dataset.round = rn;
     btn.textContent = rn === 0 ? 'Opening' : 'R' + rn;
     btn.onclick = function(){ loadRound(rn, true, btn); };
     tabsEl.appendChild(btn);
@@ -5910,6 +5952,7 @@ function toggleVoteRace() {
   upcomingRounds.forEach(function(rn) {
     const btn = document.createElement('button');
     btn.className = 'round-tab round-tab-future';
+    btn.dataset.round = rn;
     btn.textContent = 'R' + rn;
     btn.onclick = function(){ loadRound(rn, false, btn); };
     tabsEl.appendChild(btn);
@@ -5918,6 +5961,22 @@ function toggleVoteRace() {
 
   if (defaultBtn) loadRound(loadedRounds[loadedRounds.length-1], true, defaultBtn);
   else if (firstUpcomingBtn) loadRound(upcomingRounds[0], false, firstUpcomingBtn);
+
+  // Jump here from anywhere (e.g. a Leaderboard form box) straight to a specific
+  // player's game for a specific round, with that game already focused.
+  window.goToFixtureGame = function(playerKey, round) {
+    const p = getP(playerKey);
+    const h = p && p.history ? p.history.find(function(x){ return x.round === round; }) : null;
+    showPage('fixtures', document.querySelectorAll('.nav-btn')[1]);
+    const btn = tabsEl.querySelector('.round-tab[data-round="' + round + '"]');
+    if (btn) btn.click();
+    if (p && h && h.opponent) {
+      const pair = [p.team, h.opponent].sort();
+      pastSelectedGame = {team_a: pair[0], team_b: pair[1]};
+      renderGames(round, true);
+      renderPastTable();
+    }
+  };
 })();
 
 // ── Player search ─────────────────────────────────────────────────────────────
@@ -6744,6 +6803,29 @@ function calcProjectedScore(key) {
   return Math.round(baseProj * fixMult);
 }
 
+// Predicted price change for a projected score, calibrated against this dataset's own
+// pre_price/post_price history rather than guessed. Fitting price-delta vs (score minus
+// rolling avg) across every real round in the data gives a "magic number" — $ per point
+// above/below recent form — that clusters around 950 for $300K+ players and ~1500 for
+// sub-$300K players (cheap/rookie prices swing harder per point, not softer). A flat
+// price/10490 "breakeven" wildly overstated moves for cheap players — e.g. it implied
+// a $435K ruck rising $224K off one good game, which just doesn't happen.
+function priceChangeMagicNumber(price) {
+  return (price != null && price < 300000) ? 1500 : 950;
+}
+function predictedPriceChange(p, projectedScore) {
+  if (projectedScore == null || !p.history || !p.history.length) return null;
+  const recent = p.history.slice(-3).map(function(h){return h.score;});
+  const rollingAvg = recent.reduce(function(a,b){return a+b;},0) / recent.length;
+  const magic = priceChangeMagicNumber(p.current_price);
+  var change = Math.round(magic * (projectedScore - rollingAvg));
+  if (p.current_price) { // real single-round moves essentially never exceed ~15% of price
+    const cap = Math.round(p.current_price * 0.15);
+    change = Math.max(-cap, Math.min(cap, change));
+  }
+  return change;
+}
+
 function getPlayerPriceTrend(key) {
   // Returns 'rising', 'falling', 'flat', or null
   const p = getP(key); if (!p) return null;
@@ -7440,7 +7522,7 @@ function renderMyTeam(highlightKeys) {
     const rowWrap = document.createElement('div');
     const meta = document.createElement('div');
     meta.className = 'pitch-pos-meta';
-    meta.innerHTML = players.length + '/' + total + '<span>drag onto a player to swap</span>';
+    meta.innerHTML = players.length + '/' + total;
     rowWrap.appendChild(meta);
 
     const startersGrid = document.createElement('div');
