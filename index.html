@@ -520,9 +520,38 @@ canvas{max-height:340px}
 .lbs-lbl{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
 @media(max-width:700px){.lb-stats-strip{grid-template-columns:1fr 1fr}}
 
+/* ── Targets ── */
+.targets-filter-bar{display:flex;align-items:end;gap:14px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;margin-bottom:16px}
+.tf-field{display:flex;flex-direction:column;gap:4px}
+.tf-field label{font-size:.64rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.tf-field input,.tf-field select{background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:7px 10px;font-family:'Barlow',sans-serif;font-size:.85rem;outline:none;width:130px;transition:border-color .15s}
+.tf-field input:focus,.tf-field select:focus{border-color:var(--accent2)}
+.tf-count{margin-left:auto;font-size:.78rem;color:var(--muted);align-self:center}
+.targets-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+.targets-col{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column}
+.targets-col-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:12px 14px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1rem;letter-spacing:.02em;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface2);z-index:1}
+.targets-col-head.tier-premiums{color:var(--accent)}
+.targets-col-head.tier-midprice{color:var(--accent2)}
+.targets-col-head.tier-rookies{color:var(--green)}
+.targets-col-sub{font-size:.68rem;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.targets-col-list{max-height:70vh;overflow-y:auto}
+.target-row{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(--border);cursor:pointer;transition:background var(--dur-fast) var(--ease)}
+.target-row:last-child{border-bottom:none}
+.target-row:hover{background:rgba(var(--overlay-rgb),.04)}
+.target-rank{flex-shrink:0;width:22px;text-align:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;color:var(--muted);font-size:.85rem}
+.target-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.target-name{font-weight:700;font-size:.86rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.target-sub{font-size:.66rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.target-metric{flex-shrink:0;text-align:right;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.92rem}
+.target-metric-sub{font-size:.6rem;color:var(--muted);font-weight:600}
+
 /* ── Mobile ── */
 .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 @media(max-width:860px){
+  .targets-columns{grid-template-columns:1fr}
+  .tf-count{margin-left:0;width:100%}
+  .tf-field input,.tf-field select{width:110px}
+  .targets-col-list{max-height:50vh}
   .logo{padding:0 12px;gap:8px}
   .logo-sub{display:none}
   header{flex-wrap:nowrap}
@@ -567,7 +596,7 @@ canvas{max-height:340px}
     </svg>
     <div class="logo-text">
       <div class="logo-title">THE COUNT</div>
-      <div class="logo-sub">Updated 19 Aug 2026, 12:02 PM</div>
+      <div class="logo-sub">Updated 19 Aug 2026, 04:14 PM</div>
     </div>
   </div>
   <nav>
@@ -579,6 +608,7 @@ canvas{max-height:340px}
     <button class="nav-btn"         onclick="showPage('myteam',this)">&#127945; My Team</button>
     <button class="nav-btn"         onclick="showPage('rolling22',this)">&#127942; Rolling 22</button>
     <button class="nav-btn"         onclick="showPage('awards',this)">&#127941; Awards</button>
+    <button class="nav-btn"         onclick="showPage('targets',this)">&#127919; Targets</button>
     <div class="nav-indicator" id="navIndicator"></div>
   </nav>
   <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark mode">&#9728;&#65039;</button>
@@ -970,6 +1000,59 @@ canvas{max-height:340px}
   <div class="awards-grid" id="awardsGrid"></div>
 </div>
 
+<!-- TARGETS PAGE -->
+<div class="page" id="page-targets">
+  <div class="page-head">
+    <div class="page-head-title">&#127919; Targets</div>
+    <button class="info-btn" id="infoBtn-targets" onclick="toggleInfo('targets')">&#9432; How it works</button>
+  </div>
+  <div class="info-panel" id="info-targets">
+    <div class="info-heading">&#127919; Targets</div>
+    Every eligible player, grouped by price tier and ranked by what actually matters for that tier &mdash; best target at the top of each column.<br><br>
+    <b>Premiums ($800K+):</b> pure scoring output &mdash; projected average for the rest of the season, fixture-adjusted across every remaining game.<br><br>
+    <b>Mid Price ($350K&ndash;$800K):</b> a blend of season average and near-term matchup ease, weighted heavily toward the next few games &mdash; these are short-term trade targets.<br><br>
+    <b>Rookies (under $350K):</b> projected cumulative price growth for the rest of the season &mdash; best cash-generation targets.<br><br>
+    Every priced player with at least one game falls into one of the three columns; injured/suspended players are left out since they're not real trade targets right now.<br><br>
+    <b>Find Players</b> below ignores the tier boundaries &mdash; set any price range, position, or team and it ranks everyone who matches by projected average for the rest of the season.
+  </div>
+  <div class="award-group-title" style="margin-bottom:12px">&#128269; Find Players</div>
+  <div class="targets-filter-bar">
+    <div class="tf-field"><label>Min Price</label><input type="number" id="tfMinPrice" placeholder="$0" step="10000" onkeydown="if(event.key==='Enter')renderFilteredTargets()"></div>
+    <div class="tf-field"><label>Max Price</label><input type="number" id="tfMaxPrice" placeholder="No limit" step="10000" onkeydown="if(event.key==='Enter')renderFilteredTargets()"></div>
+    <div class="tf-field"><label>Position</label><select id="tfPosition">
+      <option value="">All</option><option value="DEF">DEF</option><option value="MID">MID</option><option value="RUC">RUC</option><option value="FWD">FWD</option>
+    </select></div>
+    <div class="tf-field"><label>Team</label><select id="tfTeam"><option value="">All</option></select></div>
+    <button class="race-btn" onclick="renderFilteredTargets()">&#128269; Find Players</button>
+    <button class="race-btn" onclick="resetTargetFilters()">Reset</button>
+    <div class="tf-count" id="tfCount"></div>
+  </div>
+  <div class="table-scroll">
+  <table class="std-table" id="targetsFilteredTable">
+    <thead><tr>
+      <th>Rank</th><th>Player</th><th>Team</th><th>Pos</th><th class="ta-r">Price</th>
+      <th class="ta-r">Proj Avg (Rest of Season)</th><th>Detail</th>
+    </tr></thead>
+    <tbody id="targetsFilteredBody"></tbody>
+  </table>
+  </div>
+  <div class="award-group-title" style="margin:24px 0 12px">&#9889; Quick Tiers</div>
+  <div class="targets-columns">
+    <div class="targets-col">
+      <div class="targets-col-head tier-premiums"><span>&#128142; Premiums</span><span class="targets-col-sub">$800K+</span></div>
+      <div class="targets-col-list" id="targetsList-premiums"></div>
+    </div>
+    <div class="targets-col">
+      <div class="targets-col-head tier-midprice"><span>&#9878;&#65039; Mid Price</span><span class="targets-col-sub">$350K&ndash;$800K</span></div>
+      <div class="targets-col-list" id="targetsList-midprice"></div>
+    </div>
+    <div class="targets-col">
+      <div class="targets-col-head tier-rookies"><span>&#127793; Rookies</span><span class="targets-col-sub">Under $350K</span></div>
+      <div class="targets-col-list" id="targetsList-rookies"></div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <!-- SCENARIO OVERLAY -->
@@ -1015,8 +1098,8 @@ const UPCOMING_DIFF    = [{"team": "Demons", "upcoming_score": 110.1, "upcoming_
 const UPCOMING_AFL_AVG = 67.0;
 const UPCOMING_AFL_AVG_POS = {"DEF": 65.8, "MID": 74.4, "RUC": 68.3, "FWD": 61.8};
 const CURRENT_ROUND    = 23;
-const INJURED_SET      = new Set(["Sam Lalor", "Max King", "Will Hayward", "Zak Butters", "Jack Sinclair", "Andy Moniz-Wakefield", "Jacob Van Rooyen", "Will Edwards", "Jamie Elliott", "Jai Culley", "Wil Powell", "Murphy Reid", "Brayden Maynard", "Jonty Faull", "Patrick Lipinski", "Wayne Milera", "Esava Ratugolea", "Alex Davies", "Reuben Ginbey", "Campbell Chesser", "Matt Owies", "Nic Newman", "Ewan Mackinlay", "Isaac Heeney", "Max Holmes", "Samuel Collins", "Timothy English", "Harry Perryman", "Xavier O'Halloran", "Joel Amartey", "Nick Blakey", "Jacob Hopper", "Sam Flanders", "Jack Hutchinson", "Deven Robertson", "Hugh Bond", "Jeremy Howe", "Lachlan Weller", "Rhyan Mansell", "Hugh McCluggage", "Noah Balta", "Jordon Butts", "Christian Petracca", "Oliver Wiltshire", "Sam De Koning", "Brody Mihocek", "Zachary Williams", "Jordan Ridley", "Sullivan Robey", "Archer Reid", "Nick Haynes", "Aliir Aliir", "Connor Budarick", "James Jordon", "Sam Durham", "Jayden Laverde", "Isaac Quaynor", "Elijah Hewett", "Will Graham", "Ollie Lord", "Oscar Steene", "Jack Buckley", "Jacob Konstanty", "Adam Treloar", "Zane Duursma", "Phoenix Gothard", "Jack Watkins", "Connor Rozee", "Toby Pink", "Jasper Alger", "Logan Evans", "Blake Howes", "Riley Bice", "James Rowbottom", "Toby Bedford", "Brayden Fiorini", "James Leake", "Matt Carroll", "Harry Sheezel", "Lachlan Smith", "Oliver Francou", "Zane Zakostelsky", "Bailey Dale", "Brent Daniels", "James Worpel", "Hayden McLean", "Darcy Moore", "Conor Nash", "Jack Lukosius", "Jaeger O'Meara", "Will Lewis", "Tom Hanily", "Harry Edwards", "Darcy Parish", "Sam Cumming", "Sean Darcy", "Corey Wagner", "Steele Sidebottom", "Jason Horne-Francis", "Nasiah Wanganeen-Milera", "Mason Wood", "Luke Pedlar", "Brandon Walker", "Jacob Newton", "Peter Ladhams", "Josh Gibcus", "Xavier Duursma", "Chad Warner", "James Peatling", "Kane Farrell", "Jesse Hogan", "Leek Aleer", "Sam Darcy", "Flynn Perez", "Justin McInerney", "Jeremy Cameron", "Nicholas Coffield", "Noah Mraz", "Archie May", "Finn Callaghan"]);
-const SUSPENDED_SET    = new Set(["Nick Blakey", "Jacob Van Rooyen", "Chad Warner", "Isaac Heeney", "James Jordon", "Riley Bice"]);
+const INJURED_SET      = new Set(["Hugh Bond", "Will Lewis", "Esava Ratugolea", "Lachlan Smith", "Sam Flanders", "Oscar Steene", "Harry Perryman", "Jaeger O'Meara", "Toby Bedford", "Jacob Newton", "Xavier Duursma", "Ewan Mackinlay", "Will Graham", "Brent Daniels", "Chad Warner", "Jeremy Howe", "Phoenix Gothard", "Nic Newman", "Zak Butters", "Zane Zakostelsky", "Noah Mraz", "Jason Horne-Francis", "Sam Lalor", "Jonty Faull", "James Peatling", "Joel Amartey", "Jesse Hogan", "Christian Petracca", "Will Hayward", "Justin McInerney", "Jordan Ridley", "Nick Haynes", "Will Edwards", "Patrick Lipinski", "Lachlan Weller", "Corey Wagner", "Mason Wood", "James Jordon", "Flynn Perez", "Jack Sinclair", "Matt Owies", "Finn Callaghan", "Harry Sheezel", "Peter Ladhams", "Archie May", "Alex Davies", "Xavier O'Halloran", "Wil Powell", "Sam Cumming", "Sam De Koning", "Jack Watkins", "Noah Balta", "James Rowbottom", "Sam Darcy", "Jack Lukosius", "Wayne Milera", "Nasiah Wanganeen-Milera", "Ollie Lord", "Zane Duursma", "Sean Darcy", "Hayden McLean", "Jamie Elliott", "Jack Hutchinson", "Oliver Francou", "Jack Buckley", "Logan Evans", "Connor Rozee", "Kane Farrell", "Andy Moniz-Wakefield", "Josh Gibcus", "James Worpel", "Murphy Reid", "Leek Aleer", "Jeremy Cameron", "Timothy English", "Isaac Heeney", "Toby Pink", "Sullivan Robey", "Nicholas Coffield", "Tom Hanily", "Sam Durham", "Brayden Fiorini", "Jacob Van Rooyen", "James Leake", "Max King", "Jayden Laverde", "Jai Culley", "Nick Blakey", "Steele Sidebottom", "Max Holmes", "Brody Mihocek", "Oliver Wiltshire", "Brayden Maynard", "Conor Nash", "Aliir Aliir", "Brandon Walker", "Jacob Konstanty", "Zachary Williams", "Blake Howes", "Reuben Ginbey", "Darcy Parish", "Adam Treloar", "Darcy Moore", "Campbell Chesser", "Samuel Collins", "Bailey Dale", "Hugh McCluggage", "Elijah Hewett", "Riley Bice", "Harry Edwards", "Archer Reid", "Luke Pedlar", "Isaac Quaynor", "Deven Robertson", "Jacob Hopper", "Jordon Butts", "Matt Carroll", "Rhyan Mansell", "Jasper Alger", "Connor Budarick"]);
+const SUSPENDED_SET    = new Set(["Riley Bice", "Isaac Heeney", "Nick Blakey", "Chad Warner", "James Jordon", "Jacob Van Rooyen"]);
 
 let mainChartInst = null, valueChartInst = null, currentPlayerKey = null;
 let raceFrame = 0, raceTimer = null;
@@ -1629,6 +1712,204 @@ function renderAwards() {
   grid.innerHTML = html;
 }
 renderAwards();
+
+// ── Targets ──────────────────────────────────────────────────────────────────
+function playerTier(price) {
+  if (price == null) return null;
+  if (price < 350000) return 'rookies';
+  if (price <= 800000) return 'midprice';
+  return 'premiums';
+}
+
+// Premiums: pure scoring output. Player's own current-form baseline (same weighting
+// as calcProjectedScore), averaged across the fixture-adjusted projection for every
+// remaining game this season — not just the next one.
+function restOfSeasonAvg(p) {
+  const scores = opponentAdjustedScores(p);
+  const n = scores.length; if (!n) return null;
+  const seasonAvg = scores.reduce(function(a,b){return a+b;},0)/n;
+  const l3 = scores.slice(-3).reduce(function(a,b){return a+b;},0)/Math.min(3,n);
+  const l5 = scores.slice(-5).reduce(function(a,b){return a+b;},0)/Math.min(5,n);
+  const baseProj = l3*0.50 + l5*0.30 + seasonAvg*0.20;
+  const teamFix = (UPCOMING_DIFF||[]).find(function(d){ return d.team === p.team; });
+  const games = (teamFix && teamFix.games) ? teamFix.games : [];
+  if (!games.length) return {avg: baseProj, games: 0};
+  const pos = p.positions && p.positions.length ? p.positions[0] : null;
+  var total = 0;
+  games.forEach(function(g){
+    const rating = (pos && g.pos && g.pos[pos] != null) ? g.pos[pos] : g.overall;
+    total += baseProj * (0.4 + rating/166.7);
+  });
+  return {avg: total/games.length, games: games.length};
+}
+
+// Rookies: cumulative predicted price growth for the rest of the season. Simulates
+// round by round — each remaining game's fixture-adjusted projected score feeds the
+// same magic-number price model used everywhere else, then that projection rolls
+// into the next round's baseline before moving on, so it compounds like real cash
+// generation does instead of just multiplying one round's delta by games remaining.
+function restOfSeasonPriceChange(p) {
+  const teamFix = (UPCOMING_DIFF||[]).find(function(d){ return d.team === p.team; });
+  const games = (teamFix && teamFix.games) ? teamFix.games : [];
+  if (!games.length || !p.history || !p.history.length) return null;
+  const pos = p.positions && p.positions.length ? p.positions[0] : null;
+  const scores = opponentAdjustedScores(p);
+  const n = scores.length;
+  const seasonAvg = scores.reduce(function(a,b){return a+b;},0)/n;
+  var rolling = p.history.slice(-3).map(function(h){return h.score;});
+  var simPrice = p.current_price;
+  var total = 0;
+  games.forEach(function(g){
+    const rating = (pos && g.pos && g.pos[pos] != null) ? g.pos[pos] : g.overall;
+    const mult = 0.4 + rating/166.7;
+    const rollAvg = rolling.reduce(function(a,b){return a+b;},0)/rolling.length;
+    const l3 = rolling.slice(-3).reduce(function(a,b){return a+b;},0)/Math.min(3,rolling.length);
+    const projScore = (l3*0.6 + seasonAvg*0.4) * mult;
+    const magic = priceChangeMagicNumber(simPrice);
+    var change = Math.round(magic * (projScore - rollAvg));
+    const cap = Math.round((simPrice||1)*0.15);
+    change = Math.max(-cap, Math.min(cap, change));
+    total += change;
+    simPrice = (simPrice||0) + change;
+    rolling.push(projScore);
+    if (rolling.length > 5) rolling.shift();
+  });
+  return {total: Math.round(total), games: games.length, endPrice: Math.round(simPrice)};
+}
+
+// Mid price: season avg as the baseline (their whole body of work), scaled by how
+// friendly their next few matchups are — weighted heavily toward the very next game
+// and decaying after that, since mid-pricers are typically short-term trade targets
+// rather than season-long holds.
+function midPriceTargetScore(p) {
+  const scores = p.history.map(function(h){return h.score;});
+  const n = scores.length; if (n < 3) return null;
+  const seasonAvg = scores.reduce(function(a,b){return a+b;},0)/n;
+  const teamFix = (UPCOMING_DIFF||[]).find(function(d){ return d.team === p.team; });
+  const games = (teamFix && teamFix.games) ? teamFix.games : [];
+  const pos = p.positions && p.positions.length ? p.positions[0] : null;
+  const nearTerm = games.slice(0,3);
+  var matchupRating = 100;
+  if (nearTerm.length) {
+    var tw=0, ws=0;
+    nearTerm.forEach(function(g,i){
+      const w = Math.pow(0.75,i);
+      const rating = (pos && g.pos && g.pos[pos] != null) ? g.pos[pos] : g.overall;
+      ws += rating*w; tw += w;
+    });
+    matchupRating = ws/tw;
+  }
+  return {score: seasonAvg*(0.4+matchupRating/166.7), seasonAvg: seasonAvg, matchupRating: matchupRating, games: nearTerm.length};
+}
+
+function renderTargetsTier(tier) {
+  // Every priced player with at least one game goes in one of the three price
+  // bands — no top-N cutoff, so nobody who qualifies for a tier is hidden.
+  const pool = PLAYERS_DATA.filter(function(p){
+    if (!p.current_price || playerTier(p.current_price) !== tier) return false;
+    if (INJURED_SET && INJURED_SET.has(p.name)) return false;
+    if (!p.history || p.history.length < 1) return false;
+    return true;
+  });
+
+  var rows = [];
+  if (tier === 'premiums') {
+    rows = pool.map(function(p){
+      const r = restOfSeasonAvg(p);
+      return r ? {p:p, metric:r.avg, sub: r.games + ' game' + (r.games===1?'':'s') + ' left'} : null;
+    }).filter(Boolean).sort(function(a,b){return b.metric-a.metric;});
+  } else if (tier === 'rookies') {
+    rows = pool.map(function(p){
+      const r = restOfSeasonPriceChange(p);
+      return r ? {p:p, metric:r.total, sub: '→ ' + fmtPrice(r.endPrice)} : null;
+    }).filter(Boolean).sort(function(a,b){return b.metric-a.metric;});
+  } else {
+    rows = pool.map(function(p){
+      const r = midPriceTargetScore(p);
+      return r ? {p:p, metric:r.score, sub: 'matchups ' + r.matchupRating.toFixed(0) + ' · avg ' + r.seasonAvg.toFixed(1)} : null;
+    }).filter(Boolean).sort(function(a,b){return b.metric-a.metric;});
+  }
+
+  const list = document.getElementById('targetsList-' + tier);
+  if (!list) return;
+  list.innerHTML = rows.map(function(row, i) {
+    const p = row.p;
+    const dn = p.display_name || getDisplayName(p.name, p.team);
+    const safeKey = p.key.replace(/'/g,"\\'");
+    const pos = (p.positions && p.positions[0]) || '—';
+    const metricStr = tier === 'rookies' ? ((row.metric>=0?'+':'-') + fmtPrice(Math.abs(row.metric))) : row.metric.toFixed(1);
+    const metricCol = tier === 'rookies' ? (row.metric>=0?'var(--green)':'var(--red)') : 'var(--accent)';
+    return '<div class="target-row" onclick="searchAndShowPlayer(\'' + safeKey + '\')">' +
+      '<div class="target-rank">' + (i+1) + '</div>' +
+      '<div class="target-info">' +
+        '<div class="target-name">' + dn + '</div>' +
+        '<div class="target-sub">' + p.team + ' · ' + pos + ' · ' + fmtPrice(p.current_price) + ' · ' + row.sub + '</div>' +
+      '</div>' +
+      '<div class="target-metric" style="color:' + metricCol + '">' + metricStr + '</div>' +
+    '</div>';
+  }).join('') || '<div style="color:var(--muted);font-size:.8rem;padding:16px;text-align:center">No eligible players in this tier.</div>';
+}
+function renderTargets() {
+  ['premiums','midprice','rookies'].forEach(renderTargetsTier);
+}
+renderTargets();
+
+// ── Targets: free-form price/position/team filter ─────────────────────────────
+(function() {
+  const teamSel = document.getElementById('tfTeam');
+  if (!teamSel) return;
+  const teams = Array.from(new Set(PLAYERS_DATA.map(function(p){ return p.team; }))).sort();
+  teamSel.innerHTML = '<option value="">All</option>' + teams.map(function(t){ return '<option value="' + t + '">' + t + '</option>'; }).join('');
+})();
+
+function resetTargetFilters() {
+  document.getElementById('tfMinPrice').value = '';
+  document.getElementById('tfMaxPrice').value = '';
+  document.getElementById('tfPosition').value = '';
+  document.getElementById('tfTeam').value = '';
+  renderFilteredTargets();
+}
+
+function renderFilteredTargets() {
+  const minEl = document.getElementById('tfMinPrice'), maxEl = document.getElementById('tfMaxPrice');
+  const min = minEl.value !== '' ? +minEl.value : null;
+  const max = maxEl.value !== '' ? +maxEl.value : null;
+  const pos = document.getElementById('tfPosition').value;
+  const team = document.getElementById('tfTeam').value;
+
+  const pool = PLAYERS_DATA.filter(function(p){
+    if (!p.current_price || !p.history || !p.history.length) return false;
+    if (INJURED_SET && INJURED_SET.has(p.name)) return false;
+    if (min != null && p.current_price < min) return false;
+    if (max != null && p.current_price > max) return false;
+    if (pos && !(p.positions && p.positions.includes(pos))) return false;
+    if (team && p.team !== team) return false;
+    return true;
+  });
+
+  const rows = pool.map(function(p){
+    const r = restOfSeasonAvg(p);
+    return r ? {p:p, metric:r.avg, sub: r.games + ' game' + (r.games===1?'':'s') + ' left'} : null;
+  }).filter(Boolean).sort(function(a,b){ return b.metric - a.metric; });
+
+  document.getElementById('tfCount').textContent = rows.length + ' player' + (rows.length===1?'':'s') + ' match';
+  document.getElementById('targetsFilteredBody').innerHTML = rows.map(function(row, i) {
+    const p = row.p;
+    const dn = p.display_name || getDisplayName(p.name, p.team);
+    const safeKey = p.key.replace(/'/g,"\\'");
+    const rowPos = (p.positions && p.positions[0]) || '—';
+    return '<tr>' +
+      '<td class="pos-num ' + (i===0?'p1':i===1?'p2':i===2?'p3':'') + '">' + (i+1) + '</td>' +
+      '<td><span class="player-link" onclick="searchAndShowPlayer(\'' + safeKey + '\')">' + dn + '</span></td>' +
+      '<td>' + teamTagHtml(p.team) + '</td>' +
+      '<td><span class="pos-chip pos-' + rowPos.toLowerCase() + '">' + rowPos + '</span></td>' +
+      '<td class="ta-r">' + fmtPrice(p.current_price) + '</td>' +
+      '<td class="ta-r" style="font-weight:800;color:var(--accent)">' + row.metric.toFixed(1) + '</td>' +
+      '<td style="color:var(--muted);font-size:.78rem">' + row.sub + '</td>' +
+    '</tr>';
+  }).join('') || '<tr><td colspan="7" style="color:var(--muted);padding:16px;text-align:center">No players match these filters.</td></tr>';
+}
+renderFilteredTargets();
 
 // ── Player search ─────────────────────────────────────────────────────────────
 const searchInput = document.getElementById('searchInput');
