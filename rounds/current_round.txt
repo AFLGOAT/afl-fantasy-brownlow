@@ -6,7 +6,7 @@
 6	Max Gawn	Demons	22	$1,014,000	2,383	108.3	10.7
 7	Vigo Visentini	Bombers	2	$524,000	216	108.0	20.6
 8	Will Ashcroft	Lions	22	$1,112,000	2,364	107.5	9.7
-9	Isaac Heeney	Swans	20	$952,000	2,128	106.4	11.2
+9	Isaac Heeney SUS	Swans	20	$952,000	2,128	106.4	11.2
 10	Nasiah Wanganeen-Milera INJ	Saints	17	$1,074,000	1,792	105.4	9.8
 11	Zak Butters INJ	Power	17	$993,000	1,777	104.5	10.5
 12	Zachary Merrett	Bombers	22	$901,000	2,271	103.2	11.5
@@ -42,7 +42,7 @@
 42	Luke Parker	Kangaroos	22	$867,000	2,045	93.0	10.7
 43	Tom Sparrow	Demons	22	$975,000	2,043	92.9	9.5
 44	Josh Dunkley	Lions	22	$974,000	2,042	92.8	9.5
-45	Chad Warner	Swans	22	$968,000	2,038	92.6	9.6
+45	Chad Warner SUS	Swans	22	$968,000	2,038	92.6	9.6
 46	Max Hall	Saints	22	$987,000	2,025	92.0	9.3
 46	Zac Bailey	Lions	21	$902,000	1,932	92.0	10.2
 46	Darcy Cameron	Magpies	21	$1,012,000	1,931	92.0	9.1
@@ -69,7 +69,7 @@
 69	Callum Mills	Swans	21	$800,000	1,821	86.7	10.8
 70	Matthew Kennedy	Bulldogs	22	$712,000	1,905	86.6	12.2
 71	Toby Greene	Giants	20	$835,000	1,724	86.2	10.3
-72	Nick Blakey	Swans	22	$851,000	1,893	86.0	10.1
+72	Nick Blakey SUS	Swans	22	$851,000	1,893	86.0	10.1
 73	Timothy English INJ	Bulldogs	15	$806,000	1,279	85.3	10.6
 74	Lachlan McAndrew	Crows	21	$790,000	1,790	85.2	10.8
 75	Darcy Wilmot	Lions	22	$727,000	1,873	85.1	11.7
@@ -139,7 +139,7 @@
 138	Ed Langdon	Demons	22	$673,000	1,674	76.1	11.3
 140	Jesse Dattoli	Swans	2	$380,000	152	76.0	20.0
 141	Blake Hardwick	Hawks	22	$763,000	1,668	75.8	9.9
-141	Riley Bice	Swans	20	$670,000	1,516	75.8	11.3
+141	Riley Bice SUS	Swans	20	$670,000	1,516	75.8	11.3
 143	Nick Haynes INJ	Blues	18	$754,000	1,363	75.7	10.0
 143	Jack Graham	Eagles	12	$725,000	908	75.7	10.4
 145	Liam Duggan	Eagles	22	$683,000	1,654	75.2	11.0
@@ -356,7 +356,7 @@
 355	Tom Brown	Tigers	17	$619,000	994	58.5	9.4
 357	Patrick Dangerfield	Cats	16	$583,000	934	58.4	10.0
 358	Harry Sharp	Demons	22	$526,000	1,283	58.3	11.1
-358	James Jordon	Swans	22	$547,000	1,283	58.3	10.7
+358	James Jordon SUS	Swans	22	$547,000	1,283	58.3	10.7
 360	Taylor Walker	Crows	15	$584,000	872	58.1	10.0
 361	Jaeger O'Meara INJ	Dockers	6	$579,000	348	58.0	10.0
 361	Hunter Clark	Saints	7	$561,000	406	58.0	10.3

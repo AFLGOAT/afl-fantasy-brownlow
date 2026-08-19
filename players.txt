@@ -228,6 +228,7 @@ Max Kondogiannis	DEF	$230,000
 Hussien El Achkar	FWD	$230,000
 Kayle Gerreyn	RUC	$230,000
 Jaxon Artemis	DEF	$230,000
+Will Setterfield	MID	$1,006,000
 DOCKERS		
 Andrew Brayshaw	MID	$1,060,000
 Luke Jackson	RUC	$995,000
@@ -359,7 +360,7 @@ Caleb Graham	DEF	$238,000
 Cooper Bell	DEF/FWD	$230,000
 Leo Lombard	FWD	$230,000
 Caleb Lewis	FWD	$230,000
-Asher EasHarrison Himmelbergtham	FWD	$230,000
+Asher Eastham	FWD	$230,000
 Zak Evans	MID	$230,000
 Koby Coulson	MID	$230,000
 Max Knobel	RUC	$230,000
