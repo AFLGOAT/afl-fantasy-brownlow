@@ -1,666 +1,668 @@
-1	Nick Daicos	Magpies	21	$1,083,000	2,498	119.0	11.0
-2	Bailey Smith	Cats	21	$1,038,000	2,441	116.2	11.2
-2	Harry Sheezel INJ	Kangaroos	22	$1,126,000	2,557	116.2	10.3
-4	Jordan Dawson	Crows	19	$1,049,000	2,151	113.2	10.8
-5	Errol Gulden	Swans	10	$1,061,000	1,102	110.2	10.4
-6	Max Gawn	Demons	22	$1,014,000	2,383	108.3	10.7
-7	Vigo Visentini	Bombers	2	$524,000	216	108.0	20.6
-8	Will Ashcroft	Lions	22	$1,112,000	2,364	107.5	9.7
-9	Isaac Heeney SUS	Swans	20	$952,000	2,128	106.4	11.2
-10	Nasiah Wanganeen-Milera INJ	Saints	17	$1,074,000	1,792	105.4	9.8
-11	Zak Butters INJ	Power	17	$993,000	1,777	104.5	10.5
-12	Zachary Merrett	Bombers	22	$901,000	2,271	103.2	11.5
-12	Lachlan Ash	Giants	22	$908,000	2,270	103.2	11.4
-14	Luke Jackson	Dockers	22	$942,000	2,267	103.0	10.9
+1	Bailey Smith	Cats	22	$1,038,000	2,600	118.2	11.4
+2	Nick Daicos	Magpies	22	$1,083,000	2,567	116.7	10.8
+3	Harry Sheezel INJ	Kangaroos	22	$1,126,000	2,557	116.2	10.3
+4	Jordan Dawson	Crows	20	$1,049,000	2,258	112.9	10.8
+5	Errol Gulden	Swans	11	$1,061,000	1,237	112.5	10.6
+6	Max Gawn	Demons	23	$1,014,000	2,531	110.0	10.9
+7	Will Ashcroft	Lions	23	$1,112,000	2,463	107.1	9.6
+8	Isaac Heeney SUS	Swans	20	$952,000	2,128	106.4	11.2
+9	Nasiah Wanganeen-Milera INJ	Saints	17	$1,074,000	1,792	105.4	9.8
+10	Zak Butters INJ	Power	17	$993,000	1,777	104.5	10.5
+11	Zachary Merrett	Bombers	23	$901,000	2,394	104.1	11.6
+12	Lachlan Ash	Giants	23	$908,000	2,368	103.0	11.3
+13	Luke Jackson	Dockers	23	$942,000	2,364	102.8	10.9
+14	Marcus Bontempelli	Bulldogs	22	$935,000	2,256	102.5	11.0
 15	Max Holmes INJ	Cats	18	$964,000	1,843	102.4	10.6
-16	Lachie Neale	Lions	22	$956,000	2,247	102.1	10.7
-17	Brodie Grundy	Swans	20	$920,000	2,034	101.7	11.1
-17	Marcus Bontempelli	Bulldogs	21	$935,000	2,135	101.7	10.9
-19	Lachie Whitfield	Giants	20	$963,000	2,026	101.3	10.5
-20	Ed Richards	Bulldogs	21	$955,000	2,126	101.2	10.6
-21	Noah Anderson	Suns	21	$942,000	2,105	100.2	10.6
-22	Josh Daicos	Magpies	22	$960,000	2,192	99.6	10.4
-23	Dayne Zorko	Lions	12	$908,000	1,191	99.2	10.9
+16	Lachie Neale	Lions	23	$956,000	2,351	102.2	10.7
+17	Noah Anderson	Suns	22	$942,000	2,232	101.5	10.8
+18	Ed Richards	Bulldogs	22	$955,000	2,231	101.4	10.6
+19	Brodie Grundy	Swans	21	$920,000	2,128	101.3	11.0
+20	Bradley Hill	Saints	23	$1,055,000	2,311	100.5	9.5
+21	John Noble	Suns	23	$915,000	2,306	100.3	11.0
+22	Lachie Whitfield	Giants	21	$963,000	2,095	99.8	10.4
+23	Josh Daicos	Magpies	23	$960,000	2,288	99.5	10.4
 24	Jack Sinclair INJ	Saints	15	$910,000	1,486	99.1	10.9
-25	Bradley Hill	Saints	22	$1,055,000	2,178	99.0	9.4
-26	Sam Walsh	Blues	22	$939,000	2,164	98.4	10.5
-27	John Noble	Suns	22	$915,000	2,153	97.9	10.7
-28	Matt Rowell	Suns	17	$1,046,000	1,663	97.8	9.4
-29	Clayton Oliver	Giants	22	$860,000	2,126	96.6	11.2
-30	Tristan Xerri	Kangaroos	18	$860,000	1,735	96.4	11.2
-31	Izak Rankine	Crows	19	$1,057,000	1,825	96.1	9.1
-32	Jason Horne-Francis INJ	Power	21	$946,000	2,012	95.8	10.1
-33	Finn Callaghan INJ	Giants	19	$905,000	1,817	95.6	10.6
-34	Archie Roberts	Bombers	20	$761,000	1,905	95.2	12.5
-34	Wayne Milera INJ	Crows	17	$926,000	1,618	95.2	10.3
-36	Kysaiah Pickett	Demons	22	$868,000	2,085	94.8	10.9
-37	Bailey Dale INJ	Bulldogs	17	$977,000	1,606	94.5	9.7
-38	Callum Wilkie	Saints	22	$789,000	2,077	94.4	12.0
-39	Andrew Brayshaw	Dockers	22	$890,000	2,073	94.2	10.6
-40	Caleb Serong	Dockers	19	$920,000	1,775	93.4	10.2
-41	Tim Taranto	Tigers	20	$947,000	1,865	93.2	9.8
-42	Luke Parker	Kangaroos	22	$867,000	2,045	93.0	10.7
-43	Tom Sparrow	Demons	22	$975,000	2,043	92.9	9.5
-44	Josh Dunkley	Lions	22	$974,000	2,042	92.8	9.5
-45	Chad Warner SUS	Swans	22	$968,000	2,038	92.6	9.6
-46	Max Hall	Saints	22	$987,000	2,025	92.0	9.3
-46	Zac Bailey	Lions	21	$902,000	1,932	92.0	10.2
-46	Darcy Cameron	Magpies	21	$1,012,000	1,931	92.0	9.1
-46	Sam Berry	Crows	21	$880,000	1,931	92.0	10.4
-50	Sam Flanders INJ	Saints	12	$897,000	1,103	91.9	10.2
-51	Jarman Impey	Hawks	20	$923,000	1,835	91.8	9.9
-52	Patrick Cripps	Blues	22	$905,000	2,017	91.7	10.1
-53	Luke Davies-Uniacke	Kangaroos	22	$859,000	2,015	91.6	10.7
-54	Jake Bowey	Demons	14	$892,000	1,275	91.1	10.2
-55	George Hewett	Blues	18	$907,000	1,630	90.6	10.0
-56	Jack Steele	Demons	22	$767,000	1,980	90.0	11.7
-57	Blake Acres	Blues	9	$821,000	806	89.6	10.9
-58	Caleb Daniel	Kangaroos	22	$824,000	1,966	89.4	10.8
-59	Rory Laird	Crows	17	$832,000	1,518	89.3	10.7
-60	Jai Newcombe	Hawks	22	$843,000	1,956	88.9	10.5
-61	Tom McCarthy	Eagles	21	$856,000	1,864	88.8	10.4
-61	Jayden Short	Tigers	20	$751,000	1,775	88.8	11.8
-63	Hugo Garcia	Saints	22	$854,000	1,951	88.7	10.4
-64	Jase Burgoyne	Power	22	$933,000	1,942	88.3	9.5
-65	Nic Newman INJ	Blues	16	$839,000	1,403	87.7	10.5
-66	Touk Miller	Suns	22	$836,000	1,928	87.6	10.5
-67	Dan Houston	Magpies	22	$759,000	1,912	86.9	11.5
-68	Bodhi Uwland	Suns	22	$783,000	1,910	86.8	11.1
-69	Callum Mills	Swans	21	$800,000	1,821	86.7	10.8
-70	Matthew Kennedy	Bulldogs	22	$712,000	1,905	86.6	12.2
-71	Toby Greene	Giants	20	$835,000	1,724	86.2	10.3
+25	Matt Rowell	Suns	18	$1,046,000	1,777	98.7	9.4
+26	Sam Walsh	Blues	23	$939,000	2,264	98.4	10.5
+27	Izak Rankine	Crows	20	$1,057,000	1,954	97.7	9.2
+28	Dayne Zorko	Lions	13	$908,000	1,266	97.4	10.7
+29	Tristan Xerri	Kangaroos	19	$860,000	1,833	96.5	11.2
+30	Clayton Oliver	Giants	23	$860,000	2,209	96.0	11.2
+31	Jason Horne-Francis INJ	Power	21	$946,000	2,012	95.8	10.1
+32	Finn Callaghan INJ	Giants	19	$905,000	1,817	95.6	10.6
+33	Tim Taranto	Tigers	21	$947,000	1,999	95.2	10.1
+34	Kysaiah Pickett	Demons	23	$868,000	2,180	94.8	10.9
+35	Archie Roberts	Bombers	21	$761,000	1,989	94.7	12.4
+36	Bailey Dale	Bulldogs	18	$977,000	1,700	94.4	9.7
+37	Andrew Brayshaw	Dockers	23	$890,000	2,166	94.2	10.6
+38	Max Hall	Saints	23	$987,000	2,159	93.9	9.5
+39	Wayne Milera	Crows	18	$926,000	1,686	93.7	10.1
+40	Callum Wilkie	Saints	23	$789,000	2,152	93.6	11.9
+41	Josh Dunkley	Lions	23	$974,000	2,148	93.4	9.6
+42	Luke Parker	Kangaroos	23	$867,000	2,145	93.3	10.8
+43	Caleb Serong	Dockers	20	$920,000	1,854	92.7	10.1
+44	Chad Warner SUS	Swans	22	$968,000	2,038	92.6	9.6
+45	Zac Bailey	Lions	22	$902,000	2,029	92.2	10.2
+46	Sam Flanders INJ	Saints	12	$897,000	1,103	91.9	10.2
+47	Patrick Cripps	Blues	23	$905,000	2,112	91.8	10.1
+47	Darcy Cameron	Magpies	22	$1,012,000	2,019	91.8	9.1
+49	Sam Berry	Crows	22	$880,000	2,012	91.5	10.4
+50	Tom Sparrow	Demons	23	$975,000	2,099	91.3	9.4
+51	Vigo Visentini	Bombers	3	$524,000	273	91.0	17.4
+52	Jase Burgoyne	Power	23	$933,000	2,079	90.4	9.7
+53	George Hewett	Blues	19	$907,000	1,716	90.3	10.0
+54	Jarman Impey	Hawks	21	$923,000	1,894	90.2	9.8
+54	Jack Steele	Demons	23	$767,000	2,074	90.2	11.8
+56	Hugo Garcia	Saints	23	$854,000	2,071	90.0	10.5
+56	Touk Miller	Suns	23	$836,000	2,070	90.0	10.8
+56	Luke Davies-Uniacke	Kangaroos	23	$859,000	2,069	90.0	10.5
+59	Will Setterfield	Bombers	11	$766,000	989	89.9	11.7
+60	Jake Bowey	Demons	15	$892,000	1,347	89.8	10.1
+61	Caleb Daniel	Kangaroos	23	$824,000	2,044	88.9	10.8
+62	Jai Newcombe	Hawks	23	$843,000	2,033	88.4	10.5
+62	Rory Laird	Crows	18	$832,000	1,591	88.4	10.6
+64	Tom McCarthy	Eagles	22	$856,000	1,934	87.9	10.3
+65	Jayden Short	Tigers	21	$751,000	1,843	87.8	11.7
+66	Nic Newman INJ	Blues	16	$839,000	1,403	87.7	10.5
+67	Matthew Kennedy	Bulldogs	23	$712,000	2,002	87.0	12.2
+68	Callum Mills	Swans	22	$800,000	1,910	86.8	10.9
+68	Blake Acres	Blues	10	$821,000	868	86.8	10.6
+70	Dan Houston	Magpies	23	$759,000	1,995	86.7	11.4
+71	Bodhi Uwland	Suns	23	$783,000	1,992	86.6	11.1
 72	Nick Blakey SUS	Swans	22	$851,000	1,893	86.0	10.1
-73	Timothy English INJ	Bulldogs	15	$806,000	1,279	85.3	10.6
-74	Lachlan McAndrew	Crows	21	$790,000	1,790	85.2	10.8
-75	Darcy Wilmot	Lions	22	$727,000	1,873	85.1	11.7
-76	Will Setterfield	Bombers	10	$766,000	848	84.8	11.1
-77	Tim Kelly	Eagles	20	$860,000	1,694	84.7	9.8
-78	Justin McInerney INJ	Swans	13	$753,000	1,100	84.6	11.2
-78	Connor MacDonald	Hawks	22	$807,000	1,861	84.6	10.5
+73	Toby Greene	Giants	21	$835,000	1,802	85.8	10.3
+74	Tim Kelly	Eagles	21	$860,000	1,795	85.5	9.9
+75	Connor MacDonald	Hawks	23	$807,000	1,962	85.3	10.6
+75	Timothy English INJ	Bulldogs	15	$806,000	1,279	85.3	10.6
+77	Lachlan McAndrew	Crows	22	$790,000	1,875	85.2	10.8
+78	Jordan De Goey	Magpies	21	$826,000	1,786	85.0	10.3
+79	Justin McInerney INJ	Swans	13	$753,000	1,100	84.6	11.2
+80	Darcy Wilmot	Lions	23	$727,000	1,939	84.3	11.6
 80	Thomas Liberatore	Bulldogs	11	$763,000	927	84.3	11.0
-81	Jack Crisp	Magpies	22	$698,000	1,852	84.2	12.1
-82	Rowan Marshall	Saints	20	$950,000	1,682	84.1	8.9
-83	Josh Ward	Hawks	22	$857,000	1,841	83.7	9.8
-83	Bailey Williams	Eagles	18	$808,000	1,506	83.7	10.4
-85	Jordan De Goey	Magpies	20	$826,000	1,669	83.5	10.1
-86	Marcus Windhager	Saints	22	$770,000	1,834	83.4	10.8
-87	James Sicily	Hawks	21	$732,000	1,750	83.3	11.4
-88	Darcy Wilson	Saints	21	$837,000	1,748	83.2	9.9
-89	Shai Bolton	Dockers	21	$732,000	1,735	82.6	11.3
-89	Jack Ross	Tigers	18	$733,000	1,486	82.6	11.3
-91	Scott Pendlebury	Magpies	16	$772,000	1,320	82.5	10.7
-91	Lawson Humphries	Cats	21	$763,000	1,732	82.5	10.8
-93	Tanner Bruhn	Cats	20	$735,000	1,645	82.2	11.2
-94	Oliver Florent	Blues	22	$811,000	1,805	82.0	10.1
-95	Karl Amon	Hawks	17	$714,000	1,393	81.9	11.5
+82	Jack Ross	Tigers	19	$733,000	1,598	84.1	11.5
+83	Josh Ward	Hawks	23	$857,000	1,933	84.0	9.8
+84	Marcus Windhager	Saints	23	$770,000	1,920	83.5	10.8
+85	Rowan Marshall	Saints	21	$950,000	1,749	83.3	8.8
+85	Bailey Williams	Eagles	19	$808,000	1,582	83.3	10.3
+87	Jack Crisp	Magpies	23	$698,000	1,910	83.0	11.9
+87	Darcy Wilson	Saints	22	$837,000	1,826	83.0	9.9
+87	James Sicily	Hawks	22	$732,000	1,825	83.0	11.3
+90	Lawson Humphries	Cats	22	$763,000	1,818	82.6	10.8
+91	Tanner Bruhn	Cats	21	$735,000	1,732	82.5	11.2
+92	Oliver Florent	Blues	23	$811,000	1,895	82.4	10.2
+92	Shai Bolton	Dockers	22	$732,000	1,812	82.4	11.3
+94	Jagga Smith	Blues	23	$826,000	1,885	82.0	9.9
 95	Kane Farrell INJ	Power	13	$762,000	1,065	81.9	10.8
-97	Christian Petracca INJ	Suns	20	$625,000	1,624	81.2	13.0
-98	Ryley Sanders	Bulldogs	20	$709,000	1,620	81.0	11.4
-98	Jagga Smith	Blues	22	$826,000	1,781	81.0	9.8
-100	Darcy Parish INJ	Bombers	14	$782,000	1,132	80.9	10.3
-101	Joe Richards	Power	19	$816,000	1,533	80.7	9.9
-102	Jack Ginnivan	Hawks	22	$701,000	1,773	80.6	11.5
-102	Adam Cerra	Blues	19	$768,000	1,531	80.6	10.5
-104	Luke Ryan	Dockers	21	$720,000	1,691	80.5	11.2
-104	Connor Rozee INJ	Power	2	$1,025,000	161	80.5	7.9
-106	Josh Battle	Hawks	20	$731,000	1,607	80.3	11.0
-107	Rhys Stanley	Cats	1	$680,000	80	80.0	11.8
-108	Jordan Clark	Dockers	22	$726,000	1,758	79.9	11.0
-109	Murphy Reid INJ	Dockers	21	$708,000	1,676	79.8	11.3
-109	Will Day	Hawks	10	$748,000	798	79.8	10.7
-111	Jy Simpkin	Kangaroos	22	$801,000	1,753	79.7	9.9
-111	Josh Treacy	Dockers	22	$740,000	1,753	79.7	10.8
-113	Bailey Williams	Bulldogs	16	$697,000	1,273	79.6	11.4
-114	Toby Nankervis	Tigers	11	$779,000	873	79.4	10.2
-115	Cooper Lord	Blues	8	$742,000	634	79.2	10.7
-115	Massimo D'Ambrosio	Hawks	22	$758,000	1,742	79.2	10.4
-117	Josh Worrell	Crows	21	$654,000	1,662	79.1	12.1
-117	James Worpel INJ	Cats	11	$780,000	870	79.1	10.1
-119	Jeremy Cameron INJ	Cats	16	$602,000	1,264	79.0	13.1
-119	Elijah Tsatas	Bombers	6	$665,000	474	79.0	11.9
-119	Jordon Sweet	Power	21	$728,000	1,658	79.0	10.8
-122	Connor Idun	Giants	22	$759,000	1,732	78.7	10.4
-122	Trent Rivers	Demons	15	$787,000	1,180	78.7	10.0
-124	Brayden Maynard INJ	Magpies	17	$692,000	1,337	78.6	11.4
-124	Ollie Dempsey	Cats	22	$835,000	1,730	78.6	9.4
-126	Harley Reid	Eagles	22	$785,000	1,726	78.5	10.0
-127	Thomas Stewart	Cats	20	$755,000	1,566	78.3	10.4
-128	James Peatling INJ	Crows	21	$689,000	1,642	78.2	11.3
-129	Marcus Herbert	Eagles	9	$728,000	703	78.1	10.7
-130	Levi Ashcroft	Lions	22	$703,000	1,705	77.5	11.0
-130	Jackson Macrae	Saints	11	$759,000	852	77.5	10.2
-132	Gryan Miers	Cats	14	$648,000	1,083	77.4	11.9
-133	Darcy Byrne-Jones	Power	21	$772,000	1,620	77.1	10.0
-133	Cameron Mackenzie	Hawks	20	$757,000	1,542	77.1	10.2
+96	Toby Nankervis	Tigers	12	$779,000	982	81.8	10.5
+97	Joe Richards	Power	20	$816,000	1,634	81.7	10.0
+97	Jy Simpkin	Kangaroos	23	$801,000	1,879	81.7	10.2
+99	Will Day	Hawks	11	$748,000	895	81.4	10.9
+100	Christian Petracca INJ	Suns	20	$625,000	1,624	81.2	13.0
+101	Darcy Parish INJ	Bombers	14	$782,000	1,132	80.9	10.3
+102	Adam Cerra	Blues	20	$768,000	1,616	80.8	10.5
+103	Ryley Sanders	Bulldogs	21	$709,000	1,695	80.7	11.4
+104	Jordan Clark	Dockers	23	$726,000	1,854	80.6	11.1
+104	Jack Ginnivan	Hawks	22	$701,000	1,773	80.6	11.5
+106	Connor Rozee INJ	Power	2	$1,025,000	161	80.5	7.9
+107	Karl Amon	Hawks	18	$714,000	1,446	80.3	11.3
+108	Ollie Dempsey	Cats	23	$835,000	1,844	80.2	9.6
+109	Rhys Stanley	Cats	1	$680,000	80	80.0	11.8
+110	Murphy Reid INJ	Dockers	21	$708,000	1,676	79.8	11.3
+111	Luke Ryan	Dockers	22	$720,000	1,749	79.5	11.0
+112	Scott Pendlebury	Magpies	17	$772,000	1,346	79.2	10.3
+113	James Worpel INJ	Cats	11	$780,000	870	79.1	10.1
+114	Elijah Tsatas	Bombers	6	$665,000	474	79.0	11.9
+115	Josh Treacy	Dockers	23	$740,000	1,812	78.8	10.6
+116	Connor Idun	Giants	23	$759,000	1,810	78.7	10.4
+117	Brayden Maynard INJ	Magpies	17	$692,000	1,337	78.6	11.4
+117	Josh Battle	Hawks	21	$731,000	1,650	78.6	10.7
+119	Jordon Sweet	Power	22	$728,000	1,728	78.5	10.8
+119	Jeremy Cameron	Cats	17	$602,000	1,335	78.5	13.0
+121	Massimo D'Ambrosio	Hawks	23	$758,000	1,804	78.4	10.3
+122	Harley Reid	Eagles	23	$785,000	1,802	78.3	10.0
+122	Jesse Dattoli	Swans	3	$380,000	235	78.3	20.6
+122	Thomas Stewart	Cats	21	$755,000	1,645	78.3	10.4
+125	Josh Worrell	Crows	22	$654,000	1,721	78.2	12.0
+125	James Peatling INJ	Crows	21	$689,000	1,642	78.2	11.3
+127	Cooper Lord	Blues	9	$742,000	703	78.1	10.5
+127	Oliver Wines	Power	19	$756,000	1,483	78.1	10.3
+129	Gryan Miers	Cats	15	$648,000	1,165	77.7	12.0
+130	Bailey Williams	Bulldogs	17	$697,000	1,316	77.4	11.1
+130	Darcy Byrne-Jones	Power	22	$772,000	1,703	77.4	10.0
+130	Trent Rivers	Demons	16	$787,000	1,238	77.4	9.8
+133	Levi Ashcroft	Lions	23	$703,000	1,777	77.3	11.0
+134	Jackson Macrae	Saints	12	$759,000	926	77.2	10.2
 135	Willem Drew	Power	22	$672,000	1,691	76.9	11.4
-135	Karl Worner	Dockers	22	$772,000	1,691	76.9	10.0
-137	Oliver Wines	Power	18	$756,000	1,382	76.8	10.2
-138	Colby McKercher	Kangaroos	22	$738,000	1,674	76.1	10.3
-138	Ed Langdon	Demons	22	$673,000	1,674	76.1	11.3
-140	Jesse Dattoli	Swans	2	$380,000	152	76.0	20.0
-141	Blake Hardwick	Hawks	22	$763,000	1,668	75.8	9.9
-141	Riley Bice SUS	Swans	20	$670,000	1,516	75.8	11.3
-143	Nick Haynes INJ	Blues	18	$754,000	1,363	75.7	10.0
-143	Jack Graham	Eagles	12	$725,000	908	75.7	10.4
-145	Liam Duggan	Eagles	22	$683,000	1,654	75.2	11.0
-145	Sam Durham INJ	Bombers	20	$745,000	1,503	75.2	10.1
-147	Jarrod Berry	Lions	17	$694,000	1,277	75.1	10.8
-148	Oliver Francou INJ	Eagles	4	$484,000	299	74.8	15.4
-149	Dylan Moore	Hawks	21	$716,000	1,568	74.7	10.4
-150	Billy Wilson	Blues	14	$728,000	1,043	74.5	10.2
-150	Wil Powell INJ	Suns	20	$671,000	1,489	74.5	11.1
-152	Patrick Lipinski INJ	Magpies	19	$723,000	1,411	74.3	10.3
-153	Jack Gunston	Hawks	16	$700,000	1,186	74.1	10.6
-154	Lachlan Schultz	Magpies	20	$653,000	1,481	74.0	11.3
-155	Harvey Thomas	Giants	21	$649,000	1,548	73.7	11.4
-156	Deven Robertson INJ	Eagles	4	$511,000	294	73.5	14.4
-156	Jye Caldwell	Bombers	16	$665,000	1,176	73.5	11.1
-158	Conor Nash INJ	Hawks	10	$717,000	734	73.4	10.2
-159	Lloyd Meek	Hawks	22	$791,000	1,611	73.2	9.3
-159	Joel Fitzgerald	Demons	9	$643,000	659	73.2	11.4
-159	Hayden Young	Dockers	13	$661,000	951	73.2	11.1
-159	Alex Neal-Bullen	Crows	20	$668,000	1,463	73.2	11.0
-163	Dylan Stephens	Kangaroos	22	$667,000	1,609	73.1	11.0
-164	Joel Freijah	Bulldogs	22	$663,000	1,607	73.0	11.0
-164	Billy Dowling	Crows	3	$584,000	219	73.0	12.5
-166	Ned Moyle	Suns	15	$684,000	1,093	72.9	10.7
-166	Joseph Fonti	Giants	21	$636,000	1,530	72.9	11.5
-168	Jake Waterman	Eagles	22	$647,000	1,602	72.8	11.3
-168	Hugo Hall-Kahan	Crows	10	$651,000	728	72.8	11.2
-168	Jacob Farrow	Bombers	20	$674,000	1,456	72.8	10.8
-168	Mason Redman	Bombers	15	$681,000	1,092	72.8	10.7
-172	Willem Duursma	Eagles	21	$597,000	1,527	72.7	12.2
-172	Mac Andrew	Suns	22	$675,000	1,599	72.7	10.8
-174	Elliot Yeo	Eagles	20	$651,000	1,452	72.6	11.2
-175	Finn O'Sullivan	Kangaroos	18	$656,000	1,304	72.4	11.0
-175	Tom McCartin	Swans	19	$648,000	1,375	72.4	11.2
-175	Oliver Hollands	Blues	11	$695,000	796	72.4	10.4
-178	Harry Morrison	Hawks	12	$689,000	868	72.3	10.5
-178	Shaun Mannagh	Cats	22	$723,000	1,591	72.3	10.0
+136	Blake Hardwick	Hawks	23	$763,000	1,759	76.5	10.0
+137	Marcus Herbert	Eagles	10	$728,000	762	76.2	10.5
+138	Cameron Mackenzie	Hawks	21	$757,000	1,596	76.0	10.0
+138	Karl Worner	Dockers	23	$772,000	1,747	76.0	9.8
+140	Riley Bice SUS	Swans	20	$670,000	1,516	75.8	11.3
+141	Dylan Moore	Hawks	22	$716,000	1,666	75.7	10.6
+141	Nick Haynes INJ	Blues	18	$754,000	1,363	75.7	10.0
+141	Jack Graham	Eagles	13	$725,000	984	75.7	10.4
+144	Colby McKercher	Kangaroos	23	$738,000	1,738	75.6	10.2
+145	Ed Langdon	Demons	23	$673,000	1,736	75.5	11.2
+146	Shaun Mannagh	Cats	23	$723,000	1,730	75.2	10.4
+146	Liam Duggan	Eagles	22	$683,000	1,654	75.2	11.0
+146	Sam Durham INJ	Bombers	20	$745,000	1,503	75.2	10.1
+149	Billy Wilson	Blues	15	$728,000	1,126	75.1	10.3
+150	Joel Fitzgerald	Demons	10	$643,000	750	75.0	11.7
+151	Jarrod Berry	Lions	18	$694,000	1,349	74.9	10.8
+152	Oliver Francou INJ	Eagles	4	$484,000	299	74.8	15.4
+153	Wil Powell INJ	Suns	20	$671,000	1,489	74.5	11.1
+154	Joel Freijah	Bulldogs	23	$663,000	1,711	74.4	11.2
+155	Patrick Lipinski INJ	Magpies	19	$723,000	1,411	74.3	10.3
+156	Logan Morris	Lions	22	$662,000	1,629	74.0	11.2
+157	Jye Caldwell	Bombers	17	$665,000	1,256	73.9	11.1
+158	Jack Gunston	Hawks	17	$700,000	1,255	73.8	10.5
+158	Lloyd Meek	Hawks	23	$791,000	1,697	73.8	9.3
+160	Deven Robertson INJ	Eagles	4	$511,000	294	73.5	14.4
+160	Lachlan Schultz	Magpies	21	$653,000	1,543	73.5	11.3
+162	Conor Nash INJ	Hawks	10	$717,000	734	73.4	10.2
+162	Ben Ainsworth	Blues	23	$682,000	1,688	73.4	10.8
+164	Harvey Thomas	Giants	22	$649,000	1,610	73.2	11.3
+164	Dylan Stephens	Kangaroos	23	$667,000	1,683	73.2	11.0
+166	Hugo Hall-Kahan	Crows	11	$651,000	804	73.1	11.2
+167	Billy Dowling	Crows	3	$584,000	219	73.0	12.5
+167	Elliot Yeo	Eagles	21	$651,000	1,532	73.0	11.2
+169	Harry Morrison	Hawks	13	$689,000	947	72.8	10.6
+169	Jaspa Fletcher	Lions	23	$735,000	1,674	72.8	9.9
+169	Ned Moyle	Suns	16	$684,000	1,164	72.8	10.6
+172	Hayden Young	Dockers	14	$661,000	1,018	72.7	11.0
+173	Joseph Fonti	Giants	22	$636,000	1,597	72.6	11.4
+173	Miles Bergman	Power	16	$799,000	1,161	72.6	9.1
+175	Jai Serong	Swans	22	$613,000	1,595	72.5	11.8
+176	Alex Neal-Bullen	Crows	21	$668,000	1,520	72.4	10.8
+177	Oliver Hollands	Blues	12	$695,000	868	72.3	10.4
+177	Finn O'Sullivan	Kangaroos	19	$656,000	1,373	72.3	11.0
+179	Mac Andrew	Suns	23	$675,000	1,660	72.2	10.7
 180	Brent Daniels INJ	Giants	10	$730,000	721	72.1	9.9
-181	Jaspa Fletcher	Lions	22	$735,000	1,585	72.0	9.8
-181	Will Hayward INJ	Blues	21	$685,000	1,512	72.0	10.5
-181	Ben Ainsworth	Blues	22	$682,000	1,583	72.0	10.6
-184	Kieren Briggs	Giants	17	$726,000	1,223	71.9	9.9
-184	Cooper Harvey	Kangaroos	7	$640,000	503	71.9	11.2
-186	Mason Wood INJ	Saints	20	$782,000	1,437	71.8	9.2
-186	Connor Budarick INJ	Bulldogs	13	$635,000	934	71.8	11.3
-186	Jeremy Howe INJ	Magpies	16	$644,000	1,149	71.8	11.2
-186	Logan Morris	Lions	21	$662,000	1,507	71.8	10.8
-190	Miles Bergman	Power	15	$799,000	1,075	71.7	9.0
-191	Tom Atkins	Cats	22	$666,000	1,576	71.6	10.8
-192	Noah Mraz INJ	Hawks	4	$463,000	286	71.5	15.4
+180	Willem Duursma	Eagles	22	$597,000	1,586	72.1	12.1
+182	Mitch Georgiades	Power	21	$639,000	1,513	72.0	11.3
+182	Will Hayward INJ	Blues	21	$685,000	1,512	72.0	10.5
+182	James Rowbottom	Swans	21	$666,000	1,511	72.0	10.8
+185	Kieren Briggs	Giants	18	$726,000	1,295	71.9	9.9
+185	Jacob Farrow	Bombers	21	$674,000	1,509	71.9	10.7
+185	Cooper Harvey	Kangaroos	7	$640,000	503	71.9	11.2
+188	Mason Wood INJ	Saints	20	$782,000	1,437	71.8	9.2
+188	Jake Waterman	Eagles	23	$647,000	1,651	71.8	11.1
+190	Ned Long	Magpies	21	$664,000	1,504	71.6	10.8
+191	Noah Mraz INJ	Hawks	4	$463,000	286	71.5	15.4
+191	George Wardlaw	Kangaroos	16	$661,000	1,144	71.5	10.8
 193	Logan Evans INJ	Power	19	$686,000	1,357	71.4	10.4
-193	Patrick Retschko	Tigers	17	$709,000	1,214	71.4	10.1
-195	Isaac Quaynor INJ	Magpies	20	$650,000	1,426	71.3	11.0
-195	Marc Pittonet	Blues	19	$687,000	1,354	71.3	10.4
-197	Tom Powell	Kangaroos	8	$713,000	570	71.2	10.0
-197	George Wardlaw	Kangaroos	15	$661,000	1,068	71.2	10.8
-197	Hugh McCluggage INJ	Lions	13	$676,000	925	71.2	10.5
-200	Ned Long	Magpies	20	$664,000	1,421	71.0	10.7
-200	Jai Serong	Swans	21	$613,000	1,491	71.0	11.6
+194	Isaac Quaynor INJ	Magpies	20	$650,000	1,426	71.3	11.0
+195	Tom Powell	Kangaroos	8	$713,000	570	71.2	10.0
+195	Riley Thilthorpe	Crows	20	$665,000	1,425	71.2	10.7
+195	Marc Pittonet	Blues	20	$687,000	1,425	71.2	10.4
+195	Hugh McCluggage INJ	Lions	13	$676,000	925	71.2	10.5
+199	Patrick Retschko	Tigers	18	$709,000	1,280	71.1	10.0
 200	Peter Ladhams INJ	Swans	2	$578,000	142	71.0	12.3
 200	Oscar Ryan	Crows	2	$329,000	142	71.0	21.6
-200	Josh Rachele	Crows	22	$549,000	1,562	71.0	12.9
-205	Mitch Georgiades	Power	20	$639,000	1,418	70.9	11.1
-206	Angus Sheldrick	Swans	17	$641,000	1,202	70.7	11.0
-206	Daniel Rioli	Suns	19	$632,000	1,343	70.7	11.2
-208	Dion Prestia	Tigers	17	$660,000	1,200	70.6	10.7
-208	Joel Jeffrey	Suns	21	$577,000	1,482	70.6	12.2
-210	James Rowbottom INJ	Swans	20	$666,000	1,411	70.5	10.6
-210	Dyson Sharp	Bombers	14	$789,000	987	70.5	8.9
-212	Peter Wright	Bombers	17	$672,000	1,196	70.4	10.5
-213	Kade Chandler	Demons	21	$640,000	1,476	70.3	11.0
-214	Paul Curtis	Kangaroos	19	$701,000	1,333	70.2	10.0
-215	Jack Bowes	Cats	9	$654,000	629	69.9	10.7
-216	Harry McKay	Blues	20	$627,000	1,393	69.7	11.1
-217	Nick Madden	Giants	8	$605,000	556	69.5	11.5
-218	Ryan Lester	Lions	18	$592,000	1,243	69.1	11.7
-219	Jordan Boyd	Blues	2	$527,000	138	69.0	13.1
-219	Riley Thilthorpe	Crows	19	$665,000	1,311	69.0	10.4
-221	Matthew Roberts	Swans	18	$639,000	1,240	68.9	10.8
-222	Jake Lloyd	Swans	22	$627,000	1,512	68.7	11.0
-222	Jake Soligo	Crows	19	$710,000	1,305	68.7	9.7
+202	Mason Redman	Bombers	16	$681,000	1,135	70.9	10.4
+202	Dyson Sharp	Bombers	15	$789,000	1,063	70.9	9.0
+204	Joel Jeffrey	Suns	22	$577,000	1,556	70.7	12.3
+204	Daniel Rioli	Suns	20	$632,000	1,414	70.7	11.2
+204	Tom Atkins	Cats	23	$666,000	1,626	70.7	10.6
+207	Dion Prestia	Tigers	17	$660,000	1,200	70.6	10.7
+208	Andrew McGrath	Bombers	20	$635,000	1,409	70.5	11.1
+209	Kade Chandler	Demons	22	$640,000	1,547	70.3	11.0
+209	Josh Rachele	Crows	23	$549,000	1,616	70.3	12.8
+211	Tom McCartin	Swans	20	$648,000	1,405	70.2	10.8
+212	Jack Bowes	Cats	9	$654,000	629	69.9	10.7
+213	Milan Murdock	Eagles	20	$557,000	1,395	69.8	12.5
+214	Jeremy Howe	Magpies	17	$644,000	1,183	69.6	10.8
+214	Peter Wright	Bombers	18	$672,000	1,252	69.6	10.4
+216	Braeden Campbell	Swans	6	$611,000	415	69.2	11.3
+217	Connor Budarick	Bulldogs	14	$635,000	968	69.1	10.9
+217	Jake Lloyd	Swans	23	$627,000	1,590	69.1	11.0
+217	Cameron Rayner	Lions	23	$706,000	1,589	69.1	9.8
+217	Angus Sheldrick	Swans	18	$641,000	1,243	69.1	10.8
+221	Jordan Boyd	Blues	2	$527,000	138	69.0	13.1
+221	Kane McAuliffe	Tigers	10	$640,000	690	69.0	10.8
+223	Paul Curtis	Kangaroos	20	$701,000	1,373	68.7	9.8
 224	Aliir Aliir INJ	Power	22	$617,000	1,509	68.6	11.1
-225	Cameron Rayner	Lions	22	$706,000	1,504	68.4	9.7
-226	Kane McAuliffe	Tigers	9	$640,000	615	68.3	10.7
-227	Milan Murdock	Eagles	19	$557,000	1,293	68.1	12.2
-228	Josh Lindsay	Eagles	14	$638,000	951	67.9	10.6
-228	Daniel Curtin	Crows	15	$679,000	1,018	67.9	10.0
-230	Andrew McGrath	Bombers	19	$635,000	1,289	67.8	10.7
-231	Neil Erasmus	Dockers	22	$630,000	1,489	67.7	10.7
-232	Charlie Curnow	Swans	21	$659,000	1,420	67.6	10.3
-233	Mattaes Phillipou	Saints	20	$687,000	1,350	67.5	9.8
-234	Will Lorenz	Power	3	$507,000	202	67.3	13.3
-235	Nick Watson	Hawks	20	$633,000	1,345	67.2	10.6
-236	Jaxon Prior	Bombers	21	$610,000	1,409	67.1	11.0
-237	Brayden Cook	Crows	21	$593,000	1,407	67.0	11.3
-238	Jacob Hopper INJ	Tigers	12	$662,000	802	66.8	10.1
-238	Harry Perryman INJ	Magpies	16	$612,000	1,069	66.8	10.9
-240	Kai Lohmann	Lions	22	$749,000	1,467	66.7	8.9
-241	Shannon Neale	Cats	22	$650,000	1,466	66.6	10.3
-242	Charlie Cameron	Lions	22	$600,000	1,464	66.5	11.1
-243	Jack Carroll	Saints	12	$639,000	797	66.4	10.4
-244	Jarrod Witts	Suns	12	$579,000	796	66.3	11.5
-245	Zach Guthrie	Cats	22	$578,000	1,455	66.1	11.4
-246	Harris Andrews	Lions	19	$677,000	1,254	66.0	9.7
-246	Keidean Coleman	Lions	13	$573,000	858	66.0	11.5
-246	Connor O'Sullivan	Cats	22	$616,000	1,451	66.0	10.7
-249	Zachary Williams INJ	Blues	9	$644,000	593	65.9	10.2
-250	Tom Papley	Swans	17	$593,000	1,119	65.8	11.1
-250	Corey Wagner INJ	Dockers	13	$622,000	855	65.8	10.6
-252	Tom De Koning	Saints	19	$594,000	1,247	65.6	11.0
-253	Daniel McStay	Magpies	22	$781,000	1,442	65.5	8.4
-253	Nathan O'Driscoll	Dockers	15	$628,000	983	65.5	10.4
-255	Joshua Weddle	Hawks	19	$611,000	1,243	65.4	10.7
-256	Sam Clohesy	Suns	11	$605,000	718	65.3	10.8
+225	Daniel Curtin	Crows	16	$679,000	1,096	68.5	10.1
+226	Charlie Curnow	Swans	22	$659,000	1,505	68.4	10.4
+227	Harry McKay	Blues	21	$627,000	1,433	68.2	10.9
+227	Nick Madden	Giants	9	$605,000	614	68.2	11.3
+229	Jaxon Prior	Bombers	22	$610,000	1,499	68.1	11.2
+230	Mattaes Phillipou	Saints	21	$687,000	1,423	67.8	9.9
+231	Neil Erasmus	Dockers	23	$630,000	1,557	67.7	10.7
+232	Matthew Roberts	Swans	19	$639,000	1,281	67.4	10.6
+233	Will Lorenz	Power	3	$507,000	202	67.3	13.3
+233	Brayden Cook	Crows	22	$593,000	1,480	67.3	11.3
+235	Ryan Lester	Lions	19	$592,000	1,276	67.2	11.3
+236	Nick Watson	Hawks	21	$633,000	1,409	67.1	10.6
+237	Darcy Fogarty	Crows	14	$668,000	938	67.0	10.0
+237	Jake Soligo	Crows	20	$710,000	1,340	67.0	9.4
+239	Jacob Hopper INJ	Tigers	12	$662,000	802	66.8	10.1
+239	Harry Perryman INJ	Magpies	16	$612,000	1,069	66.8	10.9
+241	Kai Lohmann	Lions	23	$749,000	1,532	66.6	8.9
+242	Tom Papley	Swans	18	$593,000	1,196	66.4	11.2
+242	Jack Carroll	Saints	12	$639,000	797	66.4	10.4
+242	Shannon Neale	Cats	23	$650,000	1,527	66.4	10.2
+245	Zach Guthrie	Cats	23	$578,000	1,526	66.3	11.5
+245	Hugh Boxshall	Saints	10	$577,000	663	66.3	11.5
+247	Charlie Cameron	Lions	23	$600,000	1,519	66.0	11.0
+247	Keidean Coleman	Lions	13	$573,000	858	66.0	11.5
+247	Jhye Clark	Cats	9	$636,000	594	66.0	10.4
+250	Josh Lindsay	Eagles	15	$638,000	989	65.9	10.3
+250	Zachary Williams INJ	Blues	9	$644,000	593	65.9	10.2
+252	Cameron Zurhaar	Kangaroos	23	$660,000	1,514	65.8	10.0
+252	Connor O'Sullivan	Cats	23	$616,000	1,513	65.8	10.7
+252	Corey Wagner INJ	Dockers	13	$622,000	855	65.8	10.6
+255	Samuel Swadling	Magpies	8	$484,000	525	65.6	13.6
+256	Joshua Weddle	Hawks	20	$611,000	1,310	65.5	10.7
 257	Ryan Maric	Eagles	12	$600,000	783	65.2	10.9
-257	Matt Johnson	Dockers	21	$762,000	1,370	65.2	8.6
 257	Xavier Duursma INJ	Bombers	18	$630,000	1,174	65.2	10.4
+257	Koltyn Tholstrup	Demons	23	$652,000	1,500	65.2	10.0
+260	Mitchell Lewis	Hawks	22	$570,000	1,430	65.0	11.4
 260	Flynn Riley	Blues	1	$262,000	65	65.0	24.8
-261	Harrison Himmelberg	Giants	22	$641,000	1,428	64.9	10.1
-261	Stephen Coniglio	Giants	20	$682,000	1,298	64.9	9.5
-263	Jake Lever	Demons	21	$547,000	1,361	64.8	11.8
-263	Braeden Campbell	Swans	5	$611,000	324	64.8	10.6
-265	Koltyn Tholstrup	Demons	22	$652,000	1,422	64.6	9.9
-265	Jhye Clark	Cats	8	$636,000	517	64.6	10.2
-265	Darcy Fogarty	Crows	13	$668,000	840	64.6	9.7
-265	Bayley Fritsch	Demons	20	$664,000	1,292	64.6	9.7
-269	Cameron Zurhaar	Kangaroos	22	$660,000	1,417	64.4	9.8
-270	Kyle Langford	Bombers	18	$568,000	1,156	64.2	11.3
-270	Mitchell Lewis	Hawks	21	$570,000	1,348	64.2	11.3
-272	Jake Stringer	Giants	22	$634,000	1,409	64.0	10.1
-272	James Trezise	Tigers	14	$607,000	896	64.0	10.5
-272	Jack Silvagni	Saints	22	$586,000	1,408	64.0	10.9
-275	Harvey Langford	Demons	22	$633,000	1,401	63.7	10.1
-276	Francis Evans	Blues	20	$688,000	1,272	63.6	9.2
-276	Edward Allan	Magpies	17	$694,000	1,081	63.6	9.2
-278	Rhyan Mansell INJ	Tigers	6	$600,000	381	63.5	10.6
-278	Sam Darcy INJ	Bulldogs	6	$707,000	381	63.5	9.0
-278	Rory Lobb	Bulldogs	19	$635,000	1,206	63.5	10.0
-278	Luke McDonald	Kangaroos	17	$563,000	1,079	63.5	11.3
-278	Jacob Van Rooyen SUS	Demons	22	$649,000	1,396	63.5	9.8
-283	Lachlan Cowan	Blues	21	$640,000	1,332	63.4	9.9
-283	Ryan Byrnes	Saints	14	$629,000	888	63.4	10.1
-285	Patrick Voss	Dockers	21	$580,000	1,329	63.3	10.9
-285	Daniel Turner	Demons	18	$599,000	1,139	63.3	10.6
-287	Nick Vlastuin	Tigers	21	$644,000	1,327	63.2	9.8
-287	Beau McCreery	Magpies	21	$619,000	1,327	63.2	10.2
+262	Jake Stringer	Giants	23	$634,000	1,492	64.9	10.2
+263	Ben Keays	Crows	23	$576,000	1,490	64.8	11.2
+264	Luke McDonald	Kangaroos	18	$563,000	1,165	64.7	11.5
+265	Bayley Fritsch	Demons	21	$664,000	1,357	64.6	9.7
+265	Harris Andrews	Lions	20	$677,000	1,292	64.6	9.5
+265	Sam Clohesy	Suns	12	$605,000	775	64.6	10.7
+268	Ryan Byrnes	Saints	15	$629,000	966	64.4	10.2
+268	Stephen Coniglio	Giants	21	$682,000	1,352	64.4	9.4
+270	Tom De Koning	Saints	20	$594,000	1,287	64.3	10.8
+270	Matt Johnson	Dockers	22	$762,000	1,415	64.3	8.4
+270	Francis Evans	Blues	21	$688,000	1,350	64.3	9.3
+273	Harrison Himmelberg	Giants	23	$641,000	1,475	64.1	10.0
+273	Edward Allan	Magpies	18	$694,000	1,154	64.1	9.2
+273	Nathan O'Driscoll	Dockers	16	$628,000	1,025	64.1	10.2
+276	Lachlan Cowan	Blues	22	$640,000	1,409	64.0	10.0
+276	James Trezise	Tigers	14	$607,000	896	64.0	10.5
+276	Daniel McStay	Magpies	23	$781,000	1,471	64.0	8.2
+279	Rory Lobb	Bulldogs	20	$635,000	1,277	63.9	10.1
+280	Jarrod Witts	Suns	13	$579,000	829	63.8	11.0
+281	Harvey Langford	Demons	23	$633,000	1,466	63.7	10.1
+281	Jake Lever	Demons	22	$547,000	1,402	63.7	11.7
+283	Kyle Langford	Bombers	19	$568,000	1,208	63.6	11.2
+284	Sam Darcy INJ	Bulldogs	6	$707,000	381	63.5	9.0
+284	Rhyan Mansell INJ	Tigers	6	$600,000	381	63.5	10.6
+284	Jacob Van Rooyen SUS	Demons	22	$649,000	1,396	63.5	9.8
 287	Sam Lalor INJ	Tigers	12	$560,000	758	63.2	11.3
-290	Ben Keays	Crows	22	$576,000	1,382	62.8	10.9
-291	Ryan Angwin	Giants	19	$615,000	1,192	62.7	10.2
-292	Nick Bryan	Bombers	12	$623,000	751	62.6	10.0
-292	Steele Sidebottom INJ	Magpies	19	$612,000	1,189	62.6	10.2
-294	Matt Cottrell	Blues	11	$632,000	688	62.5	9.9
-294	Mitchito Owens	Saints	19	$618,000	1,187	62.5	10.1
-296	Mark Blicavs	Cats	18	$614,000	1,124	62.4	10.2
+288	Beau McCreery	Magpies	22	$619,000	1,388	63.1	10.2
+289	Steele Sidebottom	Magpies	20	$612,000	1,261	63.0	10.3
+290	Nick Vlastuin	Tigers	22	$644,000	1,383	62.9	9.8
+291	Daniel Turner	Demons	19	$599,000	1,194	62.8	10.5
+292	Aaron Naughton	Bulldogs	22	$558,000	1,377	62.6	11.2
+293	Brodie Kemp	Blues	23	$585,000	1,438	62.5	10.7
+293	Sam Draper	Lions	22	$588,000	1,374	62.5	10.6
+295	Mark Blicavs	Cats	18	$614,000	1,124	62.4	10.2
+295	Matt Cottrell	Blues	12	$632,000	749	62.4	9.9
 297	Campbell Chesser INJ	Blues	3	$575,000	187	62.3	10.8
-297	Sam Wicks	Swans	17	$604,000	1,059	62.3	10.3
-299	Harry Rowston	Giants	11	$583,000	684	62.2	10.7
-300	Sullivan Robey INJ	Bombers	15	$600,000	930	62.0	10.3
-300	Jack Darling	Kangaroos	21	$599,000	1,302	62.0	10.4
-300	Isaac Cumming	Crows	15	$580,000	930	62.0	10.7
-300	Cooper Trembath	Kangaroos	22	$628,000	1,363	62.0	9.9
-304	Phoenix Gothard INJ	Giants	16	$587,000	991	61.9	10.6
-305	Noah Balta INJ	Tigers	17	$616,000	1,050	61.8	10.0
-306	Hugh Boxshall	Saints	9	$577,000	555	61.7	10.7
-307	Aaron Cadman	Giants	17	$516,000	1,048	61.6	11.9
-307	Nicholas Coffield INJ	Bulldogs	13	$564,000	801	61.6	10.9
-309	Brodie Kemp	Blues	22	$585,000	1,354	61.5	10.5
-309	Reilly O'Brien	Crows	2	$834,000	123	61.5	7.4
-309	Heath Chapman	Dockers	22	$513,000	1,353	61.5	12.0
-309	Jack Lukosius INJ	Power	8	$568,000	492	61.5	10.8
-309	Tom Blamires	Kangaroos	17	$512,000	1,045	61.5	12.0
-309	Jye Amiss	Dockers	22	$578,000	1,352	61.5	10.6
-315	Toby Bedford INJ	Giants	17	$605,000	1,044	61.4	10.2
-315	Sam Draper	Lions	21	$588,000	1,289	61.4	10.4
-317	Jake Riccardi	Giants	9	$573,000	552	61.3	10.7
-318	Aaron Naughton	Bulldogs	21	$558,000	1,286	61.2	11.0
-319	Tyler Sonsie	Tigers	15	$595,000	916	61.1	10.3
-320	Lachlan Bramble	Bulldogs	22	$654,000	1,340	60.9	9.3
-320	Jacob Weitering	Blues	11	$582,000	670	60.9	10.5
-322	Xavier Lindsay	Demons	5	$589,000	304	60.8	10.3
-323	Bruce Reville	Lions	18	$540,000	1,092	60.7	11.2
-324	Ben Miller	Tigers	20	$547,000	1,213	60.6	11.1
-324	Mabior Chol	Hawks	17	$597,000	1,031	60.6	10.2
-324	Mark O'Connor	Cats	19	$583,000	1,152	60.6	10.4
-327	Darcy Fort	Lions	21	$523,000	1,271	60.5	11.6
-328	Lachie Jaques	Bulldogs	10	$484,000	603	60.3	12.5
-329	Christian Salem	Demons	8	$603,000	482	60.2	10.0
-330	Michael Frederick	Dockers	17	$603,000	1,022	60.1	10.0
-331	Seth Campbell	Tigers	22	$543,000	1,321	60.0	11.1
-331	Henry Hustwaite	Hawks	1	$453,000	60	60.0	13.2
-333	Archie Perkins	Bombers	15	$553,000	898	59.9	10.8
-333	Nick Larkey	Kangaroos	22	$590,000	1,317	59.9	10.1
-335	Luke Nankervis	Crows	15	$643,000	895	59.7	9.3
-336	Bailey Humphrey	Suns	19	$586,000	1,132	59.6	10.2
-337	Jeremy Sharp	Dockers	2	$523,000	119	59.5	11.4
-337	Changkuoth Jiath	Demons	14	$544,000	833	59.5	10.9
-337	Max Michalanney	Crows	22	$534,000	1,308	59.5	11.1
-340	Tim Membrey	Magpies	18	$628,000	1,070	59.4	9.5
-340	Sam Banks	Tigers	17	$551,000	1,010	59.4	10.8
-340	Xavier O'Halloran INJ	Giants	13	$595,000	772	59.4	10.0
-340	Sam Butler	Hawks	8	$571,000	475	59.4	10.4
-340	Beau Addinsall	Suns	8	$520,000	475	59.4	11.4
-345	Alex Davies INJ	Suns	6	$595,000	356	59.3	10.0
-345	Jayden Laverde INJ	Giants	19	$505,000	1,127	59.3	11.7
-345	Samuel Swadling	Magpies	7	$484,000	415	59.3	12.2
-345	Liam Baker	Eagles	19	$549,000	1,126	59.3	10.8
-349	Mitch McGovern	Blues	22	$569,000	1,303	59.2	10.4
-349	Jack Scrimshaw	Hawks	6	$588,000	355	59.2	10.1
-351	Caleb Windsor	Demons	19	$503,000	1,123	59.1	11.8
-352	Lincoln McCarthy	Lions	8	$592,000	470	58.8	9.9
-353	Blake Howes INJ	Demons	20	$575,000	1,172	58.6	10.2
-353	Sam Cumming INJ	Tigers	14	$575,000	820	58.6	10.2
-355	Oisin Mullin	Cats	22	$552,000	1,288	58.5	10.6
-355	Tom Brown	Tigers	17	$619,000	994	58.5	9.4
-357	Patrick Dangerfield	Cats	16	$583,000	934	58.4	10.0
-358	Harry Sharp	Demons	22	$526,000	1,283	58.3	11.1
-358	James Jordon SUS	Swans	22	$547,000	1,283	58.3	10.7
-360	Taylor Walker	Crows	15	$584,000	872	58.1	10.0
-361	Jaeger O'Meara INJ	Dockers	6	$579,000	348	58.0	10.0
-361	Hunter Clark	Saints	7	$561,000	406	58.0	10.3
-361	George Stevens	Cats	2	$442,000	116	58.0	13.1
-361	Matthew Flynn	Eagles	4	$705,000	232	58.0	8.2
-361	Rhylee West	Bulldogs	21	$568,000	1,217	58.0	10.2
-366	Harrison Petty	Demons	18	$651,000	1,043	57.9	8.9
-367	Adam Treloar INJ	Bulldogs	5	$700,000	289	57.8	8.3
-368	Oliver Henry	Cats	21	$596,000	1,212	57.7	9.7
-369	Zeke Uwland	Suns	17	$666,000	980	57.6	8.7
-370	Nate Caddy	Bombers	21	$489,000	1,208	57.5	11.8
-370	Zach Reid	Bombers	22	$502,000	1,265	57.5	11.5
-372	Sam De Koning INJ	Cats	18	$525,000	1,033	57.4	10.9
-372	Leo Lombard	Suns	22	$576,000	1,262	57.4	10.0
-374	Angus Anderson	Magpies	15	$505,000	860	57.3	11.4
-375	Roan Steele	Magpies	17	$535,000	970	57.1	10.7
-376	Samuel Collins INJ	Suns	21	$494,000	1,198	57.0	11.5
-376	Saad El-Hawli	Bombers	8	$538,000	456	57.0	10.6
-376	Jordan Ridley INJ	Bombers	7	$566,000	399	57.0	10.1
-376	Matt Carroll INJ	Blues	10	$549,000	570	57.0	10.4
-380	Elijah Hollands	Blues	6	$615,000	341	56.8	9.2
-381	Mark Keane	Crows	8	$495,000	453	56.6	11.4
-381	Logan McDonald	Swans	20	$543,000	1,132	56.6	10.4
-381	Oscar McDonald	Dockers	9	$549,000	509	56.6	10.3
-384	Michael Sellwood	Bulldogs	22	$586,000	1,243	56.5	9.6
-385	Reuben Ginbey INJ	Eagles	13	$596,000	730	56.2	9.4
-386	Cooper Sharman	Saints	20	$533,000	1,122	56.1	10.5
-387	Will Brodie	Power	1	$456,000	56	56.0	12.3
-387	Sam Marshall	Lions	2	$448,000	112	56.0	12.5
-389	Jack Martin	Cats	17	$448,000	951	55.9	12.5
+297	Harry Rowston	Giants	12	$583,000	748	62.3	10.7
+299	Ryan Angwin	Giants	20	$615,000	1,245	62.2	10.1
+299	Nick Bryan	Bombers	13	$623,000	809	62.2	10.0
+301	Mitchito Owens	Saints	20	$618,000	1,243	62.1	10.1
+302	Jack Silvagni	Saints	23	$586,000	1,427	62.0	10.6
+302	Sullivan Robey INJ	Bombers	15	$600,000	930	62.0	10.3
+302	Tobyn Murray	Dockers	1	$230,000	62	62.0	27.0
+305	Phoenix Gothard INJ	Giants	16	$587,000	991	61.9	10.6
+306	Patrick Voss	Dockers	22	$580,000	1,360	61.8	10.7
+306	Noah Balta INJ	Tigers	17	$616,000	1,050	61.8	10.0
+308	Sam Wicks	Swans	18	$604,000	1,110	61.7	10.2
+309	Nicholas Coffield INJ	Bulldogs	13	$564,000	801	61.6	10.9
+309	Jacob Weitering	Blues	12	$582,000	739	61.6	10.6
+311	Heath Chapman	Dockers	22	$513,000	1,353	61.5	12.0
+311	Reilly O'Brien	Crows	2	$834,000	123	61.5	7.4
+311	Jack Lukosius INJ	Power	8	$568,000	492	61.5	10.8
+311	Tom Blamires	Kangaroos	17	$512,000	1,045	61.5	12.0
+311	Jye Amiss	Dockers	22	$578,000	1,352	61.5	10.6
+316	Toby Bedford INJ	Giants	17	$605,000	1,044	61.4	10.2
+316	Harrison Petty	Demons	19	$651,000	1,166	61.4	9.4
+318	Jake Riccardi	Giants	9	$573,000	552	61.3	10.7
+318	Aaron Cadman	Giants	18	$516,000	1,104	61.3	11.9
+320	Cooper Trembath	Kangaroos	23	$628,000	1,406	61.1	9.7
+320	Tyler Sonsie	Tigers	15	$595,000	916	61.1	10.3
+320	Patrick Dangerfield	Cats	17	$583,000	1,038	61.1	10.5
+323	Seth Campbell	Tigers	23	$543,000	1,404	61.0	11.2
+323	Archie Perkins	Bombers	16	$553,000	976	61.0	11.0
+325	Lachlan Bramble	Bulldogs	23	$654,000	1,400	60.9	9.3
+326	Beau Addinsall	Suns	9	$520,000	547	60.8	11.7
+327	Bruce Reville	Lions	18	$540,000	1,092	60.7	11.2
+328	Jack Darling	Kangaroos	22	$599,000	1,330	60.5	10.1
+329	Isaac Cumming	Crows	16	$580,000	966	60.4	10.4
+330	Lachie Jaques	Bulldogs	10	$484,000	603	60.3	12.5
+331	Mark O'Connor	Cats	20	$583,000	1,204	60.2	10.3
+332	Changkuoth Jiath	Demons	15	$544,000	901	60.1	11.0
+333	Henry Hustwaite	Hawks	1	$453,000	60	60.0	13.2
+334	Mabior Chol	Hawks	18	$597,000	1,077	59.8	10.0
+334	Darcy Fort	Lions	22	$523,000	1,316	59.8	11.4
+336	Michael Frederick	Dockers	18	$603,000	1,075	59.7	9.9
+336	Max Michalanney	Crows	23	$534,000	1,372	59.7	11.2
+338	Taylor Walker	Crows	16	$584,000	954	59.6	10.2
+339	Will Brodie	Power	2	$456,000	119	59.5	13.0
+339	Jeremy Sharp	Dockers	2	$523,000	119	59.5	11.4
+339	Nate Caddy	Bombers	22	$489,000	1,308	59.5	12.2
+342	Sam Butler	Hawks	8	$571,000	475	59.4	10.4
+343	Alex Davies INJ	Suns	6	$595,000	356	59.3	10.0
+343	Jayden Laverde INJ	Giants	19	$505,000	1,127	59.3	11.7
+343	Zach Reid	Bombers	23	$502,000	1,363	59.3	11.8
+346	Jack Scrimshaw	Hawks	6	$588,000	355	59.2	10.1
+347	Bailey Humphrey	Suns	20	$586,000	1,183	59.1	10.1
+348	Ben Miller	Tigers	21	$547,000	1,239	59.0	10.8
+348	Max Beattie	Hawks	2	$249,000	118	59.0	23.7
+350	Nick Larkey	Kangaroos	23	$590,000	1,353	58.8	10.0
+350	Oisin Mullin	Cats	23	$552,000	1,353	58.8	10.7
+350	Mitch McGovern	Blues	23	$569,000	1,352	58.8	10.3
+350	Lincoln McCarthy	Lions	8	$592,000	470	58.8	9.9
+354	Tim Membrey	Magpies	19	$628,000	1,116	58.7	9.4
+354	Roan Steele	Magpies	18	$535,000	1,057	58.7	11.0
+356	Liam Baker	Eagles	20	$549,000	1,173	58.6	10.7
+356	Angus Anderson	Magpies	16	$505,000	938	58.6	11.6
+356	Blake Howes INJ	Demons	20	$575,000	1,172	58.6	10.2
+356	Rhylee West	Bulldogs	22	$568,000	1,289	58.6	10.3
+356	Sam Cumming INJ	Tigers	14	$575,000	820	58.6	10.2
+361	Luke Nankervis	Crows	16	$643,000	934	58.4	9.1
+362	James Jordon SUS	Swans	22	$547,000	1,283	58.3	10.7
+362	Caleb Windsor	Demons	20	$503,000	1,166	58.3	11.6
+364	Oliver Henry	Cats	22	$596,000	1,281	58.2	9.8
+365	Christian Salem	Demons	9	$603,000	523	58.1	9.6
+366	Matthew Flynn	Eagles	4	$705,000	232	58.0	8.2
+366	George Stevens	Cats	2	$442,000	116	58.0	13.1
+366	Jaeger O'Meara INJ	Dockers	6	$579,000	348	58.0	10.0
+366	Hunter Clark	Saints	7	$561,000	406	58.0	10.3
+370	Adam Treloar INJ	Bulldogs	5	$700,000	289	57.8	8.3
+370	Xavier O'Halloran	Giants	14	$595,000	809	57.8	9.7
+372	Leo Lombard	Suns	23	$576,000	1,328	57.7	10.0
+373	Zeke Uwland	Suns	17	$666,000	980	57.6	8.7
+374	Mark Keane	Crows	9	$495,000	515	57.2	11.6
+375	Logan McDonald	Swans	21	$543,000	1,200	57.1	10.5
+375	Harry Sharp	Demons	23	$526,000	1,314	57.1	10.9
+375	Tom Brown	Tigers	18	$619,000	1,028	57.1	9.2
+378	Samuel Collins INJ	Suns	21	$494,000	1,198	57.0	11.5
+378	Matt Carroll INJ	Blues	10	$549,000	570	57.0	10.4
+378	Saad El-Hawli	Bombers	8	$538,000	456	57.0	10.6
+378	Jordan Ridley INJ	Bombers	7	$566,000	399	57.0	10.1
+382	Sam De Koning	Cats	19	$525,000	1,082	56.9	10.8
+382	Oscar McDonald	Dockers	10	$549,000	569	56.9	10.4
+384	Elijah Hollands	Blues	6	$615,000	341	56.8	9.2
+384	Jack Martin	Cats	18	$448,000	1,022	56.8	12.7
+384	Sam Banks	Tigers	18	$551,000	1,022	56.8	10.3
+387	Michael Sellwood	Bulldogs	23	$586,000	1,300	56.5	9.6
+388	Reuben Ginbey INJ	Eagles	13	$596,000	730	56.2	9.4
+389	Sam Marshall	Lions	2	$448,000	112	56.0	12.5
 390	Lachlan Weller INJ	Suns	11	$575,000	614	55.8	9.7
-390	Luke Trainor	Tigers	10	$491,000	558	55.8	11.4
 390	Jedd Busslinger	Bulldogs	8	$501,000	446	55.8	11.1
+392	Mitchell Edwards	Cats	18	$559,000	1,003	55.7	10.0
 393	Nathan Broad	Tigers	21	$552,000	1,167	55.6	10.1
 394	Shadeau Brain	Lions	2	$329,000	111	55.5	16.9
 394	Ned Reeves	Hawks	15	$500,000	832	55.5	11.1
-396	Bailey Laurie	Demons	15	$517,000	828	55.2	10.7
-396	Samuel Grlj	Tigers	20	$443,000	1,104	55.2	12.5
-396	Jamie Elliott INJ	Magpies	11	$572,000	607	55.2	9.6
-399	Tom Cole	Eagles	16	$537,000	882	55.1	10.3
-399	Callum Brown	Giants	17	$569,000	936	55.1	9.7
-401	Judd McVee	Dockers	20	$496,000	1,098	54.9	11.1
-402	Zac Taylor	Crows	20	$455,000	1,094	54.7	12.0
-402	Charlie Banfield	Saints	3	$349,000	164	54.7	15.7
-404	Harvey Harrison	Magpies	10	$503,000	544	54.4	10.8
-405	Zak Johnson	Bombers	7	$529,000	380	54.3	10.3
-406	Liam Reidy	Blues	4	$447,000	217	54.2	12.1
-407	Liam Stocker	Saints	17	$671,000	919	54.1	8.1
-408	Brayden Fiorini INJ	Bombers	2	$824,000	108	54.0	6.6
-408	Zac Fisher	Kangaroos	1	$765,000	54	54.0	7.1
-408	Tylar Young	Eagles	22	$476,000	1,188	54.0	11.3
-411	Brady Hough	Eagles	22	$559,000	1,184	53.8	9.6
-412	Oskar Baker	Bulldogs	9	$517,000	483	53.7	10.4
-413	Mitchell Knevitt	Cats	2	$491,000	107	53.5	10.9
-413	Sam Taylor	Giants	11	$515,000	588	53.5	10.4
-415	Leek Aleer INJ	Giants	7	$459,000	374	53.4	11.6
-415	Jaxon Artemis	Bombers	5	$412,000	267	53.4	13.0
-415	Jack Higgins	Saints	16	$505,000	854	53.4	10.6
-418	Charlie Spargo	Kangaroos	18	$547,000	960	53.3	9.8
-418	Nick Murray	Crows	11	$503,000	586	53.3	10.6
-418	Sam Davidson	Bulldogs	15	$522,000	799	53.3	10.2
-421	Mitchell Edwards	Cats	17	$559,000	905	53.2	9.5
-421	Wade Derksen	Blues	13	$527,000	692	53.2	10.1
-421	Joe Berry	Power	22	$488,000	1,170	53.2	10.9
-424	Jack Watkins INJ	Power	11	$478,000	584	53.1	11.1
-425	Cooper Hynes	Bulldogs	20	$554,000	1,060	53.0	9.6
-425	Jacob Wehr	Power	16	$447,000	848	53.0	11.9
-425	Noah Answerth	Lions	14	$552,000	742	53.0	9.6
-425	Charlie Edwards	Crows	2	$294,000	106	53.0	18.0
-425	Josh Lai	Power	18	$527,000	954	53.0	10.1
-430	Hugo Ralphsmith	Tigers	12	$534,000	634	52.8	9.9
-430	Charlie Comben	Kangaroos	21	$462,000	1,109	52.8	11.4
-430	Josh Goater	Kangaroos	5	$400,000	264	52.8	13.2
-430	Jack Dalton	Hawks	4	$366,000	211	52.8	14.4
-434	Dougal Howard	Saints	6	$502,000	316	52.7	10.5
-435	Arthur Jones	Bulldogs	17	$470,000	891	52.4	11.2
-436	Angus Hastie	Saints	6	$457,000	314	52.3	11.5
-436	Jai Murray	Suns	9	$459,000	471	52.3	11.4
-438	Tom Anastasopoulos	Power	4	$370,000	209	52.2	14.1
-438	Ollie Greeves	Hawks	4	$387,000	209	52.2	13.5
-438	Brennan Cox	Dockers	17	$437,000	887	52.2	11.9
-441	Lachlan Jones	Power	19	$523,000	990	52.1	10.0
-441	James Tunstill	Lions	11	$486,000	573	52.1	10.7
-441	Todd Marshall	Power	14	$473,000	729	52.1	11.0
-444	Max Beattie	Hawks	1	$249,000	52	52.0	20.9
-444	Josh Gibcus INJ	Tigers	1	$254,000	52	52.0	20.5
-446	Ewan Mackinlay INJ	Power	14	$469,000	727	51.9	11.1
-447	Jackson Mead	Power	10	$477,000	517	51.7	10.8
-448	Corey Durdin	Power	22	$485,000	1,136	51.6	10.6
-449	Cody Weightman	Bulldogs	8	$493,000	412	51.5	10.4
-450	Ben Long	Suns	20	$466,000	1,026	51.3	11.0
-451	Xavier Bamert	Power	9	$458,000	461	51.2	11.2
-451	Hamish Davis	Eagles	20	$446,000	1,024	51.2	11.5
-453	Harry Cunningham	Swans	12	$464,000	613	51.1	11.0
-454	Sam Switkowski	Dockers	22	$497,000	1,123	51.0	10.3
-455	Conor McKenna	Lions	16	$434,000	811	50.7	11.7
-455	Tom Gross	Eagles	3	$392,000	152	50.7	12.9
-455	Bo Allan	Eagles	18	$488,000	912	50.7	10.4
-458	Joel Amartey INJ	Swans	15	$425,000	756	50.4	11.9
-458	Calsher Dear	Hawks	5	$460,000	252	50.4	11.0
-458	Jay Polkinghorne	Cats	5	$391,000	252	50.4	12.9
-461	Bailey Macdonald	Hawks	11	$487,000	553	50.3	10.3
-462	Brandon Starcevich	Eagles	10	$495,000	501	50.1	10.1
-463	Campbell Lake	Saints	9	$462,000	450	50.0	10.8
-464	Talor Byrne	Blues	17	$578,000	848	49.9	8.6
-465	Harry Dean	Blues	19	$513,000	945	49.7	9.7
-465	Josh Dolan	Bulldogs	10	$461,000	497	49.7	10.8
-465	Bailey Scott	Kangaroos	3	$473,000	149	49.7	10.5
-468	James Leake INJ	Giants	5	$394,000	248	49.6	12.6
-468	Jobe Shanahan	Eagles	22	$475,000	1,091	49.6	10.4
-468	Jai Culley INJ	Demons	7	$494,000	347	49.6	10.0
-471	Buku Khamis	Bulldogs	22	$512,000	1,090	49.5	9.7
-471	Steely Green	Tigers	19	$417,000	941	49.5	11.9
-471	Judson Clarke	Tigers	2	$276,000	99	49.5	17.9
-474	Eric Hipwood	Lions	9	$490,000	445	49.4	10.1
-474	Jack Ison	Blues	8	$422,000	395	49.4	11.7
-476	Conor Stone	Giants	9	$461,000	443	49.2	10.7
-476	Mykelti Lefau	Tigers	20	$472,000	984	49.2	10.4
-478	Jesse Hogan INJ	Giants	9	$503,000	442	49.1	9.8
-478	Tom McDonald	Demons	9	$467,000	442	49.1	10.5
-478	Tom Lynch	Tigers	14	$461,000	687	49.1	10.6
-481	Matt Owies INJ	Eagles	3	$445,000	147	49.0	11.0
-481	Angus Clarke	Bombers	5	$540,000	245	49.0	9.1
-481	Aidan Schubert	Hawks	1	$277,000	49	49.0	17.7
-481	Adam Saad	Blues	3	$603,000	147	49.0	8.1
-485	Billy Frampton	Magpies	22	$411,000	1,076	48.9	11.9
-486	Ben King	Suns	22	$453,000	1,070	48.6	10.7
-486	Liam Henry	Saints	8	$454,000	389	48.6	10.7
-486	Will Graham INJ	Suns	12	$424,000	583	48.6	11.5
-489	Mitch Podhajski	Magpies	2	$287,000	97	48.5	16.9
-490	Callum Ah Chee	Crows	7	$505,000	339	48.4	9.6
-490	Jade Gresham	Bombers	7	$481,000	339	48.4	10.1
-490	Liam O'Connell	Saints	12	$434,000	581	48.4	11.2
-490	Ty Gallop	Lions	17	$531,000	823	48.4	9.1
-490	Oscar Allen	Lions	10	$448,000	484	48.4	10.8
-490	Jamie Cripps	Eagles	5	$524,000	242	48.4	9.2
-490	Esava Ratugolea INJ	Power	8	$486,000	387	48.4	10.0
-497	Toby Pink INJ	Kangaroos	5	$484,000	241	48.2	10.0
-498	Archer Day-Wicks	Bombers	20	$424,000	963	48.1	11.4
-498	Caiden Cleary	Swans	8	$476,000	385	48.1	10.1
-500	Ben Jepson	Suns	4	$366,000	192	48.0	13.1
-500	Lachlan Smith INJ	Bulldogs	2	$285,000	96	48.0	16.8
-500	Darragh Joyce	Lions	3	$395,000	144	48.0	12.2
-503	Taj Hotton	Tigers	9	$460,000	431	47.9	10.4
-503	Daniel Butler	Saints	9	$427,000	431	47.9	11.2
-505	Isaiah Dudley	Dockers	22	$489,000	1,052	47.8	9.8
-505	Billy Cootee	Swans	8	$437,000	382	47.8	10.9
-505	Cameron Nairn	Hawks	4	$368,000	191	47.8	13.0
-508	Christian Moraes	Power	11	$401,000	525	47.7	11.9
-509	Hugh Bond INJ	Crows	7	$433,000	332	47.4	11.0
-510	Luke Pedlar INJ	Crows	10	$506,000	473	47.3	9.3
-510	Dane Rampe	Swans	14	$420,000	662	47.3	11.3
-510	Mason Cox	Dockers	15	$454,000	709	47.3	10.4
-513	Hayden McLean INJ	Swans	10	$388,000	470	47.0	12.1
-513	Cody Angove	Giants	1	$363,000	47	47.0	12.9
-515	Zac Banch	Kangaroos	7	$408,000	328	46.9	11.5
-516	Tom Hanily INJ	Swans	4	$386,000	187	46.8	12.1
-517	Jack Williams	Eagles	11	$428,000	513	46.6	10.9
-518	Lachlan Gulbin	Suns	10	$413,000	465	46.5	11.3
-518	Will Green	Swans	2	$279,000	93	46.5	16.7
-518	Jed Walter	Suns	17	$424,000	790	46.5	11.0
-521	Zane Zakostelsky INJ	Lions	3	$325,000	139	46.3	14.3
-521	Jack Henry	Cats	18	$479,000	833	46.3	9.7
-523	Max Gruzewski	Giants	14	$463,000	647	46.2	10.0
-524	James Borlase	Crows	16	$395,000	737	46.1	11.7
+396	Josh Goater	Kangaroos	6	$400,000	332	55.3	13.8
+396	Cooper Sharman	Saints	21	$533,000	1,161	55.3	10.4
+398	Jamie Elliott INJ	Magpies	11	$572,000	607	55.2	9.6
+399	Samuel Grlj	Tigers	21	$443,000	1,157	55.1	12.4
+399	Tylar Young	Eagles	23	$476,000	1,267	55.1	11.6
+401	Tom Cole	Eagles	17	$537,000	935	55.0	10.2
+402	Wade Derksen	Blues	14	$527,000	769	54.9	10.4
+403	Jack Dalton	Hawks	5	$366,000	274	54.8	15.0
+403	Brady Hough	Eagles	23	$559,000	1,260	54.8	9.8
+405	Charlie Spargo	Kangaroos	19	$547,000	1,040	54.7	10.0
+405	Liam Stocker	Saints	18	$671,000	985	54.7	8.2
+405	Charlie Banfield	Saints	3	$349,000	164	54.7	15.7
+408	Judd McVee	Dockers	21	$496,000	1,143	54.4	11.0
+409	Zak Johnson	Bombers	7	$529,000	380	54.3	10.3
+410	Liam Reidy	Blues	4	$447,000	217	54.2	12.1
+410	Callum Brown	Giants	18	$569,000	976	54.2	9.5
+412	Bailey Laurie	Demons	16	$517,000	865	54.1	10.5
+413	Luke Trainor	Tigers	11	$491,000	594	54.0	11.0
+413	Zac Fisher	Kangaroos	1	$765,000	54	54.0	7.1
+413	Brayden Fiorini INJ	Bombers	2	$824,000	108	54.0	6.6
+416	Charlie Comben	Kangaroos	22	$462,000	1,185	53.9	11.7
+417	Angus Clarke	Bombers	6	$540,000	323	53.8	10.0
+418	Sam Davidson	Bulldogs	16	$522,000	859	53.7	10.3
+418	Oskar Baker	Bulldogs	9	$517,000	483	53.7	10.4
+420	Arthur Jones	Bulldogs	18	$470,000	963	53.5	11.4
+420	Mitchell Knevitt	Cats	2	$491,000	107	53.5	10.9
+420	Eric Hipwood	Lions	10	$490,000	535	53.5	10.9
+423	Leek Aleer INJ	Giants	7	$459,000	374	53.4	11.6
+423	Jack Higgins	Saints	16	$505,000	854	53.4	10.6
+425	Will Green	Swans	3	$279,000	160	53.3	19.1
+425	Zac Taylor	Crows	21	$455,000	1,119	53.3	11.7
+425	Nick Murray	Crows	11	$503,000	586	53.3	10.6
+428	Lachlan Jones	Power	20	$523,000	1,065	53.2	10.2
+428	Cooper Hynes	Bulldogs	21	$554,000	1,118	53.2	9.6
+428	Hugo Ralphsmith	Tigers	13	$534,000	692	53.2	10.0
+428	Joe Berry	Power	23	$488,000	1,224	53.2	10.9
+428	Harvey Harrison	Magpies	11	$503,000	585	53.2	10.6
+433	Jack Watkins INJ	Power	11	$478,000	584	53.1	11.1
+434	Bailey Banfield	Dockers	1	$556,000	53	53.0	9.5
+434	Charlie Edwards	Crows	2	$294,000	106	53.0	18.0
+436	Xavier Lindsay	Demons	6	$589,000	317	52.8	9.0
+437	Jacob Wehr	Power	17	$447,000	893	52.5	11.8
+437	Hamish Davis	Eagles	21	$446,000	1,103	52.5	11.8
+439	Xavier Bamert	Power	10	$458,000	524	52.4	11.4
+439	Harry Cunningham	Swans	13	$464,000	681	52.4	11.3
+439	Josh Lai	Power	19	$527,000	995	52.4	9.9
+442	Noah Answerth	Lions	15	$552,000	785	52.3	9.5
+442	Jai Murray	Suns	9	$459,000	471	52.3	11.4
+444	Ollie Greeves	Hawks	4	$387,000	209	52.2	13.5
+444	Cody Weightman	Bulldogs	9	$493,000	470	52.2	10.6
+446	James Tunstill	Lions	11	$486,000	573	52.1	10.7
+447	Josh Gibcus INJ	Tigers	1	$254,000	52	52.0	20.5
+448	Ewan Mackinlay INJ	Power	14	$469,000	727	51.9	11.1
+449	Billy Cootee	Swans	9	$437,000	466	51.8	11.8
+450	Jackson Mead	Power	10	$477,000	517	51.7	10.8
+450	Ben Long	Suns	21	$466,000	1,085	51.7	11.1
+452	Tom Anastasopoulos	Power	5	$370,000	258	51.6	13.9
+453	Caiden Cleary	Swans	9	$476,000	463	51.4	10.8
+453	Conor McKenna	Lions	17	$434,000	873	51.4	11.8
+455	Corey Durdin	Power	23	$485,000	1,178	51.2	10.6
+455	Bailey Macdonald	Hawks	12	$487,000	614	51.2	10.5
+457	Sam Switkowski	Dockers	22	$497,000	1,123	51.0	10.3
+458	Riley Hardeman	Kangaroos	7	$455,000	356	50.9	11.2
+459	Todd Marshall	Power	15	$473,000	762	50.8	10.7
+460	Tom Hanily	Swans	5	$386,000	253	50.6	13.1
+461	Sam Taylor	Giants	12	$515,000	606	50.5	9.8
+462	Calsher Dear	Hawks	5	$460,000	252	50.4	11.0
+462	Joel Amartey INJ	Swans	15	$425,000	756	50.4	11.9
+462	Bo Allan	Eagles	19	$488,000	957	50.4	10.3
+465	Campbell Lake	Saints	10	$462,000	501	50.1	10.8
+465	Harry Dean	Blues	20	$513,000	1,002	50.1	9.8
+465	Buku Khamis	Bulldogs	23	$512,000	1,152	50.1	9.8
+468	Alex Van Wyk	Power	3	$272,000	150	50.0	18.4
+469	Jay Polkinghorne	Cats	6	$391,000	298	49.7	12.7
+469	Bailey Scott	Kangaroos	3	$473,000	149	49.7	10.5
+471	James Leake INJ	Giants	5	$394,000	248	49.6	12.6
+471	Christian Moraes	Power	12	$401,000	595	49.6	12.4
+471	Jai Culley INJ	Demons	7	$494,000	347	49.6	10.0
+474	Jaxon Artemis	Bombers	6	$412,000	297	49.5	12.0
+474	Brennan Cox	Dockers	18	$437,000	891	49.5	11.3
+476	Steely Green	Tigers	20	$417,000	988	49.4	11.8
+476	Tom Lynch	Tigers	15	$461,000	741	49.4	10.7
+476	Jack Ison	Blues	8	$422,000	395	49.4	11.7
+479	Archer Day-Wicks	Bombers	21	$424,000	1,035	49.3	11.6
+480	Tom McDonald	Demons	10	$467,000	492	49.2	10.5
+481	Jesse Hogan INJ	Giants	9	$503,000	442	49.1	9.8
+481	Mykelti Lefau	Tigers	21	$472,000	1,031	49.1	10.4
+483	Oscar Allen	Lions	11	$448,000	539	49.0	10.9
+483	Adam Saad	Blues	3	$603,000	147	49.0	8.1
+483	Matt Owies INJ	Eagles	3	$445,000	147	49.0	11.0
+483	Aidan Schubert	Hawks	1	$277,000	49	49.0	17.7
+487	Talor Byrne	Blues	18	$578,000	880	48.9	8.5
+487	Ben King	Suns	23	$453,000	1,124	48.9	10.8
+489	Billy Frampton	Magpies	23	$411,000	1,121	48.7	11.9
+490	Liam Henry	Saints	8	$454,000	389	48.6	10.7
+490	Taj Hotton	Tigers	10	$460,000	486	48.6	10.6
+490	Will Graham INJ	Suns	12	$424,000	583	48.6	11.5
+493	Mitch Podhajski	Magpies	2	$287,000	97	48.5	16.9
+494	Angus Hastie	Saints	7	$457,000	339	48.4	10.6
+494	Jade Gresham	Bombers	7	$481,000	339	48.4	10.1
+494	Callum Ah Chee	Crows	7	$505,000	339	48.4	9.6
+494	Jamie Cripps	Eagles	5	$524,000	242	48.4	9.2
+494	Esava Ratugolea INJ	Power	8	$486,000	387	48.4	10.0
+499	Jobe Shanahan	Eagles	23	$475,000	1,111	48.3	10.2
+500	Liam O'Connell	Saints	13	$434,000	627	48.2	11.1
+500	Toby Pink INJ	Kangaroos	5	$484,000	241	48.2	10.0
+500	Josh Dolan	Bulldogs	11	$461,000	530	48.2	10.5
+503	Daniel Butler	Saints	10	$427,000	481	48.1	11.3
+504	Darragh Joyce	Lions	3	$395,000	144	48.0	12.2
+504	Lachlan Smith INJ	Bulldogs	2	$285,000	96	48.0	16.8
+506	Jack Williams	Eagles	12	$428,000	575	47.9	11.2
+507	Cameron Nairn	Hawks	4	$368,000	191	47.8	13.0
+508	Conor Stone	Giants	10	$461,000	476	47.6	10.3
+508	Ben Jepson	Suns	5	$366,000	238	47.6	13.0
+510	Tom Gross	Eagles	4	$392,000	190	47.5	12.1
+510	Zac Banch	Kangaroos	8	$408,000	380	47.5	11.6
+512	Hugh Bond INJ	Crows	7	$433,000	332	47.4	11.0
+512	Ty Gallop	Lions	18	$531,000	853	47.4	8.9
+512	Lachlan Gulbin	Suns	11	$413,000	521	47.4	11.5
+515	Mason Cox	Dockers	16	$454,000	757	47.3	10.4
+515	Isaiah Dudley	Dockers	23	$489,000	1,088	47.3	9.7
+515	Luke Pedlar INJ	Crows	10	$506,000	473	47.3	9.3
+518	Tobie Travaglia	Saints	7	$436,000	330	47.1	10.8
+519	Hayden McLean INJ	Swans	10	$388,000	470	47.0	12.1
+519	Cody Angove	Giants	1	$363,000	47	47.0	12.9
+521	Brandon Starcevich	Eagles	11	$495,000	514	46.7	9.4
+522	Dougal Howard	Saints	7	$502,000	325	46.4	9.2
+523	Dane Rampe	Swans	15	$420,000	695	46.3	11.0
+523	Zane Zakostelsky INJ	Lions	3	$325,000	139	46.3	14.3
 525	Lachie Sullivan	Magpies	2	$441,000	92	46.0	10.4
 525	Tom Edwards	Bombers	7	$414,000	322	46.0	11.1
-527	Lewis Melican	Swans	10	$486,000	459	45.9	9.4
-527	Oscar Steene INJ	Magpies	8	$414,000	367	45.9	11.1
-529	Kye Annand	Tigers	10	$409,000	457	45.7	11.2
-529	Finn Maginness	Hawks	6	$462,000	274	45.7	9.9
-531	Ashton Moir	Blues	2	$434,000	91	45.5	10.5
-531	Tobie Travaglia	Saints	6	$436,000	273	45.5	10.4
-533	Rhett Bazzo	Eagles	13	$427,000	590	45.4	10.6
-534	Riley Hardeman	Kangaroos	6	$455,000	272	45.3	10.0
-534	Brody Mihocek INJ	Demons	10	$428,000	453	45.3	10.6
-534	Jake Kolodjashnij	Cats	11	$434,000	498	45.3	10.4
+525	Jed Walter	Suns	18	$424,000	828	46.0	10.8
+528	Lewis Melican	Swans	10	$486,000	459	45.9	9.4
+528	Oscar Steene INJ	Magpies	8	$414,000	367	45.9	11.1
+530	Kye Annand	Tigers	11	$409,000	504	45.8	11.2
+530	Rhett Bazzo	Eagles	14	$427,000	641	45.8	10.7
+532	Finn Maginness	Hawks	6	$462,000	274	45.7	9.9
+533	Max Gruzewski	Giants	15	$463,000	683	45.5	9.8
+533	Ashton Moir	Blues	2	$434,000	91	45.5	10.5
+535	Brody Mihocek INJ	Demons	10	$428,000	453	45.3	10.6
+535	Jake Kolodjashnij	Cats	11	$434,000	498	45.3	10.4
 537	Harry Schoenberg	Eagles	5	$394,000	226	45.2	11.5
 537	Elijah Hewett INJ	Eagles	6	$471,000	271	45.2	9.6
-539	Liam Ryan	Saints	16	$414,000	722	45.1	10.9
-540	Alex Van Wyk	Power	2	$272,000	90	45.0	16.5
-540	Cooper Duff-Tytler	Eagles	15	$437,000	675	45.0	10.3
-542	Flynn Perez INJ	Hawks	7	$389,000	313	44.7	11.5
-542	Toby Murray	Crows	13	$383,000	581	44.7	11.7
-542	Aidan Corr	Kangaroos	15	$441,000	670	44.7	10.1
-545	Ethan Read	Suns	14	$362,000	624	44.6	12.3
+539	Aidan Corr	Kangaroos	16	$441,000	720	45.0	10.2
+539	Jack Whitlock	Power	23	$390,000	1,034	45.0	11.5
+541	James Borlase	Crows	17	$395,000	763	44.9	11.4
+542	Lewis Young	Blues	12	$414,000	537	44.8	10.8
+543	Flynn Perez INJ	Hawks	7	$389,000	313	44.7	11.5
+543	Toby Murray	Crows	13	$383,000	581	44.7	11.7
+545	Ethan Read	Suns	15	$362,000	667	44.5	12.3
+546	Griffin Logue	Kangaroos	16	$423,000	711	44.4	10.5
+546	Jack Henry	Cats	19	$479,000	844	44.4	9.3
 546	Lachlan McNeil	Bulldogs	10	$431,000	444	44.4	10.3
-547	Ben McKay	Bombers	15	$429,000	664	44.3	10.3
-548	Nikolas Cox	Bombers	8	$436,000	354	44.2	10.1
-548	Jack Whitlock	Power	22	$390,000	973	44.2	11.3
-550	Jack Buckley INJ	Giants	9	$419,000	396	44.0	10.5
-550	Bradley Close	Cats	15	$456,000	660	44.0	9.6
-552	Darcy Gardiner	Lions	11	$424,000	478	43.5	10.2
-553	Sean Darcy INJ	Dockers	7	$468,000	304	43.4	9.3
-554	Flynn Young	Blues	3	$434,000	130	43.3	10.0
-555	Dante Visentini	Power	14	$422,000	605	43.2	10.2
-556	Chayce Jones	Crows	3	$506,000	129	43.0	8.5
-557	James O'Donnell	Bulldogs	18	$455,000	772	42.9	9.4
-557	Oliver Wiltshire INJ	Cats	14	$415,000	600	42.9	10.3
-559	Lachlan Blakiston	Bombers	17	$401,000	726	42.7	10.6
-559	Will Lewis INJ	Bulldogs	12	$400,000	512	42.7	10.7
-561	Griffin Logue	Kangaroos	15	$423,000	639	42.6	10.1
-562	Jasper Alger INJ	Tigers	8	$401,000	340	42.5	10.6
-563	Lewis Young	Blues	11	$414,000	466	42.4	10.2
-564	Jordon Butts INJ	Crows	9	$364,000	380	42.2	11.6
-565	Jacob Konstanty INJ	Kangaroos	10	$435,000	420	42.0	9.7
-566	Malcolm Rosas	Swans	16	$314,000	671	41.9	13.4
-566	Harry Kyle	Swans	9	$385,000	377	41.9	10.9
-568	Archie May INJ	Bombers	10	$426,000	417	41.7	9.8
-568	Finnbar Maley	Crows	6	$383,000	250	41.7	10.9
-570	Nicholas Holman	Suns	6	$399,000	249	41.5	10.4
-570	Laitham Vandermeer	Bulldogs	2	$439,000	83	41.5	9.5
-572	Samson Ryan	Tigers	5	$372,000	205	41.0	11.0
-573	Isaac Kako	Bombers	14	$381,000	572	40.9	10.7
-574	William McCabe	Hawks	4	$301,000	163	40.8	13.5
-575	Daniel Annable	Lions	3	$353,000	122	40.7	11.5
-575	Matthew Jefferson	Demons	15	$353,000	610	40.7	11.5
-577	Bodie Ryan	Hawks	5	$335,000	203	40.6	12.1
-578	Zane Peucker	Tigers	2	$260,000	81	40.5	15.6
-579	Jack Ough	Giants	5	$343,000	202	40.4	11.8
-580	Jayden Nguyen	Bombers	5	$359,000	200	40.0	11.1
-581	Oliver Hayes-Brown	Tigers	7	$346,000	279	39.9	11.5
-582	Harrison Oliver	Giants	5	$319,000	199	39.8	12.5
-583	Paddy Cross	Demons	11	$370,000	437	39.7	10.7
-583	Harrison Jones	Bombers	6	$424,000	238	39.7	9.4
-583	Tom Cochrane	Power	3	$313,000	119	39.7	12.7
-586	Max Heath	Demons	7	$385,000	277	39.6	10.3
-586	Riley Hamilton	Giants	7	$339,000	277	39.6	11.7
-588	Josaia Delana	Giants	8	$372,000	315	39.4	10.6
-588	Harvey Johnston	Eagles	8	$353,000	315	39.4	11.2
-590	Wil Parker	Magpies	5	$327,000	196	39.2	12.0
-591	Wil Dawson	Kangaroos	9	$372,000	352	39.1	10.5
-592	Aidan Johnson	Demons	1	$282,000	39	39.0	13.8
-593	Luke Kennedy	Bulldogs	5	$320,000	194	38.8	12.1
-594	Lachy Dovaston	Kangaroos	6	$348,000	232	38.7	11.1
-595	Isaac Keeler	Saints	2	$386,000	77	38.5	10.0
-596	Jake Melksham	Demons	6	$408,000	230	38.3	9.4
-596	Rhys Unwin	Bombers	3	$265,000	115	38.3	14.5
-596	Harvey Gallagher	Bulldogs	3	$440,000	115	38.3	8.7
-599	Jack Buller	Magpies	10	$389,000	382	38.2	9.8
-599	Jack Hutchinson INJ	Eagles	6	$441,000	229	38.2	8.7
-601	Tom Barrass	Hawks	18	$339,000	686	38.1	11.2
-602	Jake Rogers	Suns	8	$335,000	304	38.0	11.3
-602	Ollie Lord INJ	Power	1	$313,000	38	38.0	12.1
-604	Hussien El Achkar	Bombers	9	$368,000	341	37.9	10.3
-605	Callum Coleman-Jones	Kangaroos	5	$317,000	189	37.8	11.9
-605	Corey Warner	Swans	5	$409,000	189	37.8	9.2
-607	Oscar Adams	Suns	13	$349,000	487	37.5	10.7
-607	Max Kondogiannis	Bombers	11	$336,000	412	37.5	11.1
-609	Alix Tauru	Saints	9	$375,000	335	37.2	9.9
-609	Will Edwards INJ	Swans	14	$318,000	521	37.2	11.7
-609	Oliver Hannaford	Giants	5	$324,000	186	37.2	11.5
-609	Jordan Croft	Bulldogs	17	$349,000	632	37.2	10.7
-613	Joel Hamling	Swans	8	$326,000	297	37.1	11.4
-614	Noah Roberts-Thomson	Tigers	3	$282,000	111	37.0	13.1
-614	Jonty Faull INJ	Tigers	10	$360,000	370	37.0	10.3
-616	Andy Moniz-Wakefield INJ	Demons	2	$368,000	73	36.5	9.9
-617	Jamarra Ugle-Hagan	Suns	3	$423,000	109	36.3	8.6
-618	Toby McMullin	Giants	7	$362,000	253	36.1	10.0
-618	Charlie West	Magpies	7	$317,000	253	36.1	11.4
-618	Zane Duursma INJ	Kangaroos	15	$326,000	542	36.1	11.1
-621	Lukas Cooke	Demons	2	$249,000	72	36.0	14.5
-622	Charlie Ballard	Suns	10	$312,000	356	35.6	11.4
-622	Liam Fawcett	Tigers	7	$302,000	249	35.6	11.8
-624	Max Ramsden	Hawks	2	$426,000	71	35.5	8.3
-625	Alex Pearce	Dockers	19	$312,000	657	34.6	11.1
-626	Archer Reid INJ	Eagles	6	$353,000	205	34.2	9.7
-627	Sandy Brock	Eagles	6	$360,000	204	34.0	9.4
-627	Mitchell Hinge	Crows	1	$664,000	34	34.0	5.1
-629	Anthony Caminiti	Saints	18	$360,000	610	33.9	9.4
-630	Latrelle Pickett	Demons	16	$328,000	537	33.6	10.2
-631	Archie Ludowyke	Crows	2	$257,000	67	33.5	13.0
-632	Jacob Newton INJ	Eagles	3	$268,000	100	33.3	12.4
-633	Taylor Goad	Kangaroos	2	$248,000	66	33.0	13.3
-633	Will Hayes	Magpies	8	$326,000	264	33.0	10.1
-635	Maurice Rioli	Tigers	9	$324,000	293	32.6	10.0
-636	Malakai Champion	Eagles	8	$320,000	260	32.5	10.2
-637	Chris Scerri	Dockers	8	$279,000	257	32.1	11.5
-638	Balyn O'Brien	Power	5	$269,000	160	32.0	11.9
-639	Dylan Patterson	Suns	5	$314,000	159	31.8	10.1
-640	Matt Whitlock	Kangaroos	3	$259,000	95	31.7	12.2
-641	Campbell Gray	Tigers	9	$324,000	278	30.9	9.5
-642	Thomas Burton	Tigers	5	$272,000	154	30.8	11.3
-642	Brandon Zerk-Thatcher	Power	4	$392,000	123	30.8	7.8
-644	Luker Kentfield	Demons	3	$264,000	92	30.7	11.6
-645	Mitch Zadow	Power	8	$299,000	245	30.6	10.2
-646	Lachlan Fogarty	Blues	2	$524,000	60	30.0	5.7
-646	Brandon Walker INJ	Dockers	1	$425,000	30	30.0	7.1
-648	Noah Howes	Magpies	2	$233,000	59	29.5	12.7
-648	Xavier Taylor	Demons	2	$303,000	59	29.5	9.7
-650	Louis Emmett	Bulldogs	7	$262,000	200	28.6	10.9
-651	Hudson O'Keeffe	Blues	3	$316,000	85	28.3	9.0
-652	Will McLachlan	Lions	1	$233,000	28	28.0	12.0
-653	Liam Puncher	Magpies	7	$265,000	193	27.6	10.4
-654	Darcy Moore INJ	Magpies	4	$343,000	106	26.5	7.7
-655	Lachlan Carmichael	Bulldogs	1	$265,000	26	26.0	9.8
-656	Cody Curtin	Lions	4	$233,000	103	25.8	11.1
-657	Jy Farrar	Suns	3	$446,000	71	23.7	5.3
-658	Luke Cleary	Bulldogs	2	$460,000	47	23.5	5.1
-659	Matt Hill	Hawks	2	$230,000	46	23.0	10.0
-660	Harrison Ramm	Power	5	$230,000	109	21.8	9.5
-661	Caleb Lewis	Suns	2	$230,000	36	18.0	7.8
-662	Harry Armstrong	Tigers	4	$240,000	64	16.0	6.7
-663	Matt Guelfi	Bombers	3	$339,000	46	15.3	4.5
-664	Ryan Gardner	Bulldogs	1	$230,000	11	11.0	4.8
-665	Max King INJ	Saints	1	$349,000	8	8.0	2.3
-666	Harry Edwards INJ	Eagles	2	$335,000	8	4.0	1.2
+549	Ben McKay	Bombers	15	$429,000	664	44.3	10.3
+550	Cooper Duff-Tytler	Eagles	16	$437,000	708	44.2	10.1
+550	Bradley Close	Cats	16	$456,000	708	44.2	9.7
+550	Nikolas Cox	Bombers	8	$436,000	354	44.2	10.1
+553	Nicholas Holman	Suns	7	$399,000	309	44.1	11.1
+554	Liam Ryan	Saints	17	$414,000	748	44.0	10.6
+554	Jack Buckley INJ	Giants	9	$419,000	396	44.0	10.5
+556	Sean Darcy INJ	Dockers	7	$468,000	304	43.4	9.3
+557	Flynn Young	Blues	3	$434,000	130	43.3	10.0
+558	Samson Ryan	Tigers	6	$372,000	258	43.0	11.6
+558	Chayce Jones	Crows	3	$506,000	129	43.0	8.5
+560	Oliver Wiltshire INJ	Cats	14	$415,000	600	42.9	10.3
+561	Darcy Gardiner	Lions	12	$424,000	513	42.8	10.1
+562	Lachlan Blakiston	Bombers	17	$401,000	726	42.7	10.6
+562	Will Lewis INJ	Bulldogs	12	$400,000	512	42.7	10.7
+562	Dante Visentini	Power	15	$422,000	640	42.7	10.1
+565	Jasper Alger INJ	Tigers	8	$401,000	340	42.5	10.6
+565	Harry Kyle	Swans	10	$385,000	425	42.5	11.0
+565	James O'Donnell	Bulldogs	19	$455,000	807	42.5	9.3
+568	Jordon Butts INJ	Crows	9	$364,000	380	42.2	11.6
+569	Judson Clarke	Tigers	3	$276,000	126	42.0	15.2
+569	Jacob Konstanty INJ	Kangaroos	10	$435,000	420	42.0	9.7
+571	Malcolm Rosas	Swans	16	$314,000	671	41.9	13.4
+572	Luke Kennedy	Bulldogs	6	$320,000	251	41.8	13.1
+573	Archie May INJ	Bombers	10	$426,000	417	41.7	9.8
+573	Finnbar Maley	Crows	6	$383,000	250	41.7	10.9
+575	Isaac Kako	Bombers	15	$381,000	623	41.5	10.9
+575	Laitham Vandermeer	Bulldogs	2	$439,000	83	41.5	9.5
+577	Josaia Delana	Giants	9	$372,000	373	41.4	11.1
+578	Riley Hamilton	Giants	8	$339,000	330	41.2	12.2
+579	Harrison Jones	Bombers	7	$424,000	288	41.1	9.7
+580	William McCabe	Hawks	4	$301,000	163	40.8	13.5
+581	Daniel Annable	Lions	3	$353,000	122	40.7	11.5
+582	Bodie Ryan	Hawks	5	$335,000	203	40.6	12.1
+583	Zane Peucker	Tigers	2	$260,000	81	40.5	15.6
+583	Matthew Jefferson	Demons	16	$353,000	648	40.5	11.5
+585	Jack Ough	Giants	5	$343,000	202	40.4	11.8
+586	Jayden Nguyen	Bombers	5	$359,000	200	40.0	11.1
+587	Oliver Hayes-Brown	Tigers	7	$346,000	279	39.9	11.5
+588	Harrison Oliver	Giants	5	$319,000	199	39.8	12.5
+589	Paddy Cross	Demons	11	$370,000	437	39.7	10.7
+589	Tom Cochrane	Power	3	$313,000	119	39.7	12.7
+591	Max Heath	Demons	7	$385,000	277	39.6	10.3
+592	Harvey Johnston	Eagles	8	$353,000	315	39.4	11.2
+593	Jake Rogers	Suns	9	$335,000	354	39.3	11.7
+594	Wil Parker	Magpies	5	$327,000	196	39.2	12.0
+595	Aidan Johnson	Demons	1	$282,000	39	39.0	13.8
+596	Wil Dawson	Kangaroos	10	$372,000	387	38.7	10.4
+596	Lachy Dovaston	Kangaroos	6	$348,000	232	38.7	11.1
+598	Isaac Keeler	Saints	2	$386,000	77	38.5	10.0
+598	Charlie West	Magpies	8	$317,000	308	38.5	12.1
+600	Harvey Gallagher	Bulldogs	3	$440,000	115	38.3	8.7
+600	Jake Melksham	Demons	6	$408,000	230	38.3	9.4
+602	Jack Buller	Magpies	10	$389,000	382	38.2	9.8
+602	Max Kondogiannis	Bombers	12	$336,000	458	38.2	11.4
+602	Jack Hutchinson INJ	Eagles	6	$441,000	229	38.2	8.7
+605	Ollie Lord INJ	Power	1	$313,000	38	38.0	12.1
+605	Rhys Unwin	Bombers	4	$265,000	152	38.0	14.3
+607	Tom Barrass	Hawks	19	$339,000	721	37.9	11.2
+607	Hussien El Achkar	Bombers	9	$368,000	341	37.9	10.3
+609	Corey Warner	Swans	5	$409,000	189	37.8	9.2
+609	Callum Coleman-Jones	Kangaroos	5	$317,000	189	37.8	11.9
+611	Oscar Adams	Suns	13	$349,000	487	37.5	10.7
+612	Charlie Ballard	Suns	11	$312,000	410	37.3	11.9
+613	Alix Tauru	Saints	9	$375,000	335	37.2	9.9
+613	Will Edwards INJ	Swans	14	$318,000	521	37.2	11.7
+613	Oliver Hannaford	Giants	5	$324,000	186	37.2	11.5
+613	Jordan Croft	Bulldogs	17	$349,000	632	37.2	10.7
+617	Noah Roberts-Thomson	Tigers	3	$282,000	111	37.0	13.1
+617	Jonty Faull INJ	Tigers	10	$360,000	370	37.0	10.3
+619	Joel Hamling	Swans	9	$326,000	331	36.8	11.3
+620	Andy Moniz-Wakefield INJ	Demons	2	$368,000	73	36.5	9.9
+620	Toby McMullin	Giants	8	$362,000	292	36.5	10.1
+622	Jamarra Ugle-Hagan	Suns	3	$423,000	109	36.3	8.6
+623	Zane Duursma INJ	Kangaroos	15	$326,000	542	36.1	11.1
+624	Lukas Cooke	Demons	2	$249,000	72	36.0	14.5
+625	Liam Fawcett	Tigers	7	$302,000	249	35.6	11.8
+626	Max Ramsden	Hawks	2	$426,000	71	35.5	8.3
+627	Will Hayes	Magpies	9	$326,000	316	35.1	10.8
+628	Maurice Rioli	Tigers	10	$324,000	342	34.2	10.6
+628	Archer Reid INJ	Eagles	6	$353,000	205	34.2	9.7
+630	Mitchell Hinge	Crows	1	$664,000	34	34.0	5.1
+630	Sandy Brock	Eagles	6	$360,000	204	34.0	9.4
+632	Campbell Gray	Tigers	10	$324,000	339	33.9	10.5
+632	Anthony Caminiti	Saints	18	$360,000	610	33.9	9.4
+632	Alex Pearce	Dockers	20	$312,000	677	33.9	10.8
+635	Latrelle Pickett	Demons	16	$328,000	537	33.6	10.2
+636	Archie Ludowyke	Crows	2	$257,000	67	33.5	13.0
+637	Jacob Newton INJ	Eagles	3	$268,000	100	33.3	12.4
+638	Mitch Zadow	Power	9	$299,000	298	33.1	11.1
+639	Taylor Goad	Kangaroos	2	$248,000	66	33.0	13.3
+640	Malakai Champion	Eagles	8	$320,000	260	32.5	10.2
+641	Dylan Patterson	Suns	5	$314,000	159	31.8	10.1
+642	Matt Whitlock	Kangaroos	3	$259,000	95	31.7	12.2
+643	Chris Scerri	Dockers	9	$279,000	279	31.0	11.1
+644	Thomas Burton	Tigers	5	$272,000	154	30.8	11.3
+644	Brandon Zerk-Thatcher	Power	4	$392,000	123	30.8	7.8
+646	Luker Kentfield	Demons	3	$264,000	92	30.7	11.6
+647	Lachlan Fogarty	Blues	2	$524,000	60	30.0	5.7
+647	Brandon Walker INJ	Dockers	1	$425,000	30	30.0	7.1
+649	Xavier Taylor	Demons	2	$303,000	59	29.5	9.7
+649	Lachlan Carmichael	Bulldogs	2	$265,000	59	29.5	11.1
+649	Noah Howes	Magpies	2	$233,000	59	29.5	12.7
+652	Balyn O'Brien	Power	6	$269,000	176	29.3	10.9
+653	Louis Emmett	Bulldogs	7	$262,000	200	28.6	10.9
+654	Hudson O'Keeffe	Blues	3	$316,000	85	28.3	9.0
+655	Will McLachlan	Lions	1	$233,000	28	28.0	12.0
+656	Darcy Moore INJ	Magpies	4	$343,000	106	26.5	7.7
+657	Liam Puncher	Magpies	8	$265,000	211	26.4	10.0
+658	Cody Curtin	Lions	4	$233,000	103	25.8	11.1
+659	Jy Farrar	Suns	3	$446,000	71	23.7	5.3
+660	Luke Cleary	Bulldogs	2	$460,000	47	23.5	5.1
+660	Harrison Ramm	Power	6	$230,000	141	23.5	10.2
+662	Ryan Gardner	Bulldogs	2	$230,000	46	23.0	10.0
+662	Matt Hill	Hawks	2	$230,000	46	23.0	10.0
+664	Caleb Lewis	Suns	2	$230,000	36	18.0	7.8
+665	Harry Armstrong	Tigers	4	$240,000	64	16.0	6.7
+666	Matt Guelfi	Bombers	3	$339,000	46	15.3	4.5
+667	Max King INJ	Saints	1	$349,000	8	8.0	2.3
+668	Harry Edwards INJ	Eagles	2	$335,000	8	4.0	1.2
