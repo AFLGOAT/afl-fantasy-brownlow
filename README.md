@@ -38,6 +38,8 @@ Optional supporting files:
 | `players.txt` | Player registry with positions and starting prices — enables position-based difficulty ratings |
 | `fixture.txt` | Full season fixture — enables upcoming difficulty and projected scores |
 | `current_round.txt` | Current week's price rankings — used for post-round prices in the leaderboard and player cards |
+| `cba.txt` | Tab-separated centre bounce attendance % per round (`Player TM TOT AVG PS1 R0...R24`) — feeds the Draft page's CBA trend signal |
+| `ages.txt` | Tab-separated `Player Team Age` (whole years) — optional, used as a small factor in the Draft page's Draft Score |
 
 ---
 

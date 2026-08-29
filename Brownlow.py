@@ -96,6 +96,7 @@ def build_name_matcher(players_data):
     return resolve
 
 CBA_FILE = "cba.txt"
+AGE_FILE = "ages.txt"
 
 def parse_cba_file(filepath):
     """Parse a CBA% (centre bounce attendance) export: tab-separated Player, TM, TOT,
@@ -152,6 +153,41 @@ def attach_cba_data(players_data, cba_rows):
             unmatched.append(row["name"])
     tail = f" — unmatched: {', '.join(unmatched[:10])}{' ...' if len(unmatched) > 10 else ''}" if unmatched else ""
     print(f"ℹ️  CBA import: {matched}/{len(cba_rows)} players matched{tail}")
+
+def parse_age_file(filepath):
+    """Parse an optional Player\\tTeam\\tAge file (hand-maintained/sourced the same
+    way as players.txt) — age in whole years. Entirely optional: the Draft page
+    treats a missing age as neutral rather than as a bug, same 'missing data
+    degrades gracefully' principle as everywhere else in this file."""
+    if not os.path.exists(filepath): return []
+    with open(filepath, "r", encoding="utf-8") as f:
+        lines = f.readlines()
+    if len(lines) < 2: return []
+    results = []
+    for line in lines[1:]:
+        line = line.rstrip("\n")
+        if not line.strip(): continue
+        parts = line.split("\t")
+        if len(parts) < 3: continue
+        name = clean_name(parts[0].strip())
+        team = normalise_team(parts[1].strip())
+        try: age = int(parts[2].strip())
+        except ValueError: continue
+        if name: results.append({"name": name, "team": team, "age": age})
+    return results
+
+def attach_age_data(players_data, age_rows):
+    resolve = build_name_matcher(players_data)
+    matched, unmatched = 0, []
+    for row in age_rows:
+        target = resolve(row["name"], row["team"])
+        if target:
+            target["age"] = row["age"]
+            matched += 1
+        else:
+            unmatched.append(row["name"])
+    tail = f" — unmatched: {', '.join(unmatched[:10])}{' ...' if len(unmatched) > 10 else ''}" if unmatched else ""
+    print(f"ℹ️  Age import: {matched}/{len(age_rows)} players matched{tail}")
 
 CHAMPION_DATA_FOLDER = ROUNDS_FOLDER  # round_N.csv lives alongside round_N.txt
 CHAMPION_DATA_ID_COLS = {"MatchId", "Player", "Team"}
@@ -1436,6 +1472,7 @@ canvas{max-height:340px}
 .race-controls{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
 .race-btn{padding:7px 16px;border-radius:7px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .15s}
 .race-btn:hover{border-color:var(--accent);color:var(--accent)}
+.race-btn:disabled{opacity:.35;cursor:not-allowed;pointer-events:none}
 .race-btn.playing{background:var(--accent);border-color:var(--accent);color:#000}
 .race-round-label{font-size:.95rem;color:var(--muted)}
 .race-slider{flex:1;min-width:160px;accent-color:var(--accent)}
@@ -1843,6 +1880,94 @@ canvas{max-height:340px}
 .target-metric{flex-shrink:0;text-align:right;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.92rem}
 .target-metric-sub{font-size:.6rem;color:var(--muted);font-weight:600}
 
+/* ── Draft ── */
+.draft-mine-group{margin-bottom:8px}
+.draft-mine-group:last-child{margin-bottom:0}
+.draft-mine-group-head{font-size:.64rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:800;margin-bottom:4px}
+.draft-mine-group-head span{color:var(--text);font-weight:700}
+.draft-mine-chips{display:flex;flex-wrap:wrap;gap:6px}
+.draft-mine-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(232,160,32,.12);border:1px solid rgba(232,160,32,.35);color:var(--accent);font-size:.78rem;font-weight:700;padding:4px 6px 4px 10px;border-radius:20px}
+.draft-mine-chip button{background:none;border:none;color:var(--accent);cursor:pointer;font-size:.9rem;line-height:1;padding:2px}
+.draft-mine-dpp{color:var(--muted);font-weight:600;font-size:.7rem}
+.draft-mine-empty{color:var(--muted);font-size:.85rem;padding:10px 2px}
+tr.draft-row-taken td{opacity:.4}
+tr.draft-row-taken .player-link{text-decoration:line-through}
+tr.draft-row-mine{background:rgba(232,160,32,.07)}
+.draft-btn{padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-weight:700;font-size:.72rem;cursor:pointer;transition:all .15s;white-space:nowrap}
+.draft-btn:hover{border-color:var(--accent2)}
+.draft-btn+.draft-btn{margin-left:6px}
+.draft-btn-taken.active{background:var(--surface2);border-color:var(--muted);color:var(--muted)}
+.draft-btn-mine.active{background:var(--accent);border-color:var(--accent);color:#000}
+.draft-score{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.05rem}
+.draft-tier{display:inline-block;padding:2px 7px;border-radius:4px;font-size:.66rem;font-weight:800;letter-spacing:.04em;white-space:nowrap}
+.tier-elite{background:rgba(232,160,32,.18);color:var(--accent)}
+.tier-a{background:rgba(52,211,153,.15);color:var(--green)}
+.tier-b{background:rgba(59,130,246,.15);color:var(--accent2)}
+.tier-c{background:rgba(var(--overlay-rgb),.08);color:var(--muted)}
+.tier-d{background:rgba(248,113,113,.12);color:var(--red)}
+.draft-pos-rank{color:var(--muted);font-size:.68rem;font-weight:700;margin-left:4px}
+#draftTable .adv-col{display:none}
+#draftTable.show-adv .adv-col{display:table-cell}
+.draft-vbd-pos{color:var(--green);font-weight:700}
+.draft-vbd-neg{color:var(--red);font-weight:700}
+.draft-btn-queue{padding:5px 8px}
+.draft-btn-queue.active{background:rgba(59,130,246,.15);border-color:var(--accent2);color:var(--accent2)}
+tr.tier-break td{padding:4px 12px;font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:rgba(var(--overlay-rgb),.035)}
+
+.draft-best-strip{display:flex;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.draft-best-card{position:relative;flex:0 0 auto;min-width:150px;background:var(--surface);border:1px solid var(--accent);border-radius:var(--radius-md);padding:9px 34px 9px 12px;box-shadow:var(--shadow-glow);cursor:pointer}
+.draft-best-pick{position:absolute;top:7px;right:7px;width:22px;height:22px;border-radius:50%;border:1px solid var(--accent);background:var(--surface2);color:var(--accent);cursor:pointer;font-size:.68rem;display:flex;align-items:center;justify-content:center;padding:0;line-height:1}
+.draft-best-pick:hover{background:var(--accent);color:#000}
+.draft-best-label{font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:800;margin-bottom:4px}
+.draft-best-name{font-weight:700;font-size:.88rem;white-space:nowrap}
+.draft-best-sub{font-size:.68rem;color:var(--muted);margin-top:2px;white-space:nowrap}
+.draft-best-empty{color:var(--muted);font-size:.85rem;padding:8px 2px}
+
+.draft-scarcity-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.draft-scarcity-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 10px}
+.draft-scarcity-head{display:flex;justify-content:space-between;align-items:baseline;font-size:.72rem;font-weight:700;margin-bottom:5px}
+.draft-scarcity-head b{font-family:'Barlow Condensed',sans-serif;font-size:.85rem}
+.draft-scarcity-bar{height:5px;border-radius:3px;background:rgba(var(--overlay-rgb),.08);overflow:hidden}
+.draft-scarcity-fill{height:100%;border-radius:3px;transition:width var(--dur) var(--ease)}
+
+.draft-dropdown-row{display:flex;gap:10px;flex-wrap:wrap}
+.draft-dropdown-row .tf-dropdown-toggle{width:auto;flex:1 1 200px;margin-bottom:16px}
+.draft-view-toggle{display:flex;gap:8px;margin-bottom:10px}
+.draft-view-tab{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-weight:700;font-size:.8rem;cursor:pointer;transition:all .15s}
+.draft-view-tab:hover{border-color:var(--accent2);color:var(--text)}
+.draft-view-tab.active{background:var(--accent);border-color:var(--accent);color:#000}
+#tabBreakoutBtn.active{background:var(--accent2);border-color:var(--accent2);color:#fff}
+.draft-panels-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.draft-side-card{flex:1 1 320px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 14px;max-height:280px;display:flex;flex-direction:column}
+.draft-side-head{display:flex;align-items:center;justify-content:space-between;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.95rem;letter-spacing:.02em;margin-bottom:8px;color:var(--text);flex-shrink:0}
+.draft-side-head #draftMyCount,.draft-side-head #draftQueueCount{font-size:.68rem;color:var(--muted);font-weight:700;margin-left:4px}
+.draft-copy-btn{background:none;border:1px solid var(--border);border-radius:5px;color:var(--muted);cursor:pointer;font-size:.75rem;padding:3px 7px;flex-shrink:0}
+.draft-copy-btn:hover{border-color:var(--accent2);color:var(--accent2)}
+.draft-roster-bars{display:flex;flex-direction:column;gap:5px;margin-bottom:10px;flex-shrink:0}
+.draft-roster-bar-item span{font-size:.64rem;color:var(--muted);font-weight:700;display:block;margin-bottom:2px}
+.draft-fit-callout{background:var(--surface);border:1px solid var(--accent2);border-radius:var(--radius-lg);padding:10px 14px;font-size:.85rem;display:none}
+.draft-fit-callout.show{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.draft-fit-callout button{margin-left:auto}
+.draft-breakouts-head{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent2);font-weight:800;margin-bottom:8px}
+.draft-best-card.breakout{border-color:var(--accent2);box-shadow:0 0 0 1px rgba(59,130,246,.3),0 8px 20px rgba(59,130,246,.12)}
+.draft-best-card.breakout .draft-best-label{color:var(--accent2)}
+.draft-best-card.breakout .draft-best-pick{border-color:var(--accent2);color:var(--accent2)}
+.draft-best-card.breakout .draft-best-pick:hover{background:var(--accent2);color:#fff}
+.draft-side-card>div:last-child{overflow-y:auto}
+.draft-queue-item{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);font-size:.8rem}
+.draft-queue-item:last-child{border-bottom:none}
+.draft-queue-rank{flex-shrink:0;width:16px;text-align:center;color:var(--muted);font-weight:800;font-size:.72rem}
+.draft-queue-name{flex:1;min-width:0;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer}
+.draft-queue-actions{display:flex;gap:4px;flex-shrink:0}
+.draft-queue-actions button{background:none;border:1px solid var(--border);border-radius:5px;color:var(--muted);cursor:pointer;font-size:.72rem;padding:2px 5px;line-height:1.4}
+.draft-queue-actions button:hover{border-color:var(--accent2);color:var(--accent2)}
+.draft-queue-empty{color:var(--muted);font-size:.8rem;padding:6px 2px}
+.draft-table th,.draft-table td{padding:7px 8px;font-size:.82rem}
+.draft-table .draft-tier{font-size:.6rem;padding:1px 5px}
+.draft-table .draft-score{font-size:.92rem}
+.draft-table .pos-chip{font-size:.6rem}
+@media(max-width:640px){.draft-scarcity-row{grid-template-columns:1fr 1fr}.draft-side-card{flex:1 1 100%}}
+
 /* ── Mobile ── */
 .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 @media(max-width:860px){
@@ -1864,6 +1989,8 @@ canvas{max-height:340px}
   .page-head-title{font-size:1.1rem;padding-left:9px}
   .page-head-actions{margin-left:0;flex-wrap:wrap}
   .std-table{min-width:640px}
+  #draftTable{min-width:880px}
+  #draftTable.show-adv{min-width:1320px}
   .pitch-panel{padding:12px}
   .games-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
   .awards-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
@@ -1912,6 +2039,7 @@ canvas{max-height:340px}
     <button class="nav-btn"         onclick="showPage('trading',this)">&#128176; Trades</button>
     <button class="nav-btn"         onclick="showPage('rolling22',this)">&#127942; Rolling 22</button>
     <button class="nav-btn"         onclick="showPage('awards',this)">&#127941; Awards</button>
+    <button class="nav-btn"         onclick="showPage('draft',this)">&#128203; Draft</button>
     <div class="nav-indicator" id="navIndicator"></div>
   </nav>
   <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark mode">&#9728;&#65039;</button>
@@ -2389,6 +2517,100 @@ canvas{max-height:340px}
   </div>
 </div>
 
+<!-- DRAFT PAGE -->
+<div class="page" id="page-draft">
+  <div class="page-head">
+    <div class="page-head-title">&#128203; Draft</div>
+    <div class="page-head-actions">
+      <button class="info-btn" id="infoBtn-draft" onclick="toggleInfo('draft')">&#9432; How it works</button>
+      <button class="race-btn" id="draftUndoBtn" onclick="undoDraftAction()">&#8617; Undo</button>
+      <button class="race-btn" onclick="resetDraft()">&#8635; Reset Draft</button>
+    </div>
+  </div>
+  <div class="info-panel" id="info-draft">
+    <div class="info-heading">&#128203; Draft Score methodology</div>
+    Not just a total-points list &mdash; every player gets a <b>Draft Score</b> (0&ndash;100) built mainly on <b>proven output</b>: their 2026 season average is the dominant factor (55%), so a season-long elite performer always ranks near the top even if their very last game or two was quiet. The rest: <b>last-6-game average</b> (18%, recent form), <b>consistency</b> (10%, score volatility), <b>age</b> (7% &mdash; a gentle curve peaking around the mid-20s, just a nudge either side, never enough to override actual output), <b>durability</b> (5%, games played), and <b>CBA% trend</b> (5%, centre bounce attendance late in the year vs early &mdash; a player earning more midfield time is being trusted with a bigger role, an early signal for next season). Players are grouped into tiers (Elite/A/B/C/D), plus a position rank (e.g. "MID3").<br><br>
+    <b>VBD</b> (Value Based Drafting) is a separate number &mdash; it's a player's season average minus the expected season average of a "replacement level" player at their position (the last realistic starter, based on <b>Teams in League</b> and your <b>Roster Format</b> settings below). Draft Score tells you who's <i>good</i>; VBD tells you who's <i>scarce</i> &mdash; a top ruck can be worth drafting earlier than a similarly-scored midfielder simply because there's a much shallower pool behind him. Set <b>Roster Format</b> to match your actual league (starting DEF/MID/RUC/FWD slots + bench) &mdash; it varies a lot league to league, so nothing here is assumed for you.<br><br>
+    <b>&#128200; Breakout Watch</b> surfaces lower-tier players with rising CBA% or rising recent form &mdash; hidden gems, not the obvious top picks. The <b>&#127919; Best fit</b> callout factors your own roster gaps (against Roster Format) in on top of Draft Score.<br><br>
+    Use <b>&#128278; Queue</b> to build a running list of who you want next regardless of whose turn it is &mdash; press <b>D</b> anywhere on this page to instantly draft your top queued player, or <b>U</b> to undo your last action. During a live draft, hit <b>Taken</b> when another team grabs a player, or <b>+ Draft</b> to add them to <b>your</b> team &mdash; everything is saved in this browser only.
+  </div>
+
+  <div class="lb-stats-strip" id="draftSummary" style="margin-bottom:14px"></div>
+
+  <div class="draft-view-toggle">
+    <button class="draft-view-tab active" id="tabBestBtn" onclick="setDraftView('best')">&#128293; Best Available</button>
+    <button class="draft-view-tab" id="tabBreakoutBtn" onclick="setDraftView('breakout')">&#128200; Breakout Watch</button>
+  </div>
+  <div id="draftBestAvail" style="margin-bottom:8px"></div>
+  <div id="draftBreakouts" style="margin-bottom:8px;display:none"></div>
+  <div id="draftFitCallout" style="margin-bottom:14px"></div>
+
+  <div class="draft-scarcity-row" id="draftScarcity"></div>
+
+  <div class="draft-panels-row">
+    <div class="draft-side-card">
+      <div class="draft-side-head"><span>&#127942; My Team <span id="draftMyCount"></span></span><button class="draft-copy-btn" onclick="copyMyTeamToClipboard()" title="Copy team to clipboard">&#128203;</button></div>
+      <div id="draftMyTeamWrap"></div>
+    </div>
+    <div class="draft-side-card">
+      <div class="draft-side-head">&#128278; Draft Queue <span id="draftQueueCount"></span></div>
+      <div id="draftQueueWrap"></div>
+    </div>
+  </div>
+
+  <div class="draft-dropdown-row">
+    <button class="tf-dropdown-toggle" id="draftSettingsBtn" onclick="toggleDraftSettings()">&#9881;&#65039; League Settings <span id="draftSettingsArrow">&#9662;</span></button>
+    <button class="tf-dropdown-toggle" id="draftFilterBtn" onclick="toggleDraftFilters()">&#128269; Filters &amp; Sort <span id="draftFilterArrow">&#9662;</span></button>
+  </div>
+  <div class="targets-filter-wrap" id="draftSettingsPanel">
+    <div class="targets-filter-bar">
+      <div class="tf-field"><label>Teams in League</label><input type="number" id="draftTeams" value="10" min="4" max="20" style="width:70px" onchange="renderDraft()"></div>
+      <div class="tf-field"><label>Roster Format &mdash; DEF / MID / RUC / FWD / Bench</label><div style="display:flex;gap:4px">
+        <input type="number" id="draftFmtDEF" value="3" min="0" max="14" style="width:44px" onchange="saveDraftFormat();renderDraft()" title="DEF starters">
+        <input type="number" id="draftFmtMID" value="4" min="0" max="16" style="width:44px" onchange="saveDraftFormat();renderDraft()" title="MID starters">
+        <input type="number" id="draftFmtRUC" value="1" min="0" max="6" style="width:44px" onchange="saveDraftFormat();renderDraft()" title="RUC starters">
+        <input type="number" id="draftFmtFWD" value="3" min="0" max="14" style="width:44px" onchange="saveDraftFormat();renderDraft()" title="FWD starters">
+        <input type="number" id="draftFmtBENCH" value="4" min="0" max="14" style="width:44px" onchange="saveDraftFormat();renderDraft()" title="Bench spots">
+      </div></div>
+    </div>
+  </div>
+  <div class="targets-filter-wrap" id="draftFilterPanel">
+    <div class="targets-filter-bar">
+      <div class="tf-field" style="flex:1 1 160px"><label>Search</label><input type="text" id="draftSearch" placeholder="Player or team..." oninput="renderDraft()" style="width:100%"></div>
+      <div class="tf-field"><label>Position</label><select id="draftPos" onchange="renderDraft()">
+        <option value="">All</option><option value="DEF">DEF</option><option value="MID">MID</option><option value="RUC">RUC</option><option value="FWD">FWD</option>
+      </select></div>
+      <div class="tf-field"><label>Sort By</label><select id="draftSort" onchange="renderDraft()">
+        <option value="draftScore">Draft Score</option>
+        <option value="vbd">VBD</option>
+        <option value="avg">Season Avg</option>
+        <option value="recentAvg">Last 6 Avg (Form)</option>
+        <option value="total">Total FP</option>
+        <option value="cbaTrend">CBA Trend</option>
+        <option value="votes">Brownlow Votes</option>
+        <option value="gp">Games Played</option>
+      </select></div>
+      <div class="tf-field"><label>Min Games</label><input type="number" id="draftMinGp" value="3" min="0" style="width:70px" onchange="renderDraft()"></div>
+      <div class="tf-field"><label>&nbsp;</label><label style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text);cursor:pointer;white-space:nowrap;padding:7px 0"><input type="checkbox" id="draftHideTaken" onchange="renderDraft()"> Hide drafted</label></div>
+      <div class="tf-field"><label>&nbsp;</label><label style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text);cursor:pointer;white-space:nowrap;padding:7px 0"><input type="checkbox" id="draftShowAdv" onchange="renderDraft()"> Show advanced stats</label></div>
+      <div class="tf-count" id="draftCount"></div>
+    </div>
+  </div>
+
+  <div class="table-scroll">
+  <table class="std-table draft-table" id="draftTable">
+    <thead><tr>
+      <th>Rank</th><th>Tier</th><th>Player</th><th>Team</th><th>Pos</th><th class="ta-r">Age</th>
+      <th class="ta-r">GP</th><th class="ta-r">Score</th><th class="ta-r">VBD</th><th class="ta-r">Season Avg</th><th>Form (L6)</th><th>CBA%</th><th class="ta-r">Votes</th>
+      <th class="ta-r adv-col">Total FP</th><th class="ta-r adv-col">Best</th>
+      <th class="ta-r adv-col">Disp</th><th class="ta-r adv-col">Tack</th><th class="ta-r adv-col">Clr</th><th class="ta-r adv-col">I50</th><th class="ta-r adv-col">Goals</th>
+      <th>Draft</th>
+    </tr></thead>
+    <tbody id="draftBody"></tbody>
+  </table>
+  </div>
+</div>
+
 </main>
 
 <!-- SCENARIO OVERLAY -->
@@ -2568,6 +2790,7 @@ function showPage(id, btn) {
   if (id === 'trading') renderTradeLists();
   if (id === 'myteam') renderMyTeam();
   if (id === 'rolling22') renderRolling22();
+  if (id === 'draft') renderDraft();
 }
 moveNavIndicator(document.querySelector('.nav-btn.active'));
 window.addEventListener('resize', function() { moveNavIndicator(document.querySelector('.nav-btn.active')); });
@@ -2595,6 +2818,592 @@ function toggleVoteRace() {
     if (raceTimer) { clearInterval(raceTimer); raceTimer = null; }
   }
 }
+
+// ── Draft ─────────────────────────────────────────────────────────────────────
+function getDraftState() { return lsGet('draft_state', {}); }
+function getDraftQueue() { return lsGet('draft_queue', []); }
+function setDraftQueue(q) { lsSet('draft_queue', q); }
+// Undo: snapshot state+queue before every mutating action. Simpler and safer
+// than hand-rolling inverse operations for each action type.
+function pushDraftUndo() {
+  var stack = lsGet('draft_undo', []);
+  stack.push({ state: getDraftState(), queue: getDraftQueue() });
+  if (stack.length > 25) stack.shift();
+  lsSet('draft_undo', stack);
+}
+function undoDraftAction() {
+  var stack = lsGet('draft_undo', []);
+  if (!stack.length) return;
+  var prev = stack.pop();
+  lsSet('draft_undo', stack);
+  lsSet('draft_state', prev.state);
+  lsSet('draft_queue', prev.queue);
+  renderDraft();
+}
+function setDraftState(key, state) {
+  pushDraftUndo();
+  var s = getDraftState();
+  if (s[key] === state) delete s[key]; // clicking the active state again undoes it
+  else s[key] = state; // 'taken' and 'mine' are mutually exclusive per player
+  lsSet('draft_state', s);
+  if (s[key]) { // now occupying a slot — off the board, no longer relevant to the queue
+    var q = getDraftQueue(), idx = q.indexOf(key);
+    if (idx !== -1) { q.splice(idx,1); setDraftQueue(q); }
+  }
+  renderDraft();
+}
+function toggleDraftQueue(key) {
+  pushDraftUndo();
+  var q = getDraftQueue(), idx = q.indexOf(key);
+  if (idx === -1) q.push(key); else q.splice(idx,1);
+  setDraftQueue(q);
+  renderDraft();
+}
+function resetDraft() {
+  if (!confirm('Clear all Taken/Mine marks and your queue for this draft? This cannot be undone.')) return;
+  pushDraftUndo();
+  lsSet('draft_state', {});
+  lsSet('draft_queue', []);
+  renderDraft();
+}
+function toggleDraftFilters() {
+  var panel = document.getElementById('draftFilterPanel');
+  var btn = document.getElementById('draftFilterBtn');
+  if (!panel) return;
+  var open = panel.classList.toggle('open');
+  if (btn) btn.classList.toggle('open', open);
+}
+function toggleDraftSettings() {
+  var panel = document.getElementById('draftSettingsPanel');
+  var btn = document.getElementById('draftSettingsBtn');
+  if (!panel) return;
+  var open = panel.classList.toggle('open');
+  if (btn) btn.classList.toggle('open', open);
+}
+var draftView = 'best';
+function setDraftView(v) {
+  draftView = v;
+  document.getElementById('tabBestBtn').classList.toggle('active', v==='best');
+  document.getElementById('tabBreakoutBtn').classList.toggle('active', v==='breakout');
+  document.getElementById('draftBestAvail').style.display = v==='best' ? '' : 'none';
+  document.getElementById('draftBreakouts').style.display = v==='breakout' ? '' : 'none';
+}
+
+var draftPool = null;
+// Roster format (starting DEF/MID/RUC/FWD slots + bench) varies a lot league to
+// league, so it's a user setting rather than an assumption baked into the code —
+// this is what both VBD's "replacement level" and the roster-needs bars read
+// from. Default is a common 11-a-side shape (3 DEF/4 MID/1 RUC/3 FWD + 4 bench)
+// but the Roster Format inputs in the settings bar above the table override it.
+function getDraftRosterFormat() { return lsGet('draft_roster_format', { DEF:3, MID:4, RUC:1, FWD:3, BENCH:4 }); }
+function saveDraftFormat() {
+  lsSet('draft_roster_format', {
+    DEF: +document.getElementById('draftFmtDEF').value || 0,
+    MID: +document.getElementById('draftFmtMID').value || 0,
+    RUC: +document.getElementById('draftFmtRUC').value || 0,
+    FWD: +document.getElementById('draftFmtFWD').value || 0,
+    BENCH: +document.getElementById('draftFmtBENCH').value || 0
+  });
+}
+var draftFormatInited = false;
+function initDraftFormatInputs() {
+  if (draftFormatInited) return;
+  draftFormatInited = true;
+  var fmt = getDraftRosterFormat();
+  document.getElementById('draftFmtDEF').value = fmt.DEF;
+  document.getElementById('draftFmtMID').value = fmt.MID;
+  document.getElementById('draftFmtRUC').value = fmt.RUC;
+  document.getElementById('draftFmtFWD').value = fmt.FWD;
+  document.getElementById('draftFmtBENCH').value = fmt.BENCH;
+}
+function currentDraftSlots() {
+  return {
+    DEF: +document.getElementById('draftFmtDEF').value || 0,
+    MID: +document.getElementById('draftFmtMID').value || 0,
+    RUC: +document.getElementById('draftFmtRUC').value || 0,
+    FWD: +document.getElementById('draftFmtFWD').value || 0
+  };
+}
+function draftMinMax(vals) {
+  var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+  return { lo: lo, hi: hi };
+}
+function draftNorm(range, v) {
+  if (v == null || range.hi === range.lo) return 50;
+  return (v - range.lo) / (range.hi - range.lo) * 100;
+}
+// Gentle age curve peaking in the mid-20s. Deliberately soft (small weight in the
+// composite) — this should nudge a ranking, never decide it. Missing age (no
+// ages.txt, or a player not matched) is neutral, not a penalty.
+function draftAgeScore(age) {
+  if (age == null) return 50;
+  var dist = Math.abs(age - 25.5);
+  return Math.max(0, 100 - dist*dist*1.2);
+}
+function buildDraftPool() {
+  if (draftPool) return draftPool;
+  var voteByKey = {};
+  LEADERBOARD.forEach(function(e){ voteByKey[e.key] = e.votes; });
+
+  var raw = PLAYERS_DATA.map(function(p) {
+    var scores = (p.history || []).map(function(h){ return h.score; }).filter(function(s){ return s != null; });
+    var gp = scores.length;
+    if (!gp) return null;
+    var total = scores.reduce(function(a,b){ return a+b; }, 0);
+    var avg = total / gp;
+    var best = Math.max.apply(null, scores);
+    // Last-6-game average — a plain, literal "how are they playing right now" figure.
+    // (An earlier version used an exponential recency weighting across the WHOLE
+    // season, which let one quiet recent game override a whole season of elite,
+    // proven output — e.g. it dropped Nick Daicos to rank ~25 despite a 116 season
+    // average. Season average is the dominant signal now; this is a tempered
+    // secondary read on recent form, not the main driver.)
+    var last6 = scores.slice(-6);
+    var recentAvg = last6.reduce(function(a,b){ return a+b; }, 0) / last6.length;
+
+    // CBA% trend: centre bounce attendance late in the season vs early. Rising CBA%
+    // means a growing midfield/on-ball role — a forward-looking signal that a raw
+    // scoring average can't see on its own.
+    var cbaTrend = null, cbaNow = null;
+    if (p.cba_history) {
+      var rounds = Object.keys(p.cba_history).map(Number).sort(function(a,b){ return a-b; });
+      if (rounds.length >= 4) {
+        var half = Math.ceil(rounds.length/2);
+        var early = rounds.slice(0, half).map(function(r){ return p.cba_history[r]; });
+        var late = rounds.slice(-half).map(function(r){ return p.cba_history[r]; });
+        var earlyAvg = early.reduce(function(a,b){return a+b;},0)/early.length;
+        var lateAvg = late.reduce(function(a,b){return a+b;},0)/late.length;
+        cbaTrend = lateAvg - earlyAvg;
+      }
+      if (rounds.length) cbaNow = p.cba_history[rounds[rounds.length-1]];
+    }
+
+    return {
+      p:p, gp:gp, total:Math.round(total), avg:Math.round(avg*10)/10, best:best,
+      recentAvg: Math.round(recentAvg*10)/10,
+      consistency: p.consistency, age: p.age != null ? p.age : null,
+      cbaTrend: cbaTrend, cbaNow: cbaNow, cbaAvg: p.cba_avg,
+      votes: voteByKey[p.key] || 0, vbd: null,
+      adv: p.advanced_avg || {}
+    };
+  }).filter(Boolean);
+
+  // Composite Draft Score (0-100): min-max normalised across the WHOLE pool (not
+  // the filtered view), so scores/tiers stay stable while the user searches or
+  // filters. Season average is the dominant signal (proven output over a full
+  // year beats a hot or cold recent stretch) — recent form, consistency, age,
+  // durability and CBA trend are supporting modifiers, not the main driver.
+  var avgRange = draftMinMax(raw.map(function(r){ return r.avg; }));
+  var recentRange = draftMinMax(raw.map(function(r){ return r.recentAvg; }));
+  var gpRange = draftMinMax(raw.map(function(r){ return r.gp; }));
+  var cbaVals = raw.filter(function(r){ return r.cbaTrend != null; }).map(function(r){ return r.cbaTrend; });
+  var cbaRange = cbaVals.length ? draftMinMax(cbaVals) : null;
+
+  raw.forEach(function(r) {
+    var avgN = draftNorm(avgRange, r.avg);
+    var recentN = draftNorm(recentRange, r.recentAvg);
+    var gpN = draftNorm(gpRange, r.gp);
+    var consN = r.consistency != null ? r.consistency : 50;
+    var cbaN = (cbaRange && r.cbaTrend != null) ? draftNorm(cbaRange, r.cbaTrend) : 50;
+    var ageN = draftAgeScore(r.age);
+    r.draftScore = Math.round(avgN*0.55 + recentN*0.18 + consN*0.10 + ageN*0.07 + gpN*0.05 + cbaN*0.05);
+  });
+
+  // Position ranks computed once on the full pool so they don't reshuffle as the
+  // table gets filtered/searched.
+  POS_ORDER.forEach(function(pos) {
+    raw.filter(function(r){ return r.p.positions && r.p.positions.includes(pos); })
+      .sort(function(a,b){ return b.draftScore - a.draftScore; })
+      .forEach(function(r, i) { (r.posRank = r.posRank || {})[pos] = i+1; });
+  });
+
+  draftPool = raw;
+  return draftPool;
+}
+
+// VBD (Value Based Drafting): a player's season average minus the season average
+// of the last realistic starter at their position — the "replacement level" you
+// could get instead. Depends on Teams-in-League and Roster Format, so it's
+// recomputed on every render rather than cached on the pool.
+function applyDraftVbd(pool, teams, slots) {
+  POS_ORDER.forEach(function(pos) {
+    var eligible = pool.filter(function(r){ return r.p.positions && r.p.positions.includes(pos); })
+      .sort(function(a,b){ return b.avg - a.avg; });
+    if (!eligible.length) return;
+    var replRank = Math.max(1, teams * (slots[pos] || 6));
+    var replLevel = eligible[Math.min(replRank, eligible.length) - 1].avg;
+    eligible.forEach(function(r) {
+      if (draftPrimaryPos(r.p.positions) === pos) r.vbd = Math.round((r.avg - replLevel) * 10) / 10;
+    });
+  });
+}
+
+function draftTier(score) {
+  if (score >= 80) return { label:'ELITE', cls:'tier-elite' };
+  if (score >= 65) return { label:'A', cls:'tier-a' };
+  if (score >= 50) return { label:'B', cls:'tier-b' };
+  if (score >= 35) return { label:'C', cls:'tier-c' };
+  return { label:'D', cls:'tier-d' };
+}
+function draftPrimaryPos(positions) {
+  return POS_ORDER.find(function(pos){ return positions && positions.includes(pos); }) || null;
+}
+// FWD > RUC > DEF > MID — the rarer/scarcer slots take grouping priority in the
+// My Team panel, so a MID/FWD pick shows up under FWD rather than getting buried
+// in the (usually much bigger) MID group.
+var DRAFT_MYTEAM_GROUP_ORDER = ['FWD','RUC','DEF','MID'];
+function draftMyTeamGroupPos(positions) {
+  return DRAFT_MYTEAM_GROUP_ORDER.find(function(pos){ return positions && positions.includes(pos); }) || null;
+}
+function draftTrendHtml(r) {
+  if (r.gp < 3 || r.avg === 0) return '<span style="color:var(--muted)">—</span>';
+  var delta = Math.round((r.recentAvg / r.avg - 1) * 100);
+  if (Math.abs(delta) < 5) return '<span style="color:var(--muted)">→ steady</span>';
+  var up = delta > 0;
+  return '<span style="color:' + (up?'var(--green)':'var(--red)') + '">' + (up?'▲':'▼') + ' ' + (up?'+':'') + delta + '%</span>';
+}
+function draftCbaHtml(r) {
+  if (r.cbaAvg == null) return '<span style="color:var(--muted)">—</span>';
+  var trendStr = '';
+  if (r.cbaTrend != null && Math.abs(r.cbaTrend) >= 3) {
+    trendStr = ' <span style="color:' + (r.cbaTrend>0?'var(--green)':'var(--red)') + ';font-size:.68rem">' +
+      (r.cbaTrend>0?'▲+':'▼') + Math.round(r.cbaTrend) + '</span>';
+  }
+  return r.cbaAvg + '%' + trendStr;
+}
+function draftVbdHtml(r) {
+  if (r.vbd == null) return '<span style="color:var(--muted)">—</span>';
+  return '<span class="' + (r.vbd >= 0 ? 'draft-vbd-pos' : 'draft-vbd-neg') + '">' + (r.vbd > 0 ? '+' : '') + r.vbd + '</span>';
+}
+function draftAdvStat(r, key, decimals) {
+  var v = r.adv[key];
+  if (v == null) return '—';
+  return decimals ? v.toFixed(decimals) : Math.round(v);
+}
+
+
+// Best Available is pure quality (Draft Score). This layers your own roster gaps
+// on top — among the top ~20 available players, which one's position are you
+// shortest on? Only shown when it actually differs from #1 overall, so it doesn't
+// just repeat Best Available every time.
+function computeRecommendedPick(pool, state, slots) {
+  var mine = Object.keys(state).filter(function(k){ return state[k]==='mine'; }).map(findByKey).filter(Boolean);
+  var counts = {};
+  DRAFT_MYTEAM_GROUP_ORDER.forEach(function(pos) {
+    counts[pos] = mine.filter(function(p){ return p.positions && p.positions.includes(pos); }).length;
+  });
+  var candidates = pool.filter(function(r){ return !state[r.p.key]; })
+    .sort(function(a,b){ return b.draftScore - a.draftScore; }).slice(0, 20);
+  if (!candidates.length) return null;
+  var best = candidates[0], bestFit = -Infinity;
+  candidates.forEach(function(r) {
+    var pos = draftMyTeamGroupPos(r.p.positions);
+    var need = pos ? Math.max(0, (slots[pos]||0) - counts[pos]) : 0;
+    var fit = r.draftScore + need*4;
+    if (fit > bestFit) { bestFit = fit; best = r; }
+  });
+  return { pick: best, topOverall: candidates[0], needPos: draftMyTeamGroupPos(best.p.positions) };
+}
+function renderDraftFitCallout(pool, state, slots) {
+  var el = document.getElementById('draftFitCallout');
+  if (!el) return;
+  var rec = computeRecommendedPick(pool, state, slots);
+  if (!rec || rec.pick.p.key === rec.topOverall.p.key) { el.className = 'draft-fit-callout'; el.innerHTML = ''; return; }
+  var p = rec.pick.p, safeKey = p.key.replace(/'/g,"\\'");
+  el.className = 'draft-fit-callout show';
+  el.innerHTML = '&#127919; <b>Best fit for your team:</b> ' + (p.display_name || p.name) + ' (' + rec.needPos + ') &mdash; you\'re thinnest there right now' +
+    '<button class="draft-btn draft-btn-mine" onclick="setDraftState(\'' + safeKey + '\',\'mine\')">+ Draft</button>';
+}
+
+function renderDraftBreakouts(pool, state) {
+  var el = document.getElementById('draftBreakouts');
+  if (!el) return;
+  var picks = pool.filter(function(r) {
+    if (state[r.p.key]) return false;
+    if (r.draftScore >= 65) return false; // already Elite/A tier — not a hidden gem
+    var trendPct = r.avg > 0 ? (r.recentAvg/r.avg - 1)*100 : 0;
+    return (r.cbaTrend != null && r.cbaTrend >= 5) || trendPct >= 8;
+  }).sort(function(a,b) {
+    var aScore = (a.cbaTrend||0) + Math.max(0, a.avg>0 ? (a.recentAvg/a.avg-1)*100 : 0);
+    var bScore = (b.cbaTrend||0) + Math.max(0, b.avg>0 ? (b.recentAvg/b.avg-1)*100 : 0);
+    return bScore - aScore;
+  }).slice(0, 6);
+  if (!picks.length) { el.innerHTML = ''; return; }
+  el.innerHTML = '<div class="draft-breakouts-head">&#128200; Breakout Watch &mdash; rising role or form, still outside the top tiers</div>' +
+    '<div class="draft-best-strip">' + picks.map(function(r) {
+      var tier = draftTier(r.draftScore);
+      var safeKey = r.p.key.replace(/'/g,"\\'");
+      var why = r.cbaTrend != null && r.cbaTrend >= 5 ? '&#9650; CBA +' + Math.round(r.cbaTrend) : 'Form ' + draftTrendHtml(r);
+      return '<div class="draft-best-card breakout" onclick="searchAndShowPlayer(\'' + safeKey + '\')">' +
+        '<button class="draft-best-pick" onclick="event.stopPropagation();setDraftState(\'' + safeKey + '\',\'mine\')" title="Draft to your team">&#11088;</button>' +
+        '<div class="draft-best-label">' + tier.label + ' &middot; ' + r.draftScore + '</div>' +
+        '<div class="draft-best-name">' + (r.p.display_name || r.p.name) + '</div>' +
+        '<div class="draft-best-sub">' + posOrdered(r.p.positions) + ' &middot; ' + r.p.team + '</div>' +
+        '<div class="draft-best-sub">' + why + '</div>' +
+      '</div>';
+    }).join('') + '</div>';
+}
+
+function draftRosterBarsHtml(teamPosCounts, slots, totalMine) {
+  function bar(label, have, target) {
+    var pct = target ? Math.min(100, Math.round(have/target*100)) : 0;
+    var color = have >= target ? 'var(--green)' : 'var(--accent2)';
+    return '<div class="draft-roster-bar-item"><span>' + label + ' ' + have + '/' + target + '</span>' +
+      '<div class="draft-scarcity-bar"><div class="draft-scarcity-fill" style="width:' + pct + '%;background:' + color + '"></div></div></div>';
+  }
+  var totalTarget = slots.DEF + slots.MID + slots.RUC + slots.FWD + (slots.BENCH || 0);
+  var html = DRAFT_MYTEAM_GROUP_ORDER.map(function(pos) {
+    return bar(pos, teamPosCounts[pos] || 0, slots[pos] || 1);
+  }).join('') + bar('SQUAD', totalMine, totalTarget || 1);
+  return '<div class="draft-roster-bars">' + html + '</div>';
+}
+
+function copyMyTeamToClipboard() {
+  var state = getDraftState();
+  var mine = Object.keys(state).filter(function(k){ return state[k]==='mine'; }).map(findByKey).filter(Boolean);
+  if (!mine.length) { alert('No players drafted yet.'); return; }
+  var byPos = {};
+  mine.forEach(function(p) {
+    var pos = draftMyTeamGroupPos(p.positions) || 'Other';
+    (byPos[pos] = byPos[pos] || []).push(p);
+  });
+  var lines = ['My Draft Team:'];
+  DRAFT_MYTEAM_GROUP_ORDER.concat(['Other']).forEach(function(pos) {
+    if (!byPos[pos] || !byPos[pos].length) return;
+    lines.push(pos + ': ' + byPos[pos].map(function(p){ return p.display_name || p.name; }).join(', '));
+  });
+  var text = lines.join('\n');
+  function fallbackCopy(t) {
+    var ta = document.createElement('textarea');
+    ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).catch(function(){ fallbackCopy(text); });
+  } else {
+    fallbackCopy(text);
+  }
+  var btn = document.querySelector('.draft-copy-btn');
+  if (btn) { var orig = btn.innerHTML; btn.innerHTML = '&#10003;'; setTimeout(function(){ btn.innerHTML = orig; }, 1200); }
+}
+
+function renderDraftBestAvailable(pool, state) {
+  var el = document.getElementById('draftBestAvail');
+  var best = pool.filter(function(r){ return !state[r.p.key]; })
+    .sort(function(a,b){ return b.draftScore - a.draftScore; }).slice(0, 6);
+  if (!best.length) {
+    el.innerHTML = '<div class="draft-best-empty">Everyone in the pool has been marked Taken or Mine.</div>';
+    return;
+  }
+  el.innerHTML = '<div class="draft-best-strip">' + best.map(function(r) {
+    var tier = draftTier(r.draftScore);
+    var safeKey = r.p.key.replace(/'/g,"\\'");
+    return '<div class="draft-best-card" onclick="searchAndShowPlayer(\'' + safeKey + '\')">' +
+      '<button class="draft-best-pick" onclick="event.stopPropagation();setDraftState(\'' + safeKey + '\',\'mine\')" title="Draft to your team">&#11088;</button>' +
+      '<div class="draft-best-label">' + tier.label + ' &middot; ' + r.draftScore + '</div>' +
+      '<div class="draft-best-name">' + (r.p.display_name || r.p.name) + '</div>' +
+      '<div class="draft-best-sub">' + posOrdered(r.p.positions) + ' &middot; ' + r.p.team + ' &middot; ' + r.avg + ' avg</div>' +
+    '</div>';
+  }).join('') + '</div>';
+}
+
+function renderDraftScarcity(pool, state) {
+  var el = document.getElementById('draftScarcity');
+  el.innerHTML = POS_ORDER.map(function(pos) {
+    var atPos = pool.filter(function(r){ return draftPrimaryPos(r.p.positions) === pos && r.draftScore >= 65; });
+    var total = atPos.length;
+    var left = atPos.filter(function(r){ return !state[r.p.key]; }).length;
+    var pct = total ? Math.round(left/total*100) : 0;
+    var color = pct < 30 ? 'var(--red)' : pct < 60 ? 'var(--yellow)' : 'var(--green)';
+    return '<div class="draft-scarcity-item">' +
+      '<div class="draft-scarcity-head"><b>' + pos + '</b><span>' + left + '/' + total + ' A-tier+ left</span></div>' +
+      '<div class="draft-scarcity-bar"><div class="draft-scarcity-fill" style="width:' + pct + '%;background:' + color + '"></div></div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderDraftQueue(state) {
+  var wrap = document.getElementById('draftQueueWrap');
+  var q = getDraftQueue().filter(function(k){ return !state[k]; }); // drop anyone since taken/drafted
+  document.getElementById('draftQueueCount').textContent = q.length ? q.length + ' queued' : '';
+  if (!q.length) {
+    wrap.innerHTML = '<div class="draft-queue-empty">Nobody queued yet &mdash; click <b>&#128278;</b> on a player to line them up as your next pick.</div>';
+    return;
+  }
+  wrap.innerHTML = q.map(function(k, i) {
+    var p = findByKey(k);
+    if (!p) return '';
+    var kSafe = k.replace(/'/g,"\\'");
+    var dn = p.display_name || p.name;
+    return '<div class="draft-queue-item">' +
+      '<span class="draft-queue-rank">' + (i+1) + '</span>' +
+      '<span class="draft-queue-name" onclick="searchAndShowPlayer(\'' + kSafe + '\')">' + dn + '</span>' +
+      '<span class="draft-queue-actions">' +
+        '<button onclick="setDraftState(\'' + kSafe + '\',\'mine\')" title="Draft to your team">+Draft</button>' +
+        '<button onclick="toggleDraftQueue(\'' + kSafe + '\')" title="Remove from queue">&times;</button>' +
+      '</span>' +
+    '</div>';
+  }).join('');
+}
+
+function renderDraft() {
+  initDraftFormatInputs();
+  var pool = buildDraftPool();
+  var state = getDraftState();
+  var teams = Math.max(4, +document.getElementById('draftTeams').value || 10);
+  var slots = currentDraftSlots();
+  applyDraftVbd(pool, teams, slots);
+
+  var search = (document.getElementById('draftSearch').value || '').trim().toLowerCase();
+  var posFilter = document.getElementById('draftPos').value;
+  var sortKey = document.getElementById('draftSort').value;
+  var minGp = +document.getElementById('draftMinGp').value || 0;
+  var hideTaken = document.getElementById('draftHideTaken').checked;
+  var showAdv = document.getElementById('draftShowAdv').checked;
+  document.getElementById('draftTable').classList.toggle('show-adv', showAdv);
+
+  var undoBtn = document.getElementById('draftUndoBtn');
+  if (undoBtn) undoBtn.disabled = !lsGet('draft_undo', []).length;
+
+  renderDraftBestAvailable(pool, state);
+  renderDraftFitCallout(pool, state, slots);
+  renderDraftBreakouts(pool, state);
+  renderDraftScarcity(pool, state);
+  renderDraftQueue(state);
+
+  var queue = getDraftQueue();
+  var rows = pool.filter(function(r){
+    if (r.gp < minGp) return false;
+    if (posFilter && !(r.p.positions && r.p.positions.includes(posFilter))) return false;
+    if (search) {
+      var dn = (r.p.display_name || r.p.name).toLowerCase();
+      if (dn.indexOf(search) === -1 && r.p.team.toLowerCase().indexOf(search) === -1) return false;
+    }
+    if (hideTaken && state[r.p.key]) return false;
+    return true;
+  });
+  rows.sort(function(a,b){
+    var av = a[sortKey], bv = b[sortKey];
+    if (av == null) av = -Infinity;
+    if (bv == null) bv = -Infinity;
+    return bv - av;
+  });
+
+  document.getElementById('draftCount').textContent = rows.length + ' of ' + pool.length + ' players';
+
+  var html = '';
+  var prevTier = null;
+  rows.forEach(function(r, i) {
+    var p = r.p, st = state[p.key];
+    var safeKey = p.key.replace(/'/g,"\\'");
+    var rowCls = st === 'taken' ? 'draft-row-taken' : st === 'mine' ? 'draft-row-mine' : '';
+    var dn = p.display_name || p.name;
+    var statusTag = statusLabel(p.name);
+    var tagHtml = statusTag ? ' <span class="inj-tag' + (statusTag==='SUS'?' sus-tag':'') + '">' + statusTag + '</span>' : '';
+    var tier = draftTier(r.draftScore);
+    if (sortKey === 'draftScore' && tier.label !== prevTier) {
+      html += '<tr class="tier-break"><td colspan="21">Tier ' + tier.label + '</td></tr>';
+      prevTier = tier.label;
+    }
+    var primaryPos = draftPrimaryPos(p.positions);
+    var posRankHtml = (primaryPos && r.posRank && r.posRank[primaryPos]) ?
+      '<span class="draft-pos-rank">' + primaryPos + r.posRank[primaryPos] + '</span>' : '';
+    var queued = queue.indexOf(p.key) !== -1;
+    html += '<tr class="' + rowCls + '">' +
+      '<td class="pos-num">' + (i+1) + '</td>' +
+      '<td><span class="draft-tier ' + tier.cls + '">' + tier.label + '</span></td>' +
+      '<td><span class="player-link" onclick="searchAndShowPlayer(\'' + safeKey + '\')">' + dn + '</span>' + posRankHtml + tagHtml + '</td>' +
+      '<td>' + teamTagHtml(p.team) + '</td>' +
+      '<td>' + posChipsHtml(p.positions) + '</td>' +
+      '<td class="ta-r">' + (r.age == null ? '—' : r.age) + '</td>' +
+      '<td class="ta-r">' + r.gp + '</td>' +
+      '<td class="ta-r"><span class="draft-score" style="color:var(--' + (tier.cls==='tier-elite'?'accent':tier.cls==='tier-a'?'green':tier.cls==='tier-b'?'accent2':tier.cls==='tier-c'?'text':'red') + ')">' + r.draftScore + '</span></td>' +
+      '<td class="ta-r">' + draftVbdHtml(r) + '</td>' +
+      '<td class="ta-r">' + r.avg + '</td>' +
+      '<td>' + r.recentAvg + ' ' + draftTrendHtml(r) + '</td>' +
+      '<td>' + draftCbaHtml(r) + '</td>' +
+      '<td class="ta-r">' + r.votes + '</td>' +
+      '<td class="ta-r adv-col">' + r.total + '</td>' +
+      '<td class="ta-r adv-col">' + (r.best == null ? '—' : r.best) + '</td>' +
+      '<td class="ta-r adv-col">' + draftAdvStat(r,'Disposals') + '</td>' +
+      '<td class="ta-r adv-col">' + draftAdvStat(r,'Tackles') + '</td>' +
+      '<td class="ta-r adv-col">' + draftAdvStat(r,'TotalClearances') + '</td>' +
+      '<td class="ta-r adv-col">' + draftAdvStat(r,'Inside50s') + '</td>' +
+      '<td class="ta-r adv-col">' + draftAdvStat(r,'Goals') + '</td>' +
+      '<td>' +
+        '<button class="draft-btn draft-btn-taken' + (st==='taken'?' active':'') + '" onclick="setDraftState(\'' + safeKey + '\',\'taken\')">' + (st==='taken' ? '↺ Undo' : 'Taken') + '</button>' +
+        '<button class="draft-btn draft-btn-mine' + (st==='mine'?' active':'') + '" onclick="setDraftState(\'' + safeKey + '\',\'mine\')">' + (st==='mine' ? '★ Mine' : '+ Draft') + '</button>' +
+        '<button class="draft-btn draft-btn-queue' + (queued?' active':'') + '" onclick="toggleDraftQueue(\'' + safeKey + '\')" title="' + (queued?'Remove from queue':'Add to draft queue') + '">&#128278;</button>' +
+      '</td>' +
+    '</tr>';
+  });
+  document.getElementById('draftBody').innerHTML = html ||
+    '<tr><td colspan="21" style="text-align:center;color:var(--muted);padding:20px">No players match these filters.</td></tr>';
+
+  var takenCount = 0, mineCount = 0;
+  Object.keys(state).forEach(function(k){ if (state[k]==='taken') takenCount++; else if (state[k]==='mine') mineCount++; });
+  var remaining = pool.length - takenCount - mineCount;
+  document.getElementById('draftSummary').innerHTML =
+    '<div class="lbs-item"><div class="lbs-val">' + pool.length + '</div><div class="lbs-lbl">Ranked Players</div></div>' +
+    '<div class="lbs-item"><div class="lbs-val" style="color:var(--accent)">' + mineCount + '</div><div class="lbs-lbl">Your Team</div></div>' +
+    '<div class="lbs-item"><div class="lbs-val" style="color:var(--muted)">' + takenCount + '</div><div class="lbs-lbl">Taken By Others</div></div>' +
+    '<div class="lbs-item"><div class="lbs-val">' + remaining + '</div><div class="lbs-lbl">Still Available</div></div>';
+
+  var mineKeys = Object.keys(state).filter(function(k){ return state[k] === 'mine'; });
+  document.getElementById('draftMyCount').textContent = mineKeys.length ? mineKeys.length + ' picked' : '';
+  var wrap = document.getElementById('draftMyTeamWrap');
+  var mine = mineKeys.map(findByKey).filter(Boolean);
+  // Total eligible headcount per position across your whole team, DPP players
+  // counted at every position they qualify for — this is what the group header's
+  // "(N)" bracket reads from, e.g. "MID 4 (5)" meaning 4 players are grouped
+  // here but a 5th (grouped elsewhere as their preferred position) is also
+  // MID-eligible. Also feeds the roster-needs progress bars.
+  var teamPosCounts = {};
+  DRAFT_MYTEAM_GROUP_ORDER.forEach(function(pos) {
+    teamPosCounts[pos] = mine.filter(function(p){ return p.positions && p.positions.includes(pos); }).length;
+  });
+  var barsHtml = draftRosterBarsHtml(teamPosCounts, currentDraftSlots(), mine.length);
+  if (!mine.length) {
+    wrap.innerHTML = barsHtml + '<div class="draft-mine-empty">No players drafted yet &mdash; click <b>+ Draft</b> on a player once you pick them.</div>';
+  } else {
+    // Grouped by FWD > RUC > DEF > MID preference (rarest slots first) so you can
+    // see your squad shape at a glance — a MID/FWD player lands in the FWD group.
+    var byPos = {};
+    mine.forEach(function(p) {
+      var pos = draftMyTeamGroupPos(p.positions) || 'Other';
+      (byPos[pos] = byPos[pos] || []).push(p);
+    });
+    var groupOrder = DRAFT_MYTEAM_GROUP_ORDER.concat(['Other']);
+    wrap.innerHTML = barsHtml + groupOrder.filter(function(pos){ return byPos[pos] && byPos[pos].length; }).map(function(pos) {
+      var groupCount = byPos[pos].length;
+      var eligibleCount = teamPosCounts[pos] || groupCount;
+      var bracket = eligibleCount > groupCount ? ' <span class="draft-mine-dpp">(' + eligibleCount + ')</span>' : '';
+      var chips = byPos[pos].map(function(p) {
+        var dn = p.display_name || p.name;
+        var kSafe = p.key.replace(/'/g,"\\'");
+        return '<span class="draft-mine-chip" title="' + posOrdered(p.positions) + '">' + dn +
+          '<button onclick="setDraftState(\'' + kSafe + '\',\'mine\')" title="Remove from your team">&times;</button></span>';
+      }).join('');
+      return '<div class="draft-mine-group"><div class="draft-mine-group-head">' + pos + ' <span>' + groupCount + '</span>' + bracket + '</div>' +
+        '<div class="draft-mine-chips">' + chips + '</div></div>';
+    }).join('');
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  var tag = e.target && e.target.tagName;
+  if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+  var draftPageEl = document.getElementById('page-draft');
+  if (!draftPageEl || !draftPageEl.classList.contains('active')) return;
+  if (e.key === 'd' || e.key === 'D') {
+    var q = getDraftQueue();
+    if (q.length) setDraftState(q[0], 'mine');
+  } else if (e.key === 'u' || e.key === 'U') {
+    undoDraftAction();
+  }
+});
 
 // Rounds loaded: available via ROUNDS_LOADED array if needed
 
@@ -6158,6 +6967,8 @@ def generate_app_html(all_rounds, players_registry, fixture, current_round):
     players_data     = build_players_data(all_rounds, current_prices, players_registry)
     cba_rows = parse_cba_file(CBA_FILE)
     if cba_rows: attach_cba_data(players_data, cba_rows)
+    age_rows = parse_age_file(AGE_FILE)
+    if age_rows: attach_age_data(players_data, age_rows)
     champion_by_round = load_champion_round_data(CHAMPION_DATA_FOLDER)
     if champion_by_round: attach_round_stats(players_data, champion_by_round)
     compute_advanced_averages(players_data)

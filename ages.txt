@@ -1,0 +1,807 @@
+Player	Team	Age
+Jordan Dawson	Adelaide	29
+Rory Laird	Adelaide	32
+Reilly O'Brien	Adelaide	31
+Izak Rankine	Adelaide	26
+Riley Thilthorpe	Adelaide	24
+Jake Soligo	Adelaide	23
+Ben Keays	Adelaide	29
+James Peatling	Adelaide	26
+Josh Worrell	Adelaide	25
+Lachlan Sholl	Adelaide	26
+Wayne Milera	Adelaide	28
+Alex Neal-Bullen	Adelaide	30
+Mitchell Hinge	Adelaide	28
+Daniel Curtin	Adelaide	21
+Callum Ah Chee	Adelaide	28
+Josh Rachele	Adelaide	23
+Sam Berry	Adelaide	24
+Taylor Walker	Adelaide	36
+Isaac Cumming	Adelaide	28
+Darcy Fogarty	Adelaide	26
+Luke Nankervis	Adelaide	23
+Mark Keane	Adelaide	26
+Max Michalanney	Adelaide	22
+Chayce Jones	Adelaide	26
+Billy Dowling	Adelaide	22
+Luke Pedlar	Adelaide	24
+Zac Taylor	Adelaide	23
+Nick Murray	Adelaide	25
+James Borlase	Adelaide	24
+Brayden Cook	Adelaide	24
+Finnbar Maley	Adelaide	23
+Hugh Bond	Adelaide	21
+Sid Draper	Adelaide	20
+Lachlan McAndrew	Adelaide	26
+Jordon Butts	Adelaide	26
+Mitchell Marsh	Adelaide	19
+Oscar Ryan	Adelaide	21
+Charlie Edwards	Adelaide	21
+Toby Murray	Adelaide	22
+Indy Cotton	Adelaide	19
+Tyler Welsh	Adelaide	20
+Archie Ludowyke	Adelaide	18
+Hugo Hall-Kahan	Adelaide	22
+Josh Dunkley	Brisbane	29
+Hugh McCluggage	Brisbane	28
+Dayne Zorko	Brisbane	37
+Will Ashcroft	Brisbane	22
+Lachie Neale	Brisbane	33
+Jarrod Berry	Brisbane	28
+Zac Bailey	Brisbane	26
+Jaspa Fletcher	Brisbane	22
+Darcy Wilmot	Brisbane	22
+Levi Ashcroft	Brisbane	19
+Cameron Rayner	Brisbane	26
+Sam Draper	Brisbane	27
+Darcy Fort	Brisbane	33
+Harris Andrews	Brisbane	29
+Noah Answerth	Brisbane	27
+Logan Morris	Brisbane	21
+Ryan Lester	Brisbane	34
+Eric Hipwood	Brisbane	28
+Jack Payne	Brisbane	26
+Keidean Coleman	Brisbane	26
+Charlie Cameron	Brisbane	32
+Conor McKenna	Brisbane	30
+Oscar Allen	Brisbane	27
+Kai Lohmann	Brisbane	23
+Bruce Reville	Brisbane	25
+Lincoln McCarthy	Brisbane	32
+Sam Marshall	Brisbane	20
+Darcy Gardiner	Brisbane	30
+Tom Doedee	Brisbane	29
+Darragh Joyce	Brisbane	29
+Henry Smith	Brisbane	23
+Daniel Annable	Brisbane	19
+Shadeau Brain	Brisbane	22
+Ty Gallop	Brisbane	20
+James Tunstill	Brisbane	23
+Zane Zakostelsky	Brisbane	20
+Will McLachlan	Brisbane	21
+Luke Lloyd	Brisbane	21
+Cody Curtin	Brisbane	19
+Luke Beecken	Brisbane	25
+Reece Torrent	Brisbane	21
+Koby Evans	Brisbane	18
+Tai Hayes	Brisbane	21
+George Hewett	Carlton	30
+Adam Cerra	Carlton	26
+Sam Walsh	Carlton	26
+Patrick Cripps	Carlton	31
+Harry McKay	Carlton	28
+Oliver Hollands	Carlton	22
+Nick Haynes	Carlton	34
+Blake Acres	Carlton	30
+Nic Newman	Carlton	33
+Adam Saad	Carlton	32
+Marc Pittonet	Carlton	30
+Lachlan Cowan	Carlton	21
+Mitch McGovern	Carlton	31
+Jacob Weitering	Carlton	28
+Zachary Williams	Carlton	31
+Cooper Lord	Carlton	21
+Oliver Florent	Carlton	28
+Francis Evans	Carlton	25
+Ben Ainsworth	Carlton	28
+Matt Cottrell	Carlton	26
+Brodie Kemp	Carlton	25
+Will Hayward	Carlton	27
+Lachlan Fogarty	Carlton	27
+Campbell Chesser	Carlton	23
+Jesse Motlop	Carlton	22
+Matt Carroll	Carlton	20
+Lewis Young	Carlton	27
+Jordan Boyd	Carlton	27
+Flynn Young	Carlton	24
+Harry O'Farrell	Carlton	20
+Ashton Moir	Carlton	21
+Billy Wilson	Carlton	21
+Liam Reidy	Carlton	26
+Lucas Camporeale	Carlton	20
+Harry Dean	Carlton	18
+Hudson O'Keeffe	Carlton	21
+Matt Duffy	Carlton	22
+Harry Charleson	Carlton	20
+Rob Monahan	Carlton	22
+Jagga Smith	Carlton	20
+Ben Camporeale	Carlton	20
+Jack Ison	Carlton	19
+Talor Byrne	Carlton	18
+Wade Derksen	Carlton	25
+Elijah Hollands	Carlton	24
+Flynn Riley	Carlton	22
+Nick Daicos	Collingwood	23
+Darcy Cameron	Collingwood	31
+Josh Daicos	Collingwood	27
+Scott Pendlebury	Collingwood	38
+Steele Sidebottom	Collingwood	35
+Jack Crisp	Collingwood	32
+Jordan De Goey	Collingwood	30
+Ned Long	Collingwood	23
+Lachlan Schultz	Collingwood	28
+Jamie Elliott	Collingwood	34
+Patrick Lipinski	Collingwood	28
+Dan Houston	Collingwood	29
+Brayden Maynard	Collingwood	29
+Harry Perryman	Collingwood	27
+Isaac Quaynor	Collingwood	26
+Daniel McStay	Collingwood	31
+Beau McCreery	Collingwood	25
+Jeremy Howe	Collingwood	36
+Tim Membrey	Collingwood	32
+Edward Allan	Collingwood	22
+Bobby Hill	Collingwood	26
+Jack Buller	Collingwood	25
+Darcy Moore	Collingwood	30
+Lachie Sullivan	Collingwood	28
+Billy Frampton	Collingwood	29
+Roan Steele	Collingwood	24
+Will Hayes	Collingwood	20
+Wil Parker	Collingwood	24
+Harvey Harrison	Collingwood	22
+Reef McInnes	Collingwood	23
+Jakob Ryan	Collingwood	21
+Joel Cochran	Collingwood	20
+Tew Jiath	Collingwood	21
+Charlie West	Collingwood	20
+Jai Saxena	Collingwood	19
+Noah Howes	Collingwood	20
+Angus Anderson	Collingwood	23
+Harry DeMattia	Collingwood	20
+Samuel Swadling	Collingwood	19
+Tyan Prindable	Collingwood	19
+Iliro Smit	Collingwood	21
+Oscar Steene	Collingwood	23
+Zac McCarthy	Collingwood	18
+Harrison Coe	Collingwood	26
+Liam Puncher	Collingwood	23
+Mitch Podhajski	Collingwood	27
+Jye Caldwell	Essendon	25
+Zachary Merrett	Essendon	30
+Nic Martin	Essendon	25
+Archie Roberts	Essendon	20
+Mason Redman	Essendon	29
+Brayden Fiorini	Essendon	29
+Xavier Duursma	Essendon	26
+Sam Durham	Essendon	25
+Zach Reid	Essendon	24
+Andrew McGrath	Essendon	28
+Peter Wright	Essendon	29
+Darcy Parish	Essendon	29
+Kyle Langford	Essendon	29
+Jordan Ridley	Essendon	27
+Jaxon Prior	Essendon	25
+Angus Clarke	Essendon	20
+Nick Bryan	Essendon	24
+Archie Perkins	Essendon	24
+Jade Gresham	Essendon	29
+Nate Caddy	Essendon	21
+Harrison Jones	Essendon	25
+Zak Johnson	Essendon	19
+Isaac Kako	Essendon	20
+Archie May	Essendon	22
+Saad El-Hawli	Essendon	25
+Matt Guelfi	Essendon	29
+Elijah Tsatas	Essendon	21
+Ben McKay	Essendon	28
+Lachlan Blakiston	Essendon	27
+Lewis Hayes	Essendon	21
+Vigo Visentini	Essendon	20
+Nikolas Cox	Essendon	24
+Liam McMahon	Essendon	24
+Tom Edwards	Essendon	26
+Sullivan Robey	Essendon	18
+Jayden Nguyen	Essendon	20
+Jacob Farrow	Essendon	18
+Dyson Sharp	Essendon	19
+Archer Day-Wicks	Essendon	20
+Rhys Unwin	Essendon	19
+Max Kondogiannis	Essendon	18
+Hussien El Achkar	Essendon	19
+Kayle Gerreyn	Essendon	20
+Jaxon Artemis	Essendon	20
+Will Setterfield	Essendon	28
+Andrew Brayshaw	Fremantle	26
+Luke Jackson	Fremantle	24
+Caleb Serong	Fremantle	25
+Jordan Clark	Fremantle	25
+Hayden Young	Fremantle	25
+Luke Ryan	Fremantle	30
+Matt Johnson	Fremantle	23
+Shai Bolton	Fremantle	27
+Nathan O'Driscoll	Fremantle	24
+Corey Wagner	Fremantle	29
+Sean Darcy	Fremantle	28
+Jaeger O'Meara	Fremantle	32
+Josh Treacy	Fremantle	24
+Michael Frederick	Fremantle	26
+Neil Erasmus	Fremantle	22
+Murphy Reid	Fremantle	20
+Karl Worner	Fremantle	24
+Sam Switkowski	Fremantle	29
+Patrick Voss	Fremantle	23
+Judd McVee	Fremantle	23
+Heath Chapman	Fremantle	24
+Bailey Banfield	Fremantle	28
+Jeremy Sharp	Fremantle	25
+Mason Cox	Fremantle	35
+Alex Pearce	Fremantle	31
+Oscar McDonald	Fremantle	30
+Brennan Cox	Fremantle	28
+Brandon Walker	Fremantle	23
+Jye Amiss	Fremantle	23
+Isaiah Dudley	Fremantle	23
+Sam Sturt	Fremantle	26
+Cooper Simpson	Fremantle	21
+Joshua Draper	Fremantle	22
+Adam Sweid	Fremantle	18
+Hugh Davies	Fremantle	21
+Ollie Murphy	Fremantle	20
+Jaren Carr	Fremantle	22
+Charlie Nicholls	Fremantle	20
+Ryda Luke	Fremantle	18
+Tobyn Murray	Fremantle	21
+Toby Whan	Fremantle	19
+Leon Kickett	Fremantle	26
+Aiden Riddle	Fremantle	20
+Chris Scerri	Fremantle	20
+Bailey Smith	Geelong	25
+Max Holmes	Geelong	23
+Gryan Miers	Geelong	27
+Shaun Mannagh	Geelong	29
+Tom Atkins	Geelong	30
+Jeremy Cameron	Geelong	33
+Thomas Stewart	Geelong	33
+Zach Guthrie	Geelong	28
+James Worpel	Geelong	27
+Jack Martin	Geelong	31
+Ollie Dempsey	Geelong	23
+Mark Blicavs	Geelong	35
+Lawson Humphries	Geelong	23
+Mark O'Connor	Geelong	29
+Rhys Stanley	Geelong	35
+Patrick Dangerfield	Geelong	36
+Tyson Stengle	Geelong	27
+Shannon Neale	Geelong	24
+Jack Henry	Geelong	27
+Jack Bowes	Geelong	28
+Connor O'Sullivan	Geelong	21
+Sam De Koning	Geelong	25
+Bradley Close	Geelong	28
+Toby Conway	Geelong	23
+Jed Bews	Geelong	32
+Tanner Bruhn	Geelong	24
+Mitchell Knevitt	Geelong	23
+Oisin Mullin	Geelong	26
+Jhye Clark	Geelong	22
+Jake Kolodjashnij	Geelong	31
+Oliver Henry	Geelong	24
+George Stevens	Geelong	21
+Oliver Wiltshire	Geelong	23
+Harley Barker	Geelong	19
+Lennox Hofmann	Geelong	20
+Cillian Burke	Geelong	23
+Keighton Matofai-Forbes	Geelong	20
+Jay Polkinghorne	Geelong	20
+Jesse Mellor	Geelong	19
+Nicholas Driscoll	Geelong	26
+Hunter Holmes	Geelong	19
+Mitchell Edwards	Geelong	21
+Jacob Molier	Geelong	19
+Joe Pike	Geelong	21
+Matt Rowell	Gold Coast	25
+Noah Anderson	Gold Coast	25
+Jarrod Witts	Gold Coast	33
+Touk Miller	Gold Coast	30
+John Noble	Gold Coast	29
+Christian Petracca	Gold Coast	30
+Joel Jeffrey	Gold Coast	24
+Daniel Rioli	Gold Coast	29
+Bailey Humphrey	Gold Coast	21
+Wil Powell	Gold Coast	27
+Bodhi Uwland	Gold Coast	23
+Ben Long	Gold Coast	29
+Sam Clohesy	Gold Coast	23
+Ned Moyle	Gold Coast	24
+Alex Davies	Gold Coast	24
+Mac Andrew	Gold Coast	22
+Will Graham	Gold Coast	21
+Lachlan Weller	Gold Coast	30
+Jy Farrar	Gold Coast	29
+Samuel Collins	Gold Coast	32
+Ben King	Gold Coast	26
+Jamarra Ugle-Hagan	Gold Coast	24
+Ethan Read	Gold Coast	21
+Jed Walter	Gold Coast	21
+Nicholas Holman	Gold Coast	31
+Charlie Ballard	Gold Coast	27
+Lachlan Gulbin	Gold Coast	19
+Elliott Himmelberg	Gold Coast	28
+Jake Rogers	Gold Coast	21
+Zeke Uwland	Gold Coast	19
+Dylan Patterson	Gold Coast	18
+Ben Jepson	Gold Coast	24
+Jai Murray	Gold Coast	19
+Beau Addinsall	Gold Coast	19
+Oscar Adams	Gold Coast	23
+Avery Thomas	Gold Coast	18
+Caleb Graham	Gold Coast	25
+Cooper Bell	Gold Coast	19
+Leo Lombard	Gold Coast	19
+Caleb Lewis	Gold Coast	22
+Asher Eastham	Gold Coast	20
+Zak Evans	Gold Coast	26
+Koby Coulson	Gold Coast	19
+Max Knobel	Gold Coast	22
+Lachie Whitfield	GWS	32
+Lachlan Ash	GWS	25
+Finn Callaghan	GWS	23
+Tom Green	GWS	25
+Clayton Oliver	GWS	29
+Toby Greene	GWS	32
+Josh Kelly	GWS	31
+Harry Himmelberg	GWS	30
+Brent Daniels	GWS	27
+Stephen Coniglio	GWS	32
+Connor Idun	GWS	26
+Kieren Briggs	GWS	26
+Jake Riccardi	GWS	26
+Ryan Angwin	GWS	23
+Jayden Laverde	GWS	30
+Jesse Hogan	GWS	31
+Darcy Jones	GWS	22
+Sam Taylor	GWS	27
+Aaron Cadman	GWS	22
+Callum Brown	GWS	26
+Xavier O'Halloran	GWS	26
+Toby Bedford	GWS	26
+Jack Buckley	GWS	28
+Jake Stringer	GWS	32
+Harry Rowston	GWS	22
+Harvey Thomas	GWS	21
+Nick Madden	GWS	22
+Joseph Fonti	GWS	21
+Conor Stone	GWS	24
+Toby McMullin	GWS	22
+Leek Aleer	GWS	25
+Cody Angove	GWS	20
+Max Gruzewski	GWS	22
+Oskar Taylor	GWS	19
+James Leake	GWS	20
+Josaia Delana	GWS	20
+Harrison Oliver	GWS	20
+Finnegan Davis	GWS	19
+Phoenix Gothard	GWS	20
+Nathan Wardius	GWS	21
+Jack Ough	GWS	19
+Oliver Hannaford	GWS	19
+Riley Hamilton	GWS	20
+Logan Smith	GWS	19
+Lloyd Meek	Hawthorn	28
+Karl Amon	Hawthorn	31
+Jai Newcombe	Hawthorn	25
+Dylan Moore	Hawthorn	27
+James Sicily	Hawthorn	31
+Jarman Impey	Hawthorn	31
+Will Day	Hawthorn	25
+Josh Ward	Hawthorn	23
+Jack Ginnivan	Hawthorn	23
+Jack Gunston	Hawthorn	34
+Conor Nash	Hawthorn	28
+Harry Morrison	Hawthorn	27
+Massimo D'Ambrosio	Hawthorn	23
+Josh Battle	Hawthorn	27
+Joshua Weddle	Hawthorn	22
+Connor Macdonald	Hawthorn	23
+Blake Hardwick	Hawthorn	29
+Cameron Mackenzie	Hawthorn	22
+Mabior Chol	Hawthorn	29
+Jack Scrimshaw	Hawthorn	27
+Nick Watson	Hawthorn	21
+Finn Maginness	Hawthorn	25
+Sam Butler	Hawthorn	23
+Ned Reeves	Hawthorn	27
+Max Ramsden	Hawthorn	23
+Henry Hustwaite	Hawthorn	22
+Tom Barrass	Hawthorn	30
+Calsher Dear	Hawthorn	21
+Mitchell Lewis	Hawthorn	27
+Cameron Nairn	Hawthorn	18
+Aidan Schubert	Hawthorn	18
+James Blanck	Hawthorn	25
+William McCabe	Hawthorn	20
+Bodie Ryan	Hawthorn	21
+Bailey Macdonald	Hawthorn	22
+Noah Mraz	Hawthorn	20
+Matt Hill	Hawthorn	22
+Cody Anderson	Hawthorn	20
+Ollie Greeves	Hawthorn	19
+Jack Dalton	Hawthorn	19
+Matthew LeRay	Hawthorn	19
+Jaime Uhr-Henry	Hawthorn	23
+Flynn Perez	Hawthorn	25
+Max Beattie	Hawthorn	22
+Max Gawn	Melbourne	34
+Jack Steele	Melbourne	30
+Christian Salem	Melbourne	31
+Jack Viney	Melbourne	32
+Kysaiah Pickett	Melbourne	25
+Jake Bowey	Melbourne	23
+Trent Rivers	Melbourne	25
+Ed Langdon	Melbourne	30
+Steven May	Melbourne	34
+Kade Chandler	Melbourne	26
+Bayley Fritsch	Melbourne	29
+Harvey Langford	Melbourne	20
+Tom Sparrow	Melbourne	26
+Tom McDonald	Melbourne	33
+Brody Mihocek	Melbourne	33
+Daniel Turner	Melbourne	24
+Jake Melksham	Melbourne	34
+Caleb Windsor	Melbourne	21
+Changkuoth Jiath	Melbourne	27
+Jacob van Rooyen	Melbourne	23
+Koltyn Tholstrup	Melbourne	21
+Jake Lever	Melbourne	30
+Xavier Lindsay	Melbourne	20
+Jai Culley	Melbourne	23
+Harrison Petty	Melbourne	26
+Blake Howes	Melbourne	23
+Andy Moniz-Wakefield	Melbourne	22
+Max Heath	Melbourne	23
+Jack Henderson	Melbourne	26
+Shane McAdam	Melbourne	31
+Harry Sharp	Melbourne	23
+Xavier Taylor	Melbourne	19
+Latrelle Pickett	Melbourne	20
+Tom Campbell	Melbourne	34
+Aidan Johnson	Melbourne	26
+Bailey Laurie	Melbourne	24
+Matthew Jefferson	Melbourne	22
+Thomas Matthews	Melbourne	19
+Jed Adams	Melbourne	22
+Ricky Mentha	Melbourne	19
+Luker Kentfield	Melbourne	20
+Riley Onley	Melbourne	26
+Kalani White	Melbourne	19
+Paddy Cross	Melbourne	23
+Lukas Cooke	Melbourne	22
+Joel Fitzgerald	Melbourne	23
+Max Mapley	Melbourne	20
+Harry Sheezel	North Melbourne	21
+Tristan Xerri	North Melbourne	27
+Luke Davies-Uniacke	North Melbourne	27
+Tom Powell	North Melbourne	24
+Luke Parker	North Melbourne	33
+Caleb Daniel	North Melbourne	30
+Jy Simpkin	North Melbourne	28
+Colby McKercher	North Melbourne	21
+Zac Fisher	North Melbourne	28
+Paul Curtis	North Melbourne	23
+George Wardlaw	North Melbourne	22
+Dylan Stephens	North Melbourne	25
+Luke McDonald	North Melbourne	31
+Nick Larkey	North Melbourne	28
+Cameron Zurhaar	North Melbourne	28
+Aidan Corr	North Melbourne	32
+Finn O'Sullivan	North Melbourne	20
+Jack Darling	North Melbourne	34
+Riley Hardeman	North Melbourne	21
+Charlie Comben	North Melbourne	25
+Cooper Trembath	North Melbourne	20
+Toby Pink	North Melbourne	28
+Griffin Logue	North Melbourne	28
+Bailey Scott	North Melbourne	26
+Jacob Konstanty	North Melbourne	21
+Cooper Harvey	North Melbourne	22
+Charlie Spargo	North Melbourne	26
+Wil Dawson	North Melbourne	20
+Jackson Archer	North Melbourne	23
+Robert Hansen Jr	North Melbourne	22
+Zane Duursma	North Melbourne	21
+Lachy Dovaston	North Melbourne	19
+Zac Banch	North Melbourne	23
+Blake Thredgold	North Melbourne	19
+Josh Goater	North Melbourne	23
+Matt Whitlock	North Melbourne	20
+Brayden George	North Melbourne	22
+Luke Urquhart	North Melbourne	19
+River Stevens	North Melbourne	20
+Hugo Mikunda	North Melbourne	19
+Callum Coleman-Jones	North Melbourne	27
+Taylor Goad	North Melbourne	21
+Tom Blamires	North Melbourne	24
+Oliver Griffin	North Melbourne	19
+Connor Rozee	Port Adelaide	26
+Zak Butters	Port Adelaide	25
+Oliver Wines	Port Adelaide	31
+Jason Horne-Francis	Port Adelaide	23
+Jordon Sweet	Port Adelaide	28
+Miles Bergman	Port Adelaide	24
+Kane Farrell	Port Adelaide	27
+Willem Drew	Port Adelaide	27
+Jase Burgoyne	Port Adelaide	23
+Mitch Georgiades	Port Adelaide	24
+Joe Richards	Port Adelaide	26
+Sam Powell-Pepper	Port Adelaide	28
+Aliir Aliir	Port Adelaide	31
+Mani Liddy	Port Adelaide	24
+Darcy Byrne-Jones	Port Adelaide	30
+Jack Lukosius	Port Adelaide	26
+Ewan Mackinlay	Port Adelaide	23
+Ivan Soldo	Port Adelaide	30
+Jacob Wehr	Port Adelaide	28
+Dante Visentini	Port Adelaide	23
+Jackson Mead	Port Adelaide	24
+Logan Evans	Port Adelaide	20
+Esava Ratugolea	Port Adelaide	28
+Christian Moraes	Port Adelaide	19
+Brandon Zerk-Thatcher	Port Adelaide	28
+Josh Sinn	Port Adelaide	23
+Will Brodie	Port Adelaide	28
+Lachlan Jones	Port Adelaide	24
+Will Lorenz	Port Adelaide	21
+Corey Durdin	Port Adelaide	24
+Joe Berry	Port Adelaide	20
+Todd Marshall	Port Adelaide	27
+Jack Whitlock	Port Adelaide	20
+Ollie Lord	Port Adelaide	24
+Harrison Ramm	Port Adelaide	19
+Tom Cochrane	Port Adelaide	20
+Jacob Moss	Port Adelaide	21
+Xavier Walsh	Port Adelaide	20
+Tom Anastasopoulos	Port Adelaide	21
+Benny Barrett	Port Adelaide	20
+Josh Lai	Port Adelaide	20
+Jack Watkins	Port Adelaide	26
+Balyn O'Brien	Port Adelaide	19
+Mitch Zadow	Port Adelaide	22
+Xavier Bamert	Port Adelaide	19
+Alex van Wyk	Port Adelaide	22
+Tim Taranto	Richmond	28
+Toby Nankervis	Richmond	32
+Jayden Short	Richmond	30
+Jacob Hopper	Richmond	29
+Sam Banks	Richmond	23
+Dion Prestia	Richmond	33
+Nick Vlastuin	Richmond	32
+Jack Ross	Richmond	25
+Kane McAuliffe	Richmond	21
+Nathan Broad	Richmond	33
+Rhyan Mansell	Richmond	26
+Seth Campbell	Richmond	21
+Ben Miller	Richmond	26
+Tyler Sonsie	Richmond	23
+Tom Brown	Richmond	23
+Hugo Ralphsmith	Richmond	24
+Luke Trainor	Richmond	20
+Sam Lalor	Richmond	19
+Noah Balta	Richmond	26
+Tom Lynch	Richmond	33
+James Trezise	Richmond	24
+Taj Hotton	Richmond	20
+Maurice Rioli	Richmond	23
+Kaleb Smith	Richmond	21
+Thomas Sims	Richmond	20
+Steely Green	Richmond	22
+Campbell Gray	Richmond	23
+Jonty Faull	Richmond	20
+Mykelti Lefau	Richmond	28
+Samson Ryan	Richmond	25
+Sam Cumming	Richmond	19
+Samuel Grlj	Richmond	19
+Harry Armstrong	Richmond	20
+Josh Gibcus	Richmond	23
+Liam Fawcett	Richmond	21
+Judson Clarke	Richmond	22
+Jasper Alger	Richmond	19
+Patrick Retschko	Richmond	20
+Josh Smillie	Richmond	20
+Noah Roberts-Thomson	Richmond	19
+Zane Peucker	Richmond	18
+Oliver Hayes-Brown	Richmond	26
+Thomas Burton	Richmond	19
+Kye Annand	Richmond	22
+Nasiah Wanganeen-Milera	St Kilda	23
+Rowan Marshall	St Kilda	30
+Jack Sinclair	St Kilda	31
+Jack Macrae	St Kilda	32
+Tom De Koning	St Kilda	27
+Marcus Windhager	St Kilda	23
+Callum Wilkie	St Kilda	30
+Bradley Hill	St Kilda	33
+Mason Wood	St Kilda	32
+Sam Flanders	St Kilda	25
+Ryan Byrnes	St Kilda	25
+Max Hall	St Kilda	24
+Hugo Garcia	St Kilda	21
+Jack Silvagni	St Kilda	28
+Darcy Wilson	St Kilda	21
+Cooper Sharman	St Kilda	26
+Hunter Clark	St Kilda	27
+Mitchito Owens	St Kilda	22
+Mattaes Phillipou	St Kilda	21
+Liam Ryan	St Kilda	29
+Hugh Boxshall	St Kilda	20
+Anthony Caminiti	St Kilda	22
+Jack Higgins	St Kilda	27
+Liam Henry	St Kilda	25
+Liam Stocker	St Kilda	26
+Tobie Travaglia	St Kilda	19
+Dougal Howard	St Kilda	30
+Paddy Dow	St Kilda	26
+Alix Tauru	St Kilda	19
+Daniel Butler	St Kilda	30
+Isaac Keeler	St Kilda	22
+Angus Hastie	St Kilda	20
+Max King	St Kilda	26
+Liam O'Connell	St Kilda	23
+Jack Carroll	St Kilda	23
+Lance Collard	St Kilda	21
+Eamonn Armstrong	St Kilda	20
+Kobe McDonald	St Kilda	18
+James Barrat	St Kilda	19
+Kye Fincher	St Kilda	18
+Alex Dodson	St Kilda	20
+Patrick Said	St Kilda	20
+Charlie Banfield	St Kilda	19
+Campbell Lake	St Kilda	22
+Brodie Grundy	Sydney	32
+Errol Gulden	Sydney	24
+Isaac Heeney	Sydney	30
+Callum Mills	Sydney	29
+Chad Warner	Sydney	25
+Nick Blakey	Sydney	26
+Jake Lloyd	Sydney	32
+Matthew Roberts	Sydney	23
+James Rowbottom	Sydney	25
+Justin McInerney	Sydney	26
+Charlie Curnow	Sydney	29
+Angus Sheldrick	Sydney	22
+Tom Papley	Sydney	30
+Harry Cunningham	Sydney	32
+James Jordon	Sydney	25
+Riley Bice	Sydney	25
+Braeden Campbell	Sydney	24
+Sam Wicks	Sydney	26
+Tom McCartin	Sydney	26
+Dane Rampe	Sydney	36
+Taylor Adams	Sydney	32
+Hayden McLean	Sydney	27
+Joel Amartey	Sydney	26
+Peter Ladhams	Sydney	28
+Corey Warner	Sydney	22
+Caiden Cleary	Sydney	21
+Lewis Melican	Sydney	29
+Logan McDonald	Sydney	24
+Malcolm Rosas	Sydney	25
+Joel Hamling	Sydney	33
+Tom Hanily	Sydney	21
+Harry Kyle	Sydney	19
+Jai Serong	Sydney	23
+Jesse Dattoli	Sydney	20
+Will Edwards	Sydney	23
+Riak Andrew	Sydney	21
+Patrick Snell	Sydney	21
+Ned Bowman	Sydney	19
+Noah Chamberlain	Sydney	19
+Liam Hetherton	Sydney	19
+Max King	Sydney	19
+Jevan Phillipou	Sydney	19
+Billy Cootee	Sydney	23
+Will Green	Sydney	20
+Tom McCarthy	West Coast	26
+Jack Graham	West Coast	28
+Liam Baker	West Coast	28
+Liam Duggan	West Coast	29
+Matthew Flynn	West Coast	28
+Ryan Maric	West Coast	21
+Jake Waterman	West Coast	28
+Harley Reid	West Coast	21
+Tom Cole	West Coast	29
+Brady Hough	West Coast	23
+Elliot Yeo	West Coast	32
+Tim Kelly	West Coast	32
+Elijah Hewett	West Coast	22
+Jack Hutchinson	West Coast	24
+Jamie Cripps	West Coast	34
+Reuben Ginbey	West Coast	21
+Clay Hall	West Coast	21
+Tylar Young	West Coast	27
+Bailey Williams	West Coast	26
+Tyler Brockman	West Coast	23
+Tyrell Dewar	West Coast	22
+Jobe Shanahan	West Coast	20
+Jack Williams	West Coast	22
+Brandon Starcevich	West Coast	27
+Sandy Brock	West Coast	23
+Matt Owies	West Coast	29
+Rhett Bazzo	West Coast	22
+Harry Edwards	West Coast	25
+Lucca Grego	West Coast	20
+Hamish Davis	West Coast	20
+Archer Reid	West Coast	20
+Noah Long	West Coast	22
+Willem Duursma	West Coast	19
+Tom Gross	West Coast	19
+Cooper Duff-Tytler	West Coast	19
+Harry Schoenberg	West Coast	25
+Finlay Macrae	West Coast	24
+Josh Lindsay	West Coast	19
+Bo Allan	West Coast	20
+Sam Allen	West Coast	19
+Deven Robertson	West Coast	25
+Harvey Johnston	West Coast	21
+Jacob Newton	West Coast	20
+Malakai Champion	West Coast	20
+Fred Rodriguez	West Coast	26
+Tylah Williams	West Coast	19
+Harry Barnett	West Coast	22
+Milan Murdock	West Coast	26
+Oliver Francou	West Coast	20
+Marcus Herbert	West Coast	24
+Marcus Bontempelli	Western Bulldogs	30
+Timothy English	Western Bulldogs	29
+Thomas Liberatore	Western Bulldogs	34
+Ed Richards	Western Bulldogs	27
+Matthew Kennedy	Western Bulldogs	29
+Bailey Dale	Western Bulldogs	30
+Adam Treloar	Western Bulldogs	33
+Sam Darcy	Western Bulldogs	23
+Bailey Williams	Western Bulldogs	28
+Aaron Naughton	Western Bulldogs	26
+Joel Freijah	Western Bulldogs	20
+James Harmes	Western Bulldogs	30
+Lachlan Bramble	Western Bulldogs	28
+Ryley Sanders	Western Bulldogs	21
+Sam Davidson	Western Bulldogs	24
+Rhylee West	Western Bulldogs	26
+Riley Garcia	Western Bulldogs	25
+Oskar Baker	Western Bulldogs	28
+Rory Lobb	Western Bulldogs	33
+Luke Cleary	Western Bulldogs	24
+Connor Budarick	Western Bulldogs	25
+Buku Khamis	Western Bulldogs	26
+Harvey Gallagher	Western Bulldogs	22
+James O'Donnell	Western Bulldogs	23
+Jordan Croft	Western Bulldogs	21
+Nick Coffield	Western Bulldogs	26
+Laitham Vandermeer	Western Bulldogs	27
+Cody Weightman	Western Bulldogs	25
+Lachlan McNeil	Western Bulldogs	24
+Jedd Busslinger	Western Bulldogs	22
+Arthur Jones	Western Bulldogs	23
+Josh Dolan	Western Bulldogs	19
+Lachlan Carmichael	Western Bulldogs	19
+Cooper Hynes	Western Bulldogs	20
+Louis Emmett	Western Bulldogs	19
+Ryan Gardner	Western Bulldogs	29
+Michael Sellwood	Western Bulldogs	22
+Lachie Jaques	Western Bulldogs	20
+Zac Walker	Western Bulldogs	20
+Will Darcy	Western Bulldogs	19
+Luke Kennedy	Western Bulldogs	19
+Lachlan Smith	Western Bulldogs	20
+Will Lewis	Western Bulldogs	27
+Caleb May	Western Bulldogs	21
