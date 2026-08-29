@@ -1,4 +1,4 @@
-import os, re, json, math
+import os, re, json, math, csv
 from collections import defaultdict
 from datetime import datetime
 
@@ -1304,6 +1304,221 @@ def compute_consistency(scores):
     std      = math.sqrt(variance)
     return max(0, min(100, round(100 - (std * 2))))
 
+# ── NFL ────────────────────────────────────────────────────────────────────────
+# Sourced from nflverse-data (github.com/nflverse/nflverse-data) via fetch_nfl_data.py
+# into nfl_data/. Entirely optional — every function here degrades to an empty
+# result if the files aren't present, same "missing file = graceful skip" pattern
+# as cba.txt/ages.txt, so running Brownlow.py without ever fetching NFL data still
+# produces a working (AFL-only) site.
+NFL_DATA_FOLDER = "nfl_data"
+NFL_SEASON = 2025
+NFL_STATS_FILE      = os.path.join(NFL_DATA_FOLDER, f"stats_player_week_{NFL_SEASON}.csv")
+NFL_TEAM_STATS_FILE = os.path.join(NFL_DATA_FOLDER, f"stats_team_week_{NFL_SEASON}.csv")
+NFL_SNAPS_FILE      = os.path.join(NFL_DATA_FOLDER, f"snap_counts_{NFL_SEASON}.csv")
+NFL_ROSTER_FILE     = os.path.join(NFL_DATA_FOLDER, f"roster_{NFL_SEASON}.csv")
+NFL_GAMES_FILE      = os.path.join(NFL_DATA_FOLDER, "games.csv")
+
+NFL_POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DST']
+# nflverse's `position` column is granular (includes every O-line/D-line/LB/DB
+# code); only these map onto the six standard fantasy positions. Everything else
+# (LB, CB, DT, SAF, DE, OT, G, C, P, LS, ...) is real NFL data but not an
+# individually-fantasy-relevant position, so those rows are skipped entirely.
+NFL_POSITION_MAP = {'QB': 'QB', 'RB': 'RB', 'FB': 'RB', 'WR': 'WR', 'TE': 'TE', 'K': 'K'}
+
+def parse_nfl_csv(filepath):
+    if not os.path.exists(filepath): return []
+    with open(filepath, newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+def nfl_num(v, cast=float):
+    if v is None or v == "": return None
+    try: return cast(v)
+    except ValueError: return None
+
+def nfl_age(birth_date, ref_date):
+    if not birth_date: return None
+    try: dob = datetime.strptime(birth_date, "%Y-%m-%d")
+    except ValueError: return None
+    age = ref_date.year - dob.year
+    if (ref_date.month, ref_date.day) < (dob.month, dob.day): age -= 1
+    return age
+
+def build_nfl_players_data():
+    """One row per fantasy-relevant player, mirroring the AFL players_data shape
+    (name/team/key/positions/history/age) closely enough that the shared Draft
+    page code barely has to know which league it's looking at."""
+    weekly = parse_nfl_csv(NFL_STATS_FILE)
+    if not weekly: return []
+
+    roster_rows = parse_nfl_csv(NFL_ROSTER_FILE)
+    roster_by_gsis = {r["gsis_id"]: r for r in roster_rows if r.get("gsis_id")}
+    # snap_counts keys players by pfr_player_id, not gsis_id — roster.csv is the
+    # only file with both IDs, so it's the bridge table between the two.
+    pfr_to_gsis = {r["pfr_id"]: r["gsis_id"] for r in roster_rows if r.get("pfr_id") and r.get("gsis_id")}
+
+    ref_date = datetime.now()
+    players = {}
+    for row in weekly:
+        pos = NFL_POSITION_MAP.get(row.get("position"))
+        if not pos: continue
+        if row.get("season_type") != "REG": continue  # regular season only — keeps every player's sample size comparable, same reasoning as leaving playoff form out of a season average
+        score = nfl_num(row.get("fantasy_points_ppr"))
+        if score is None: continue
+        pid = row["player_id"]
+        if pid not in players:
+            reg = roster_by_gsis.get(pid, {})
+            team = (row.get("team") or "").strip()
+            players[pid] = {
+                "name": row["player_display_name"], "team": team,
+                "key": row["player_display_name"] + "|" + team,
+                "positions": [pos],
+                "age": nfl_age(reg.get("birth_date"), ref_date),
+                "years_exp": nfl_num(reg.get("years_exp"), int),
+                "history": [], "snap_history": {},
+            }
+        week = nfl_num(row.get("week"), int)
+        players[pid]["history"].append({
+            "week": week, "score": round(score, 1), "opponent": row.get("opponent_team"),
+            "passing_yards": nfl_num(row.get("passing_yards")) or 0,
+            "rushing_yards": nfl_num(row.get("rushing_yards")) or 0,
+            "receptions": nfl_num(row.get("receptions")) or 0,
+            "receiving_yards": nfl_num(row.get("receiving_yards")) or 0,
+            "tds": (nfl_num(row.get("passing_tds")) or 0) + (nfl_num(row.get("rushing_tds")) or 0) + (nfl_num(row.get("receiving_tds")) or 0),
+        })
+
+    # Snap% history: bridge pfr_player_id -> gsis_id via roster, fall back to a
+    # plain name+team match for the (smaller) set of players roster.csv doesn't
+    # carry both IDs for — same tiered-matching spirit as the AFL CBA/age imports,
+    # just simpler since these IDs are far more reliable than free-text names.
+    name_team_index = {(p["name"].lower(), p["team"]): pid for pid, p in players.items()}
+    snap_matched, snap_total = 0, 0
+    for row in parse_nfl_csv(NFL_SNAPS_FILE):
+        snap_total += 1
+        pct = nfl_num(row.get("offense_pct"))
+        if pct is None: continue
+        week = nfl_num(row.get("week"), int)
+        pid = pfr_to_gsis.get(row.get("pfr_player_id"))
+        if pid not in players:
+            pid = name_team_index.get(((row.get("player") or "").lower(), (row.get("team") or "").strip()))
+        if pid not in players: continue
+        players[pid]["snap_history"][week] = round(pct * 100, 1)
+        snap_matched += 1
+    if snap_total:
+        print(f"ℹ️  NFL snap count import: {snap_matched}/{snap_total} rows matched")
+
+    # Season averages of the raw per-game stats, in the same shape as AFL's
+    # advanced_avg (compute_advanced_averages) — lets the shared Draft page code
+    # read r.adv[key] identically regardless of league.
+    NFL_ADV_KEYS = ["passing_yards", "rushing_yards", "receptions", "receiving_yards", "tds"]
+    for p in players.values():
+        p["snap_avg"] = round(sum(p["snap_history"].values()) / len(p["snap_history"]), 1) if p["snap_history"] else None
+        gp = len(p["history"])
+        p["advanced_avg"] = {k: round(sum(h[k] for h in p["history"]) / gp, 1) for k in NFL_ADV_KEYS} if gp else {}
+        p["consistency"] = compute_consistency([h["score"] for h in p["history"]])
+
+    return list(players.values())
+
+# Standard ESPN/Yahoo-default DST scoring — sacks/INTs/fumble recoveries/safeties/
+# defensive-or-ST TDs plus a points-allowed tier bonus. def_fumbles is read as
+# fumbles recovered BY this team's defense (it sits in the same def_* namespace as
+# def_sacks/def_interceptions, all of which are this team's own defensive plays).
+def nfl_dst_points_allowed_score(pts):
+    if pts is None: return 0
+    if pts == 0: return 10
+    if pts <= 6: return 7
+    if pts <= 13: return 4
+    if pts <= 20: return 1
+    if pts <= 27: return 0
+    if pts <= 34: return -1
+    return -4
+
+def build_nfl_dst_data():
+    team_weekly = parse_nfl_csv(NFL_TEAM_STATS_FILE)
+    games = parse_nfl_csv(NFL_GAMES_FILE)
+    if not team_weekly or not games: return []
+
+    points_allowed = {}  # (team, week) -> points given up that week
+    for g in games:
+        week = nfl_num(g.get("week"), int)
+        home, away = g.get("home_team"), g.get("away_team")
+        hs, aws = nfl_num(g.get("home_score")), nfl_num(g.get("away_score"))
+        if hs is None or aws is None: continue
+        points_allowed[(home, week)] = aws
+        points_allowed[(away, week)] = hs
+
+    dst = {}
+    for row in team_weekly:
+        if row.get("season_type") != "REG": continue
+        team, week = row.get("team"), nfl_num(row.get("week"), int)
+        if not team: continue
+        key = team
+        if key not in dst:
+            dst[key] = {
+                "name": f"{team} D/ST", "team": team, "key": f"{team} D/ST|{team}",
+                "positions": ["DST"], "age": None, "years_exp": None,
+                "history": [], "snap_history": {}, "snap_avg": None,
+            }
+        sacks = nfl_num(row.get("def_sacks")) or 0
+        ints = nfl_num(row.get("def_interceptions")) or 0
+        fum = nfl_num(row.get("def_fumbles")) or 0
+        tds = nfl_num(row.get("def_tds")) or 0
+        safeties = nfl_num(row.get("def_safeties")) or 0
+        pa = points_allowed.get((team, week))
+        score = sacks*1 + ints*2 + fum*2 + tds*6 + safeties*2 + nfl_dst_points_allowed_score(pa)
+        dst[key]["history"].append({
+            "week": week, "score": round(score, 1), "opponent": None,
+            "passing_yards": 0, "rushing_yards": 0, "receptions": 0, "receiving_yards": 0, "tds": tds,
+        })
+    for d in dst.values():
+        gp = len(d["history"])
+        d["advanced_avg"] = {k: round(sum(h[k] for h in d["history"]) / gp, 1) for k in
+                              ["passing_yards", "rushing_yards", "receptions", "receiving_yards", "tds"]} if gp else {}
+        d["consistency"] = compute_consistency([h["score"] for h in d["history"]])
+    return list(dst.values())
+
+def build_nfl_leaderboard(nfl_players_data):
+    """Season fantasy leaders, plus the same 'top scorers per game get votes' idea
+    already used for AFL — computed WITHIN each position group (so a QB is never
+    compared against a kicker) and labelled generically rather than as 'Brownlow',
+    since that's a real, specific AFL award this app is deliberately not claiming
+    to simulate for a different sport."""
+    by_week_pos = {}
+    for p in nfl_players_data:
+        pos = p["positions"][0]
+        for h in p["history"]:
+            by_week_pos.setdefault((h["week"], pos), []).append((h["score"], p))
+
+    vote_totals = {}
+    for (_week, _pos), entries in by_week_pos.items():
+        entries.sort(key=lambda e: e[0], reverse=True)
+        for rank, (_score, p) in enumerate(entries[:3], 1):
+            votes = {1: 3, 2: 2, 3: 1}[rank]
+            vote_totals[p["key"]] = vote_totals.get(p["key"], 0) + votes
+
+    lb = []
+    for p in nfl_players_data:
+        scores = [h["score"] for h in p["history"]]
+        if not scores: continue
+        lb.append({
+            "player": p["name"], "team": p["team"], "key": p["key"],
+            "votes": vote_totals.get(p["key"], 0),
+            "total": round(sum(scores), 1), "avg": round(sum(scores)/len(scores), 1),
+            "rounds": len(scores),
+        })
+    lb.sort(key=lambda x: (x["votes"], x["total"]), reverse=True)
+    return lb
+
+def build_nfl_games_data():
+    games = parse_nfl_csv(NFL_GAMES_FILE)
+    out = []
+    for g in games:
+        out.append({
+            "week": nfl_num(g.get("week"), int), "gameday": g.get("gameday"),
+            "away_team": g.get("away_team"), "home_team": g.get("home_team"),
+            "away_score": nfl_num(g.get("away_score")), "home_score": nfl_num(g.get("home_score")),
+        })
+    return out
+
 # ── HTML Template ─────────────────────────────────────────────────────────────
 HTML_TEMPLATE = r"""<!DOCTYPE html>
 <html lang="en">
@@ -1351,17 +1566,22 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 html,body{height:100%;overflow:hidden}
 body{background:radial-gradient(ellipse 900px 600px at 10% -10%,var(--bg-wash-1),transparent 60%),radial-gradient(ellipse 900px 700px at 100% 0%,var(--bg-wash-2),transparent 55%),radial-gradient(ellipse 1100px 800px at 50% 115%,var(--bg-wash-3),transparent 60%),var(--bg);color:var(--text);font-family:'Barlow',sans-serif;display:flex;flex-direction:column;transition:background-color var(--dur-slow) var(--ease),color var(--dur-slow) var(--ease)}
 header{display:flex;align-items:center;background:var(--header-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);box-shadow:0 4px 24px rgba(0,0,0,.35);flex-shrink:0;position:relative;z-index:10;transition:background-color var(--dur-slow) var(--ease)}
-.logo{padding:0 20px;height:56px;display:flex;align-items:center;gap:10px;white-space:nowrap;border-right:1px solid var(--border)}
+.logo{flex-shrink:0;padding:0 20px;height:56px;display:flex;align-items:center;gap:10px;white-space:nowrap;border-right:1px solid var(--border)}
 .logo-mark{flex-shrink:0;filter:drop-shadow(0 0 6px rgba(232,160,32,.45))}
 .logo-text{display:flex;flex-direction:column;justify-content:center;line-height:1.2}
 .logo-title{font-weight:800;font-size:1.05rem;letter-spacing:.06em;color:var(--accent);text-shadow:0 0 20px rgba(232,160,32,.35)}
 .logo-sub{font-size:.6rem;color:var(--muted);letter-spacing:.02em;white-space:nowrap}
-nav{display:flex;flex:1;position:relative}
-.nav-btn{padding:0 12px;height:56px;border:none;background:transparent;color:var(--muted);font-weight:700;font-size:.88rem;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:color var(--dur) var(--ease),background var(--dur) var(--ease);border-right:1px solid var(--border)}
+nav{display:flex;flex:1;min-width:0;position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.nav-btn{flex-shrink:0;padding:0 12px;height:56px;border:none;background:transparent;color:var(--muted);font-weight:700;font-size:.88rem;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:color var(--dur) var(--ease),background var(--dur) var(--ease);border-right:1px solid var(--border)}
 .nav-btn:hover{color:var(--text);background:rgba(var(--overlay-rgb),.03)}
 .nav-btn:active{transform:scale(.97)}
 .nav-btn.active{color:var(--accent);background:rgba(232,160,32,.06)}
 .nav-indicator{position:absolute;left:0;bottom:0;width:0;height:3px;background:var(--accent);border-radius:2px 2px 0 0;box-shadow:0 0 10px rgba(232,160,32,.7);transition:transform var(--dur-slow) var(--ease),width var(--dur-slow) var(--ease);pointer-events:none}
+.league-switch{flex-shrink:0;display:flex;gap:4px;padding:4px;margin:0 4px 0 12px;background:var(--surface2);border:1px solid var(--border);border-radius:20px}
+.league-btn{padding:6px 14px;border-radius:16px;border:none;background:transparent;color:var(--muted);font-weight:700;font-size:.8rem;cursor:pointer;white-space:nowrap;transition:all .15s}
+.league-btn:hover{color:var(--text)}
+.league-btn.active{background:var(--accent);color:#000}
 .theme-toggle-btn{flex-shrink:0;width:40px;height:40px;margin:0 12px;border-radius:50%;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-size:1.05rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform var(--dur) var(--ease),background var(--dur) var(--ease),border-color var(--dur) var(--ease)}
 .theme-toggle-btn:hover{border-color:var(--accent);transform:rotate(20deg) scale(1.08)}
 .theme-toggle-btn:active{transform:scale(.92)}
@@ -1536,6 +1756,12 @@ canvas{max-height:340px}
 .pos-mid{background:rgba(52,211,153,.15);color:#6ee7b7;border:1px solid rgba(52,211,153,.25)}
 .pos-ruc{background:rgba(251,191,36,.15);color:#fcd34d;border:1px solid rgba(251,191,36,.25)}
 .pos-fwd{background:rgba(248,113,113,.15);color:#fca5a5;border:1px solid rgba(248,113,113,.25)}
+.pos-qb{background:rgba(248,113,113,.15);color:#fca5a5;border:1px solid rgba(248,113,113,.25)}
+.pos-rb{background:rgba(52,211,153,.15);color:#6ee7b7;border:1px solid rgba(52,211,153,.25)}
+.pos-wr{background:rgba(59,130,246,.2);color:#93c5fd;border:1px solid rgba(59,130,246,.3)}
+.pos-te{background:rgba(251,191,36,.15);color:#fcd34d;border:1px solid rgba(251,191,36,.25)}
+.pos-k{background:rgba(192,132,252,.15);color:#d8b4fe;border:1px solid rgba(192,132,252,.25)}
+.pos-dst{background:rgba(var(--overlay-rgb),.1);color:var(--muted);border:1px solid var(--border)}
 .pos-chip{display:inline-block;padding:0 5px;border-radius:3px;font-size:.65rem;font-weight:700}
 
 /* Mini stat chips on trade items */
@@ -1923,7 +2149,7 @@ tr.tier-break td{padding:4px 12px;font-size:.62rem;font-weight:800;letter-spacin
 .draft-best-sub{font-size:.68rem;color:var(--muted);margin-top:2px;white-space:nowrap}
 .draft-best-empty{color:var(--muted);font-size:.85rem;padding:8px 2px}
 
-.draft-scarcity-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.draft-scarcity-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:16px}
 .draft-scarcity-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 10px}
 .draft-scarcity-head{display:flex;justify-content:space-between;align-items:baseline;font-size:.72rem;font-weight:700;margin-bottom:5px}
 .draft-scarcity-head b{font-family:'Barlow Condensed',sans-serif;font-size:.85rem}
@@ -1984,6 +2210,8 @@ tr.tier-break td{padding:4px 12px;font-size:.62rem;font-weight:800;letter-spacin
   nav::-webkit-scrollbar{display:none}
   .nav-btn{flex-shrink:0;padding:0 10px;font-size:.78rem}
   .theme-toggle-btn{width:34px;height:34px;margin:0 8px;font-size:.9rem}
+  .league-switch{margin:0 4px;flex-shrink:0}
+  .league-btn{padding:5px 9px;font-size:.72rem}
   .page{padding:14px 12px}
   .page-head{flex-wrap:wrap;row-gap:8px}
   .page-head-title{font-size:1.1rem;padding-left:9px}
@@ -2030,18 +2258,23 @@ tr.tier-break td{padding:4px 12px;font-size:.62rem;font-weight:800;letter-spacin
     </div>
   </div>
   <nav>
-    <button class="nav-btn active"  onclick="showPage('leaderboard',this)">&#127942; Leaderboard</button>
-    <button class="nav-btn"         onclick="showPage('fixtures',this)">&#128197; Fixtures</button>
-    <button class="nav-btn"         onclick="showPage('myteam',this)">&#127945; My Team</button>
-    <button class="nav-btn"         onclick="showPage('difficulty',this)">&#128737; Matchups</button>
-    <button class="nav-btn"         onclick="showPage('players',this)">&#128200; Players</button>
-    <button class="nav-btn"         onclick="showPage('targets',this)">&#127919; Targets</button>
-    <button class="nav-btn"         onclick="showPage('trading',this)">&#128176; Trades</button>
-    <button class="nav-btn"         onclick="showPage('rolling22',this)">&#127942; Rolling 22</button>
-    <button class="nav-btn"         onclick="showPage('awards',this)">&#127941; Awards</button>
+    <button class="nav-btn active"  data-league="afl" onclick="showPage('leaderboard',this)">&#127942; Leaderboard</button>
+    <button class="nav-btn"         data-league="afl" onclick="showPage('fixtures',this)">&#128197; Fixtures</button>
+    <button class="nav-btn"         data-league="afl" onclick="showPage('myteam',this)">&#127945; My Team</button>
+    <button class="nav-btn"         data-league="afl" onclick="showPage('difficulty',this)">&#128737; Matchups</button>
+    <button class="nav-btn"         data-league="afl" onclick="showPage('players',this)">&#128200; Players</button>
+    <button class="nav-btn"         data-league="afl" onclick="showPage('targets',this)">&#127919; Targets</button>
+    <button class="nav-btn"         data-league="afl" onclick="showPage('trading',this)">&#128176; Trades</button>
+    <button class="nav-btn"         data-league="afl" onclick="showPage('rolling22',this)">&#127942; Rolling 22</button>
+    <button class="nav-btn"         data-league="afl" onclick="showPage('awards',this)">&#127941; Awards</button>
+    <button class="nav-btn"         data-league="nfl" style="display:none" onclick="showPage('nflleaderboard',this)">&#127942; Leaderboard</button>
     <button class="nav-btn"         onclick="showPage('draft',this)">&#128203; Draft</button>
     <div class="nav-indicator" id="navIndicator"></div>
   </nav>
+  <div class="league-switch">
+    <button class="league-btn active" id="leagueBtnAfl" onclick="setLeague('afl')">&#127945; AFL</button>
+    <button class="league-btn" id="leagueBtnNfl" onclick="setLeague('nfl')">&#127944; NFL</button>
+  </div>
   <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark mode">&#9728;&#65039;</button>
 </header>
 <main>
@@ -2517,6 +2750,29 @@ tr.tier-break td{padding:4px 12px;font-size:.62rem;font-weight:800;letter-spacin
   </div>
 </div>
 
+<!-- NFL LEADERBOARD PAGE -->
+<div class="page" id="page-nflleaderboard">
+  <div class="page-head">
+    <div class="page-head-title">&#127942; NFL Leaderboard</div>
+    <button class="info-btn" id="infoBtn-nflleaderboard" onclick="toggleInfo('nflleaderboard')">&#9432; How it works</button>
+  </div>
+  <div class="info-panel" id="info-nflleaderboard">
+    <div class="info-heading">&#127942; NFL Leaderboard</div>
+    Season fantasy points (PPR) leaders for the 2025 season, sourced from nflverse. <b>Top-3s</b> uses the same "top scorers each week get votes" idea as the AFL Leaderboard, computed <i>within each position group</i> so a QB is never compared against a kicker.<br><br>
+    Only <b>QB/RB/WR/TE/K/DST</b> are tracked (the standard fantasy-relevant positions) &mdash; if this page is empty, run <code>fetch_nfl_data.py</code> then regenerate the site.
+  </div>
+  <div id="nflLeaderboardEmpty" class="draft-mine-empty" style="display:none">No NFL data loaded yet &mdash; run <b>fetch_nfl_data.py</b>, then regenerate <b>index.html</b> with Brownlow.py.</div>
+  <div class="table-scroll">
+  <table class="std-table" id="nflLeaderboardTable">
+    <thead><tr>
+      <th>Rank</th><th>Player</th><th>Team</th><th>Pos</th>
+      <th class="ta-r">GP</th><th class="ta-r">Total PPR</th><th class="ta-r">Avg PPR</th><th class="ta-r">Top-3s</th>
+    </tr></thead>
+    <tbody id="nflLeaderboardBody"></tbody>
+  </table>
+  </div>
+</div>
+
 <!-- DRAFT PAGE -->
 <div class="page" id="page-draft">
   <div class="page-head">
@@ -2565,20 +2821,14 @@ tr.tier-break td{padding:4px 12px;font-size:.62rem;font-weight:800;letter-spacin
   <div class="targets-filter-wrap" id="draftSettingsPanel">
     <div class="targets-filter-bar">
       <div class="tf-field"><label>Teams in League</label><input type="number" id="draftTeams" value="10" min="4" max="20" style="width:70px" onchange="renderDraft()"></div>
-      <div class="tf-field"><label>Roster Format &mdash; DEF / MID / RUC / FWD / Bench</label><div style="display:flex;gap:4px">
-        <input type="number" id="draftFmtDEF" value="3" min="0" max="14" style="width:44px" onchange="saveDraftFormat();renderDraft()" title="DEF starters">
-        <input type="number" id="draftFmtMID" value="4" min="0" max="16" style="width:44px" onchange="saveDraftFormat();renderDraft()" title="MID starters">
-        <input type="number" id="draftFmtRUC" value="1" min="0" max="6" style="width:44px" onchange="saveDraftFormat();renderDraft()" title="RUC starters">
-        <input type="number" id="draftFmtFWD" value="3" min="0" max="14" style="width:44px" onchange="saveDraftFormat();renderDraft()" title="FWD starters">
-        <input type="number" id="draftFmtBENCH" value="4" min="0" max="14" style="width:44px" onchange="saveDraftFormat();renderDraft()" title="Bench spots">
-      </div></div>
+      <div class="tf-field"><label id="draftFmtLabel">Roster Format</label><div id="draftFmtWrap" style="display:flex;gap:4px"></div></div>
     </div>
   </div>
   <div class="targets-filter-wrap" id="draftFilterPanel">
     <div class="targets-filter-bar">
       <div class="tf-field" style="flex:1 1 160px"><label>Search</label><input type="text" id="draftSearch" placeholder="Player or team..." oninput="renderDraft()" style="width:100%"></div>
       <div class="tf-field"><label>Position</label><select id="draftPos" onchange="renderDraft()">
-        <option value="">All</option><option value="DEF">DEF</option><option value="MID">MID</option><option value="RUC">RUC</option><option value="FWD">FWD</option>
+        <option value="">All</option>
       </select></div>
       <div class="tf-field"><label>Sort By</label><select id="draftSort" onchange="renderDraft()">
         <option value="draftScore">Draft Score</option>
@@ -2586,8 +2836,8 @@ tr.tier-break td{padding:4px 12px;font-size:.62rem;font-weight:800;letter-spacin
         <option value="avg">Season Avg</option>
         <option value="recentAvg">Last 6 Avg (Form)</option>
         <option value="total">Total FP</option>
-        <option value="cbaTrend">CBA Trend</option>
-        <option value="votes">Brownlow Votes</option>
+        <option value="roleTrend" id="sortRoleTrendOpt">CBA Trend</option>
+        <option value="votes" id="sortVotesOpt">Brownlow Votes</option>
         <option value="gp">Games Played</option>
       </select></div>
       <div class="tf-field"><label>Min Games</label><input type="number" id="draftMinGp" value="3" min="0" style="width:70px" onchange="renderDraft()"></div>
@@ -2601,9 +2851,9 @@ tr.tier-break td{padding:4px 12px;font-size:.62rem;font-weight:800;letter-spacin
   <table class="std-table draft-table" id="draftTable">
     <thead><tr>
       <th>Rank</th><th>Tier</th><th>Player</th><th>Team</th><th>Pos</th><th class="ta-r">Age</th>
-      <th class="ta-r">GP</th><th class="ta-r">Score</th><th class="ta-r">VBD</th><th class="ta-r">Season Avg</th><th>Form (L6)</th><th>CBA%</th><th class="ta-r">Votes</th>
+      <th class="ta-r">GP</th><th class="ta-r">Score</th><th class="ta-r">VBD</th><th class="ta-r">Season Avg</th><th>Form (L6)</th><th id="thRole">CBA%</th><th class="ta-r" id="thVotes">Votes</th>
       <th class="ta-r adv-col">Total FP</th><th class="ta-r adv-col">Best</th>
-      <th class="ta-r adv-col">Disp</th><th class="ta-r adv-col">Tack</th><th class="ta-r adv-col">Clr</th><th class="ta-r adv-col">I50</th><th class="ta-r adv-col">Goals</th>
+      <th class="ta-r adv-col" id="advHead0">Disp</th><th class="ta-r adv-col" id="advHead1">Tack</th><th class="ta-r adv-col" id="advHead2">Clr</th><th class="ta-r adv-col" id="advHead3">I50</th><th class="ta-r adv-col" id="advHead4">Goals</th>
       <th>Draft</th>
     </tr></thead>
     <tbody id="draftBody"></tbody>
@@ -2647,6 +2897,9 @@ function toggleTheme() {
 const LEADERBOARD      = __LEADERBOARD__;
 const ROUNDS_DATA      = __ROUNDS_DATA__;
 const PLAYERS_DATA     = __PLAYERS_DATA__;
+const NFL_PLAYERS_DATA = __NFL_PLAYERS_DATA__;
+const NFL_LEADERBOARD  = __NFL_LEADERBOARD__;
+const NFL_GAMES        = __NFL_GAMES__;
 const ARCHETYPE_TEAM_NOTES = __ARCHETYPE_TEAM_NOTES__;
 const ROUNDS_LOADED    = __ROUNDS_LOADED__;
 const OVERALL_DIFF     = __OVERALL_DIFF__;
@@ -2733,6 +2986,126 @@ function posChipsHtml(positions) {
     .join(' ');
 }
 
+const NFL_POS_ORDER = ['QB','RB','WR','TE','K','DST'];
+function nflPosOrdered(positions) {
+  if (!positions || !positions.length) return '';
+  return NFL_POS_ORDER.filter(function(p){ return positions.includes(p); }).join('/');
+}
+function nflPosChipsHtml(positions) {
+  if (!positions || !positions.length) return '<span class="pos-chip" style="opacity:.5">&mdash;</span>';
+  return NFL_POS_ORDER.filter(function(p){ return positions.includes(p); })
+    .map(function(p){ return '<span class="pos-chip pos-' + p.toLowerCase() + '">' + p + '</span>'; })
+    .join(' ');
+}
+
+// Everything the Draft page (and NFL Leaderboard) need to work identically for
+// either sport without branching on currentLeague all over the place — swap this
+// object out and the shared code just works.
+var LEAGUE_CONFIGS = {
+  afl: {
+    label: 'AFL',
+    posOrder: POS_ORDER,
+    myTeamGroupOrder: ['FWD','RUC','DEF','MID'],
+    posChips: posChipsHtml, posOrderedFn: posOrdered,
+    rosterDefault: { DEF:3, MID:4, RUC:1, FWD:3, BENCH:4 },
+    roleLabel: 'CBA%', roleTrendLabel: 'CBA Trend', roleField: 'cba_avg', roleHistoryField: 'cba_history',
+    votesLabel: 'Brownlow Votes', votesColLabel: 'Votes',
+    advCols: [
+      {key:'Disposals', label:'Disp'}, {key:'Tackles', label:'Tack'}, {key:'TotalClearances', label:'Clr'},
+      {key:'Inside50s', label:'I50'}, {key:'Goals', label:'Goals'}
+    ],
+    getPlayers: function(){ return PLAYERS_DATA; },
+    getLeaderboard: function(){ return LEADERBOARD; },
+    canViewPlayer: true
+  },
+  nfl: {
+    label: 'NFL',
+    posOrder: NFL_POS_ORDER,
+    myTeamGroupOrder: ['QB','RB','WR','TE','K','DST'],
+    posChips: nflPosChipsHtml, posOrderedFn: nflPosOrdered,
+    rosterDefault: { QB:1, RB:2, WR:2, TE:1, K:1, DST:1, BENCH:6 },
+    roleLabel: 'Snap%', roleTrendLabel: 'Snap Trend', roleField: 'snap_avg', roleHistoryField: 'snap_history',
+    votesLabel: 'Top-3 Finishes', votesColLabel: 'Top-3s',
+    advCols: [
+      {key:'passing_yards', label:'PaYd'}, {key:'rushing_yards', label:'RuYd'}, {key:'receptions', label:'Rec'},
+      {key:'receiving_yards', label:'ReYd'}, {key:'tds', label:'TD'}
+    ],
+    getPlayers: function(){ return NFL_PLAYERS_DATA; },
+    getLeaderboard: function(){ return NFL_LEADERBOARD; },
+    canViewPlayer: false
+  }
+};
+var currentLeague = 'afl';
+function activeLeague() { return LEAGUE_CONFIGS[currentLeague]; }
+function lgFindByKey(key) { return activeLeague().getPlayers().find(function(p){ return p.key === key; }); }
+// AFL has a full Player Stats deep-dive page to jump to; NFL doesn't yet, so
+// player names/cards render as plain (non-clickable) text for NFL rather than a
+// dead link into a page that doesn't exist.
+function lgPlayerNameHtml(safeKey, dn) {
+  return activeLeague().canViewPlayer ?
+    '<span class="player-link" onclick="searchAndShowPlayer(\'' + safeKey + '\')">' + dn + '</span>' :
+    '<span>' + dn + '</span>';
+}
+function lgCardAttr(safeKey) {
+  return activeLeague().canViewPlayer ? ' onclick="searchAndShowPlayer(\'' + safeKey + '\')" style="cursor:pointer"' : '';
+}
+
+function setLeague(lg) {
+  if (lg === currentLeague) return;
+  currentLeague = lg;
+  lsSet('league', lg);
+  document.getElementById('leagueBtnAfl').classList.toggle('active', lg==='afl');
+  document.getElementById('leagueBtnNfl').classList.toggle('active', lg==='nfl');
+  document.querySelectorAll('.nav-btn').forEach(function(btn) {
+    var bl = btn.getAttribute('data-league');
+    btn.style.display = (!bl || bl === lg) ? '' : 'none';
+  });
+  var activeBtn = document.querySelector('.nav-btn.active');
+  var stillValid = activeBtn && activeBtn.style.display !== 'none';
+  if (!stillValid) {
+    // The tab that was open doesn't exist for the new league — fall back to that
+    // league's Leaderboard rather than leaving a hidden/dead tab "active".
+    var fallback = lg === 'afl' ? 'leaderboard' : 'nflleaderboard';
+    var fallbackBtn = document.querySelector('.nav-btn[onclick*="\'' + fallback + '\'"]');
+    showPage(fallback, fallbackBtn);
+  } else {
+    var activePage = document.querySelector('.page.active');
+    if (activePage && activePage.id === 'page-draft') {
+      draftPool = null; // invalidate — rebuild against the new league's dataset
+      renderDraft();
+    } else if (activePage && activePage.id === 'page-nflleaderboard') {
+      renderNflLeaderboard();
+    }
+  }
+  moveNavIndicator(document.querySelector('.nav-btn.active'));
+}
+
+function renderNflLeaderboard() {
+  var empty = document.getElementById('nflLeaderboardEmpty');
+  var wrap = document.getElementById('nflLeaderboardTable').parentElement;
+  if (!NFL_LEADERBOARD.length) {
+    empty.style.display = 'block'; wrap.style.display = 'none';
+    return;
+  }
+  empty.style.display = 'none'; wrap.style.display = '';
+  var byKey = {};
+  NFL_PLAYERS_DATA.forEach(function(p){ byKey[p.key] = p; });
+  document.getElementById('nflLeaderboardBody').innerHTML = NFL_LEADERBOARD.map(function(e, i) {
+    var p = byKey[e.key];
+    var pos = p ? nflPosChipsHtml(p.positions) : '—';
+    return '<tr>' +
+      '<td class="pos-num">' + (i+1) + '</td>' +
+      '<td>' + (p ? p.display_name : e.player) + '</td>' +
+      '<td>' + teamTagHtml(e.team) + '</td>' +
+      '<td>' + pos + '</td>' +
+      '<td class="ta-r">' + e.rounds + '</td>' +
+      '<td class="ta-r">' + e.total + '</td>' +
+      '<td class="ta-r">' + e.avg + '</td>' +
+      '<td class="ta-r">' + e.votes + '</td>' +
+    '</tr>';
+  }).join('');
+}
+
 // Suspended is a subset of "unavailable" (INJURED_SET) — check it first so the label
 // reads SUS instead of the more general INJ when that's what's actually going on.
 function statusLabel(name) {
@@ -2791,9 +3164,11 @@ function showPage(id, btn) {
   if (id === 'myteam') renderMyTeam();
   if (id === 'rolling22') renderRolling22();
   if (id === 'draft') renderDraft();
+  if (id === 'nflleaderboard') renderNflLeaderboard();
 }
 moveNavIndicator(document.querySelector('.nav-btn.active'));
 window.addEventListener('resize', function() { moveNavIndicator(document.querySelector('.nav-btn.active')); });
+(function() { var saved = lsGet('league', 'afl'); if (saved === 'nfl') setLeague('nfl'); })();
 
 var voteRaceVisible = false;
 function toggleInfo(pageId) {
@@ -2820,24 +3195,27 @@ function toggleVoteRace() {
 }
 
 // ── Draft ─────────────────────────────────────────────────────────────────────
-function getDraftState() { return lsGet('draft_state', {}); }
-function getDraftQueue() { return lsGet('draft_queue', []); }
-function setDraftQueue(q) { lsSet('draft_queue', q); }
+// Every localStorage key here is suffixed with the active league so AFL and NFL
+// drafts never bleed into each other — switching leagues switches the whole
+// draft state, not just the display.
+function getDraftState() { return lsGet('draft_state_' + currentLeague, {}); }
+function getDraftQueue() { return lsGet('draft_queue_' + currentLeague, []); }
+function setDraftQueue(q) { lsSet('draft_queue_' + currentLeague, q); }
 // Undo: snapshot state+queue before every mutating action. Simpler and safer
 // than hand-rolling inverse operations for each action type.
 function pushDraftUndo() {
-  var stack = lsGet('draft_undo', []);
+  var stack = lsGet('draft_undo_' + currentLeague, []);
   stack.push({ state: getDraftState(), queue: getDraftQueue() });
   if (stack.length > 25) stack.shift();
-  lsSet('draft_undo', stack);
+  lsSet('draft_undo_' + currentLeague, stack);
 }
 function undoDraftAction() {
-  var stack = lsGet('draft_undo', []);
+  var stack = lsGet('draft_undo_' + currentLeague, []);
   if (!stack.length) return;
   var prev = stack.pop();
-  lsSet('draft_undo', stack);
-  lsSet('draft_state', prev.state);
-  lsSet('draft_queue', prev.queue);
+  lsSet('draft_undo_' + currentLeague, stack);
+  lsSet('draft_state_' + currentLeague, prev.state);
+  lsSet('draft_queue_' + currentLeague, prev.queue);
   renderDraft();
 }
 function setDraftState(key, state) {
@@ -2845,7 +3223,7 @@ function setDraftState(key, state) {
   var s = getDraftState();
   if (s[key] === state) delete s[key]; // clicking the active state again undoes it
   else s[key] = state; // 'taken' and 'mine' are mutually exclusive per player
-  lsSet('draft_state', s);
+  lsSet('draft_state_' + currentLeague, s);
   if (s[key]) { // now occupying a slot — off the board, no longer relevant to the queue
     var q = getDraftQueue(), idx = q.indexOf(key);
     if (idx !== -1) { q.splice(idx,1); setDraftQueue(q); }
@@ -2860,10 +3238,10 @@ function toggleDraftQueue(key) {
   renderDraft();
 }
 function resetDraft() {
-  if (!confirm('Clear all Taken/Mine marks and your queue for this draft? This cannot be undone.')) return;
+  if (!confirm('Clear all Taken/Mine marks and your queue for this ' + activeLeague().label + ' draft? This cannot be undone.')) return;
   pushDraftUndo();
-  lsSet('draft_state', {});
-  lsSet('draft_queue', []);
+  lsSet('draft_state_' + currentLeague, {});
+  lsSet('draft_queue_' + currentLeague, []);
   renderDraft();
 }
 function toggleDraftFilters() {
@@ -2890,39 +3268,43 @@ function setDraftView(v) {
 }
 
 var draftPool = null;
-// Roster format (starting DEF/MID/RUC/FWD slots + bench) varies a lot league to
-// league, so it's a user setting rather than an assumption baked into the code —
-// this is what both VBD's "replacement level" and the roster-needs bars read
-// from. Default is a common 11-a-side shape (3 DEF/4 MID/1 RUC/3 FWD + 4 bench)
-// but the Roster Format inputs in the settings bar above the table override it.
-function getDraftRosterFormat() { return lsGet('draft_roster_format', { DEF:3, MID:4, RUC:1, FWD:3, BENCH:4 }); }
+// Roster format (starting-position slots + bench) varies a lot league to league
+// (and sport to sport), so it's a user setting rather than an assumption baked
+// into the code — this is what both VBD's "replacement level" and the
+// roster-needs bars read from. Falls back to each league's default shape.
+function getDraftRosterFormat() { return lsGet('draft_roster_format_' + currentLeague, activeLeague().rosterDefault); }
 function saveDraftFormat() {
-  lsSet('draft_roster_format', {
-    DEF: +document.getElementById('draftFmtDEF').value || 0,
-    MID: +document.getElementById('draftFmtMID').value || 0,
-    RUC: +document.getElementById('draftFmtRUC').value || 0,
-    FWD: +document.getElementById('draftFmtFWD').value || 0,
-    BENCH: +document.getElementById('draftFmtBENCH').value || 0
-  });
-}
-var draftFormatInited = false;
-function initDraftFormatInputs() {
-  if (draftFormatInited) return;
-  draftFormatInited = true;
-  var fmt = getDraftRosterFormat();
-  document.getElementById('draftFmtDEF').value = fmt.DEF;
-  document.getElementById('draftFmtMID').value = fmt.MID;
-  document.getElementById('draftFmtRUC').value = fmt.RUC;
-  document.getElementById('draftFmtFWD').value = fmt.FWD;
-  document.getElementById('draftFmtBENCH').value = fmt.BENCH;
+  var lg = activeLeague(), fmt = {};
+  lg.myTeamGroupOrder.forEach(function(pos) { fmt[pos] = +document.getElementById('draftFmt_'+pos).value || 0; });
+  fmt.BENCH = +document.getElementById('draftFmt_BENCH').value || 0;
+  lsSet('draft_roster_format_' + currentLeague, fmt);
 }
 function currentDraftSlots() {
-  return {
-    DEF: +document.getElementById('draftFmtDEF').value || 0,
-    MID: +document.getElementById('draftFmtMID').value || 0,
-    RUC: +document.getElementById('draftFmtRUC').value || 0,
-    FWD: +document.getElementById('draftFmtFWD').value || 0
-  };
+  var lg = activeLeague(), slots = {};
+  lg.myTeamGroupOrder.forEach(function(pos) {
+    var el = document.getElementById('draftFmt_'+pos);
+    slots[pos] = el ? (+el.value || 0) : (lg.rosterDefault[pos] || 1);
+  });
+  return slots;
+}
+// Rebuilds the parts of the Draft page that differ by league (position filter,
+// sort-option labels, table headers, roster-format inputs) — cheap, so it's fine
+// to only run this on first load and on league switch rather than every render.
+var draftChromeLeague = null;
+function renderDraftChrome() {
+  var lg = activeLeague();
+  document.getElementById('draftPos').innerHTML = '<option value="">All</option>' +
+    lg.posOrder.map(function(p){ return '<option value="'+p+'">'+p+'</option>'; }).join('');
+  document.getElementById('sortRoleTrendOpt').textContent = lg.roleTrendLabel;
+  document.getElementById('sortVotesOpt').textContent = lg.votesLabel;
+  document.getElementById('thRole').textContent = lg.roleLabel;
+  document.getElementById('thVotes').textContent = lg.votesColLabel;
+  lg.advCols.forEach(function(col, i) { document.getElementById('advHead'+i).textContent = col.label; });
+  document.getElementById('draftFmtLabel').textContent = 'Roster Format — ' + lg.myTeamGroupOrder.join(' / ') + ' / Bench';
+  var fmt = getDraftRosterFormat();
+  document.getElementById('draftFmtWrap').innerHTML = lg.myTeamGroupOrder.map(function(pos) {
+    return '<input type="number" id="draftFmt_'+pos+'" value="'+(fmt[pos]!=null?fmt[pos]:1)+'" min="0" max="20" style="width:44px" onchange="saveDraftFormat();renderDraft()" title="'+pos+' starters">';
+  }).join('') + '<input type="number" id="draftFmt_BENCH" value="'+(fmt.BENCH!=null?fmt.BENCH:4)+'" min="0" max="20" style="width:44px" onchange="saveDraftFormat();renderDraft()" title="Bench spots">';
 }
 function draftMinMax(vals) {
   var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
@@ -2942,10 +3324,11 @@ function draftAgeScore(age) {
 }
 function buildDraftPool() {
   if (draftPool) return draftPool;
+  var lg = activeLeague();
   var voteByKey = {};
-  LEADERBOARD.forEach(function(e){ voteByKey[e.key] = e.votes; });
+  lg.getLeaderboard().forEach(function(e){ voteByKey[e.key] = e.votes; });
 
-  var raw = PLAYERS_DATA.map(function(p) {
+  var raw = lg.getPlayers().map(function(p) {
     var scores = (p.history || []).map(function(h){ return h.score; }).filter(function(s){ return s != null; });
     var gp = scores.length;
     if (!gp) return null;
@@ -2961,28 +3344,29 @@ function buildDraftPool() {
     var last6 = scores.slice(-6);
     var recentAvg = last6.reduce(function(a,b){ return a+b; }, 0) / last6.length;
 
-    // CBA% trend: centre bounce attendance late in the season vs early. Rising CBA%
-    // means a growing midfield/on-ball role — a forward-looking signal that a raw
-    // scoring average can't see on its own.
-    var cbaTrend = null, cbaNow = null;
-    if (p.cba_history) {
-      var rounds = Object.keys(p.cba_history).map(Number).sort(function(a,b){ return a-b; });
-      if (rounds.length >= 4) {
-        var half = Math.ceil(rounds.length/2);
-        var early = rounds.slice(0, half).map(function(r){ return p.cba_history[r]; });
-        var late = rounds.slice(-half).map(function(r){ return p.cba_history[r]; });
+    // Role% trend (CBA% for AFL, snap% for NFL): late-season vs early-season share
+    // of that role. A rising share means a growing on-ball/starting role — a
+    // forward-looking signal a raw scoring average can't see on its own.
+    var roleTrend = null, roleNow = null;
+    var roleHist = p[lg.roleHistoryField];
+    if (roleHist) {
+      var periods = Object.keys(roleHist).map(Number).sort(function(a,b){ return a-b; });
+      if (periods.length >= 4) {
+        var half = Math.ceil(periods.length/2);
+        var early = periods.slice(0, half).map(function(r){ return roleHist[r]; });
+        var late = periods.slice(-half).map(function(r){ return roleHist[r]; });
         var earlyAvg = early.reduce(function(a,b){return a+b;},0)/early.length;
         var lateAvg = late.reduce(function(a,b){return a+b;},0)/late.length;
-        cbaTrend = lateAvg - earlyAvg;
+        roleTrend = lateAvg - earlyAvg;
       }
-      if (rounds.length) cbaNow = p.cba_history[rounds[rounds.length-1]];
+      if (periods.length) roleNow = roleHist[periods[periods.length-1]];
     }
 
     return {
       p:p, gp:gp, total:Math.round(total), avg:Math.round(avg*10)/10, best:best,
       recentAvg: Math.round(recentAvg*10)/10,
       consistency: p.consistency, age: p.age != null ? p.age : null,
-      cbaTrend: cbaTrend, cbaNow: cbaNow, cbaAvg: p.cba_avg,
+      roleTrend: roleTrend, roleNow: roleNow, roleAvg: p[lg.roleField],
       votes: voteByKey[p.key] || 0, vbd: null,
       adv: p.advanced_avg || {}
     };
@@ -2992,26 +3376,26 @@ function buildDraftPool() {
   // the filtered view), so scores/tiers stay stable while the user searches or
   // filters. Season average is the dominant signal (proven output over a full
   // year beats a hot or cold recent stretch) — recent form, consistency, age,
-  // durability and CBA trend are supporting modifiers, not the main driver.
+  // durability and role trend are supporting modifiers, not the main driver.
   var avgRange = draftMinMax(raw.map(function(r){ return r.avg; }));
   var recentRange = draftMinMax(raw.map(function(r){ return r.recentAvg; }));
   var gpRange = draftMinMax(raw.map(function(r){ return r.gp; }));
-  var cbaVals = raw.filter(function(r){ return r.cbaTrend != null; }).map(function(r){ return r.cbaTrend; });
-  var cbaRange = cbaVals.length ? draftMinMax(cbaVals) : null;
+  var roleVals = raw.filter(function(r){ return r.roleTrend != null; }).map(function(r){ return r.roleTrend; });
+  var roleRange = roleVals.length ? draftMinMax(roleVals) : null;
 
   raw.forEach(function(r) {
     var avgN = draftNorm(avgRange, r.avg);
     var recentN = draftNorm(recentRange, r.recentAvg);
     var gpN = draftNorm(gpRange, r.gp);
     var consN = r.consistency != null ? r.consistency : 50;
-    var cbaN = (cbaRange && r.cbaTrend != null) ? draftNorm(cbaRange, r.cbaTrend) : 50;
+    var roleN = (roleRange && r.roleTrend != null) ? draftNorm(roleRange, r.roleTrend) : 50;
     var ageN = draftAgeScore(r.age);
-    r.draftScore = Math.round(avgN*0.55 + recentN*0.18 + consN*0.10 + ageN*0.07 + gpN*0.05 + cbaN*0.05);
+    r.draftScore = Math.round(avgN*0.55 + recentN*0.18 + consN*0.10 + ageN*0.07 + gpN*0.05 + roleN*0.05);
   });
 
   // Position ranks computed once on the full pool so they don't reshuffle as the
   // table gets filtered/searched.
-  POS_ORDER.forEach(function(pos) {
+  lg.posOrder.forEach(function(pos) {
     raw.filter(function(r){ return r.p.positions && r.p.positions.includes(pos); })
       .sort(function(a,b){ return b.draftScore - a.draftScore; })
       .forEach(function(r, i) { (r.posRank = r.posRank || {})[pos] = i+1; });
@@ -3026,11 +3410,12 @@ function buildDraftPool() {
 // could get instead. Depends on Teams-in-League and Roster Format, so it's
 // recomputed on every render rather than cached on the pool.
 function applyDraftVbd(pool, teams, slots) {
-  POS_ORDER.forEach(function(pos) {
+  var lg = activeLeague();
+  lg.posOrder.forEach(function(pos) {
     var eligible = pool.filter(function(r){ return r.p.positions && r.p.positions.includes(pos); })
       .sort(function(a,b){ return b.avg - a.avg; });
     if (!eligible.length) return;
-    var replRank = Math.max(1, teams * (slots[pos] || 6));
+    var replRank = Math.max(1, teams * (slots[pos] || 1));
     var replLevel = eligible[Math.min(replRank, eligible.length) - 1].avg;
     eligible.forEach(function(r) {
       if (draftPrimaryPos(r.p.positions) === pos) r.vbd = Math.round((r.avg - replLevel) * 10) / 10;
@@ -3046,14 +3431,12 @@ function draftTier(score) {
   return { label:'D', cls:'tier-d' };
 }
 function draftPrimaryPos(positions) {
-  return POS_ORDER.find(function(pos){ return positions && positions.includes(pos); }) || null;
+  var order = activeLeague().posOrder;
+  return order.find(function(pos){ return positions && positions.includes(pos); }) || null;
 }
-// FWD > RUC > DEF > MID — the rarer/scarcer slots take grouping priority in the
-// My Team panel, so a MID/FWD pick shows up under FWD rather than getting buried
-// in the (usually much bigger) MID group.
-var DRAFT_MYTEAM_GROUP_ORDER = ['FWD','RUC','DEF','MID'];
 function draftMyTeamGroupPos(positions) {
-  return DRAFT_MYTEAM_GROUP_ORDER.find(function(pos){ return positions && positions.includes(pos); }) || null;
+  var order = activeLeague().myTeamGroupOrder;
+  return order.find(function(pos){ return positions && positions.includes(pos); }) || null;
 }
 function draftTrendHtml(r) {
   if (r.gp < 3 || r.avg === 0) return '<span style="color:var(--muted)">—</span>';
@@ -3062,14 +3445,14 @@ function draftTrendHtml(r) {
   var up = delta > 0;
   return '<span style="color:' + (up?'var(--green)':'var(--red)') + '">' + (up?'▲':'▼') + ' ' + (up?'+':'') + delta + '%</span>';
 }
-function draftCbaHtml(r) {
-  if (r.cbaAvg == null) return '<span style="color:var(--muted)">—</span>';
+function draftRoleHtml(r) {
+  if (r.roleAvg == null) return '<span style="color:var(--muted)">—</span>';
   var trendStr = '';
-  if (r.cbaTrend != null && Math.abs(r.cbaTrend) >= 3) {
-    trendStr = ' <span style="color:' + (r.cbaTrend>0?'var(--green)':'var(--red)') + ';font-size:.68rem">' +
-      (r.cbaTrend>0?'▲+':'▼') + Math.round(r.cbaTrend) + '</span>';
+  if (r.roleTrend != null && Math.abs(r.roleTrend) >= 3) {
+    trendStr = ' <span style="color:' + (r.roleTrend>0?'var(--green)':'var(--red)') + ';font-size:.68rem">' +
+      (r.roleTrend>0?'▲+':'▼') + Math.round(r.roleTrend) + '</span>';
   }
-  return r.cbaAvg + '%' + trendStr;
+  return r.roleAvg + '%' + trendStr;
 }
 function draftVbdHtml(r) {
   if (r.vbd == null) return '<span style="color:var(--muted)">—</span>';
@@ -3087,9 +3470,9 @@ function draftAdvStat(r, key, decimals) {
 // shortest on? Only shown when it actually differs from #1 overall, so it doesn't
 // just repeat Best Available every time.
 function computeRecommendedPick(pool, state, slots) {
-  var mine = Object.keys(state).filter(function(k){ return state[k]==='mine'; }).map(findByKey).filter(Boolean);
+  var mine = Object.keys(state).filter(function(k){ return state[k]==='mine'; }).map(lgFindByKey).filter(Boolean);
   var counts = {};
-  DRAFT_MYTEAM_GROUP_ORDER.forEach(function(pos) {
+  activeLeague().myTeamGroupOrder.forEach(function(pos) {
     counts[pos] = mine.filter(function(p){ return p.positions && p.positions.includes(pos); }).length;
   });
   var candidates = pool.filter(function(r){ return !state[r.p.key]; })
@@ -3122,23 +3505,24 @@ function renderDraftBreakouts(pool, state) {
     if (state[r.p.key]) return false;
     if (r.draftScore >= 65) return false; // already Elite/A tier — not a hidden gem
     var trendPct = r.avg > 0 ? (r.recentAvg/r.avg - 1)*100 : 0;
-    return (r.cbaTrend != null && r.cbaTrend >= 5) || trendPct >= 8;
+    return (r.roleTrend != null && r.roleTrend >= 5) || trendPct >= 8;
   }).sort(function(a,b) {
-    var aScore = (a.cbaTrend||0) + Math.max(0, a.avg>0 ? (a.recentAvg/a.avg-1)*100 : 0);
-    var bScore = (b.cbaTrend||0) + Math.max(0, b.avg>0 ? (b.recentAvg/b.avg-1)*100 : 0);
+    var aScore = (a.roleTrend||0) + Math.max(0, a.avg>0 ? (a.recentAvg/a.avg-1)*100 : 0);
+    var bScore = (b.roleTrend||0) + Math.max(0, b.avg>0 ? (b.recentAvg/b.avg-1)*100 : 0);
     return bScore - aScore;
   }).slice(0, 6);
   if (!picks.length) { el.innerHTML = ''; return; }
+  var roleLabel = activeLeague().roleLabel;
   el.innerHTML = '<div class="draft-breakouts-head">&#128200; Breakout Watch &mdash; rising role or form, still outside the top tiers</div>' +
     '<div class="draft-best-strip">' + picks.map(function(r) {
       var tier = draftTier(r.draftScore);
       var safeKey = r.p.key.replace(/'/g,"\\'");
-      var why = r.cbaTrend != null && r.cbaTrend >= 5 ? '&#9650; CBA +' + Math.round(r.cbaTrend) : 'Form ' + draftTrendHtml(r);
-      return '<div class="draft-best-card breakout" onclick="searchAndShowPlayer(\'' + safeKey + '\')">' +
+      var why = r.roleTrend != null && r.roleTrend >= 5 ? '&#9650; ' + roleLabel.replace('%','') + ' +' + Math.round(r.roleTrend) : 'Form ' + draftTrendHtml(r);
+      return '<div class="draft-best-card breakout"' + lgCardAttr(safeKey) + '>' +
         '<button class="draft-best-pick" onclick="event.stopPropagation();setDraftState(\'' + safeKey + '\',\'mine\')" title="Draft to your team">&#11088;</button>' +
         '<div class="draft-best-label">' + tier.label + ' &middot; ' + r.draftScore + '</div>' +
         '<div class="draft-best-name">' + (r.p.display_name || r.p.name) + '</div>' +
-        '<div class="draft-best-sub">' + posOrdered(r.p.positions) + ' &middot; ' + r.p.team + '</div>' +
+        '<div class="draft-best-sub">' + activeLeague().posOrderedFn(r.p.positions) + ' &middot; ' + r.p.team + '</div>' +
         '<div class="draft-best-sub">' + why + '</div>' +
       '</div>';
     }).join('') + '</div>';
@@ -3151,8 +3535,9 @@ function draftRosterBarsHtml(teamPosCounts, slots, totalMine) {
     return '<div class="draft-roster-bar-item"><span>' + label + ' ' + have + '/' + target + '</span>' +
       '<div class="draft-scarcity-bar"><div class="draft-scarcity-fill" style="width:' + pct + '%;background:' + color + '"></div></div></div>';
   }
-  var totalTarget = slots.DEF + slots.MID + slots.RUC + slots.FWD + (slots.BENCH || 0);
-  var html = DRAFT_MYTEAM_GROUP_ORDER.map(function(pos) {
+  var order = activeLeague().myTeamGroupOrder;
+  var totalTarget = order.reduce(function(s,pos){ return s + (slots[pos]||0); }, 0) + (slots.BENCH || 0);
+  var html = order.map(function(pos) {
     return bar(pos, teamPosCounts[pos] || 0, slots[pos] || 1);
   }).join('') + bar('SQUAD', totalMine, totalTarget || 1);
   return '<div class="draft-roster-bars">' + html + '</div>';
@@ -3160,15 +3545,16 @@ function draftRosterBarsHtml(teamPosCounts, slots, totalMine) {
 
 function copyMyTeamToClipboard() {
   var state = getDraftState();
-  var mine = Object.keys(state).filter(function(k){ return state[k]==='mine'; }).map(findByKey).filter(Boolean);
+  var mine = Object.keys(state).filter(function(k){ return state[k]==='mine'; }).map(lgFindByKey).filter(Boolean);
   if (!mine.length) { alert('No players drafted yet.'); return; }
+  var groupOrder = activeLeague().myTeamGroupOrder;
   var byPos = {};
   mine.forEach(function(p) {
     var pos = draftMyTeamGroupPos(p.positions) || 'Other';
     (byPos[pos] = byPos[pos] || []).push(p);
   });
-  var lines = ['My Draft Team:'];
-  DRAFT_MYTEAM_GROUP_ORDER.concat(['Other']).forEach(function(pos) {
+  var lines = ['My ' + activeLeague().label + ' Draft Team:'];
+  groupOrder.concat(['Other']).forEach(function(pos) {
     if (!byPos[pos] || !byPos[pos].length) return;
     lines.push(pos + ': ' + byPos[pos].map(function(p){ return p.display_name || p.name; }).join(', '));
   });
@@ -3200,18 +3586,18 @@ function renderDraftBestAvailable(pool, state) {
   el.innerHTML = '<div class="draft-best-strip">' + best.map(function(r) {
     var tier = draftTier(r.draftScore);
     var safeKey = r.p.key.replace(/'/g,"\\'");
-    return '<div class="draft-best-card" onclick="searchAndShowPlayer(\'' + safeKey + '\')">' +
+    return '<div class="draft-best-card"' + lgCardAttr(safeKey) + '>' +
       '<button class="draft-best-pick" onclick="event.stopPropagation();setDraftState(\'' + safeKey + '\',\'mine\')" title="Draft to your team">&#11088;</button>' +
       '<div class="draft-best-label">' + tier.label + ' &middot; ' + r.draftScore + '</div>' +
       '<div class="draft-best-name">' + (r.p.display_name || r.p.name) + '</div>' +
-      '<div class="draft-best-sub">' + posOrdered(r.p.positions) + ' &middot; ' + r.p.team + ' &middot; ' + r.avg + ' avg</div>' +
+      '<div class="draft-best-sub">' + activeLeague().posOrderedFn(r.p.positions) + ' &middot; ' + r.p.team + ' &middot; ' + r.avg + ' avg</div>' +
     '</div>';
   }).join('') + '</div>';
 }
 
 function renderDraftScarcity(pool, state) {
   var el = document.getElementById('draftScarcity');
-  el.innerHTML = POS_ORDER.map(function(pos) {
+  el.innerHTML = activeLeague().posOrder.map(function(pos) {
     var atPos = pool.filter(function(r){ return draftPrimaryPos(r.p.positions) === pos && r.draftScore >= 65; });
     var total = atPos.length;
     var left = atPos.filter(function(r){ return !state[r.p.key]; }).length;
@@ -3233,13 +3619,13 @@ function renderDraftQueue(state) {
     return;
   }
   wrap.innerHTML = q.map(function(k, i) {
-    var p = findByKey(k);
+    var p = lgFindByKey(k);
     if (!p) return '';
     var kSafe = k.replace(/'/g,"\\'");
     var dn = p.display_name || p.name;
     return '<div class="draft-queue-item">' +
       '<span class="draft-queue-rank">' + (i+1) + '</span>' +
-      '<span class="draft-queue-name" onclick="searchAndShowPlayer(\'' + kSafe + '\')">' + dn + '</span>' +
+      '<span class="draft-queue-name"' + (activeLeague().canViewPlayer ? ' onclick="searchAndShowPlayer(\'' + kSafe + '\')"' : '') + '>' + dn + '</span>' +
       '<span class="draft-queue-actions">' +
         '<button onclick="setDraftState(\'' + kSafe + '\',\'mine\')" title="Draft to your team">+Draft</button>' +
         '<button onclick="toggleDraftQueue(\'' + kSafe + '\')" title="Remove from queue">&times;</button>' +
@@ -3249,7 +3635,7 @@ function renderDraftQueue(state) {
 }
 
 function renderDraft() {
-  initDraftFormatInputs();
+  if (draftChromeLeague !== currentLeague) { renderDraftChrome(); draftChromeLeague = currentLeague; }
   var pool = buildDraftPool();
   var state = getDraftState();
   var teams = Math.max(4, +document.getElementById('draftTeams').value || 10);
@@ -3311,27 +3697,26 @@ function renderDraft() {
     var posRankHtml = (primaryPos && r.posRank && r.posRank[primaryPos]) ?
       '<span class="draft-pos-rank">' + primaryPos + r.posRank[primaryPos] + '</span>' : '';
     var queued = queue.indexOf(p.key) !== -1;
+    var advCells = activeLeague().advCols.map(function(col) {
+      return '<td class="ta-r adv-col">' + draftAdvStat(r, col.key) + '</td>';
+    }).join('');
     html += '<tr class="' + rowCls + '">' +
       '<td class="pos-num">' + (i+1) + '</td>' +
       '<td><span class="draft-tier ' + tier.cls + '">' + tier.label + '</span></td>' +
-      '<td><span class="player-link" onclick="searchAndShowPlayer(\'' + safeKey + '\')">' + dn + '</span>' + posRankHtml + tagHtml + '</td>' +
+      '<td>' + lgPlayerNameHtml(safeKey, dn) + posRankHtml + tagHtml + '</td>' +
       '<td>' + teamTagHtml(p.team) + '</td>' +
-      '<td>' + posChipsHtml(p.positions) + '</td>' +
+      '<td>' + activeLeague().posChips(p.positions) + '</td>' +
       '<td class="ta-r">' + (r.age == null ? '—' : r.age) + '</td>' +
       '<td class="ta-r">' + r.gp + '</td>' +
       '<td class="ta-r"><span class="draft-score" style="color:var(--' + (tier.cls==='tier-elite'?'accent':tier.cls==='tier-a'?'green':tier.cls==='tier-b'?'accent2':tier.cls==='tier-c'?'text':'red') + ')">' + r.draftScore + '</span></td>' +
       '<td class="ta-r">' + draftVbdHtml(r) + '</td>' +
       '<td class="ta-r">' + r.avg + '</td>' +
       '<td>' + r.recentAvg + ' ' + draftTrendHtml(r) + '</td>' +
-      '<td>' + draftCbaHtml(r) + '</td>' +
+      '<td>' + draftRoleHtml(r) + '</td>' +
       '<td class="ta-r">' + r.votes + '</td>' +
       '<td class="ta-r adv-col">' + r.total + '</td>' +
       '<td class="ta-r adv-col">' + (r.best == null ? '—' : r.best) + '</td>' +
-      '<td class="ta-r adv-col">' + draftAdvStat(r,'Disposals') + '</td>' +
-      '<td class="ta-r adv-col">' + draftAdvStat(r,'Tackles') + '</td>' +
-      '<td class="ta-r adv-col">' + draftAdvStat(r,'TotalClearances') + '</td>' +
-      '<td class="ta-r adv-col">' + draftAdvStat(r,'Inside50s') + '</td>' +
-      '<td class="ta-r adv-col">' + draftAdvStat(r,'Goals') + '</td>' +
+      advCells +
       '<td>' +
         '<button class="draft-btn draft-btn-taken' + (st==='taken'?' active':'') + '" onclick="setDraftState(\'' + safeKey + '\',\'taken\')">' + (st==='taken' ? '↺ Undo' : 'Taken') + '</button>' +
         '<button class="draft-btn draft-btn-mine' + (st==='mine'?' active':'') + '" onclick="setDraftState(\'' + safeKey + '\',\'mine\')">' + (st==='mine' ? '★ Mine' : '+ Draft') + '</button>' +
@@ -3354,36 +3739,36 @@ function renderDraft() {
   var mineKeys = Object.keys(state).filter(function(k){ return state[k] === 'mine'; });
   document.getElementById('draftMyCount').textContent = mineKeys.length ? mineKeys.length + ' picked' : '';
   var wrap = document.getElementById('draftMyTeamWrap');
-  var mine = mineKeys.map(findByKey).filter(Boolean);
+  var mine = mineKeys.map(lgFindByKey).filter(Boolean);
+  var groupOrder = activeLeague().myTeamGroupOrder;
   // Total eligible headcount per position across your whole team, DPP players
   // counted at every position they qualify for — this is what the group header's
   // "(N)" bracket reads from, e.g. "MID 4 (5)" meaning 4 players are grouped
   // here but a 5th (grouped elsewhere as their preferred position) is also
   // MID-eligible. Also feeds the roster-needs progress bars.
   var teamPosCounts = {};
-  DRAFT_MYTEAM_GROUP_ORDER.forEach(function(pos) {
+  groupOrder.forEach(function(pos) {
     teamPosCounts[pos] = mine.filter(function(p){ return p.positions && p.positions.includes(pos); }).length;
   });
   var barsHtml = draftRosterBarsHtml(teamPosCounts, currentDraftSlots(), mine.length);
   if (!mine.length) {
     wrap.innerHTML = barsHtml + '<div class="draft-mine-empty">No players drafted yet &mdash; click <b>+ Draft</b> on a player once you pick them.</div>';
   } else {
-    // Grouped by FWD > RUC > DEF > MID preference (rarest slots first) so you can
-    // see your squad shape at a glance — a MID/FWD player lands in the FWD group.
+    // Grouped by the league's own scarcity-first order so you can see your squad
+    // shape at a glance — a dual-eligible pick lands in its rarer position group.
     var byPos = {};
     mine.forEach(function(p) {
       var pos = draftMyTeamGroupPos(p.positions) || 'Other';
       (byPos[pos] = byPos[pos] || []).push(p);
     });
-    var groupOrder = DRAFT_MYTEAM_GROUP_ORDER.concat(['Other']);
-    wrap.innerHTML = barsHtml + groupOrder.filter(function(pos){ return byPos[pos] && byPos[pos].length; }).map(function(pos) {
+    wrap.innerHTML = barsHtml + groupOrder.concat(['Other']).filter(function(pos){ return byPos[pos] && byPos[pos].length; }).map(function(pos) {
       var groupCount = byPos[pos].length;
       var eligibleCount = teamPosCounts[pos] || groupCount;
       var bracket = eligibleCount > groupCount ? ' <span class="draft-mine-dpp">(' + eligibleCount + ')</span>' : '';
       var chips = byPos[pos].map(function(p) {
         var dn = p.display_name || p.name;
         var kSafe = p.key.replace(/'/g,"\\'");
-        return '<span class="draft-mine-chip" title="' + posOrdered(p.positions) + '">' + dn +
+        return '<span class="draft-mine-chip" title="' + activeLeague().posOrderedFn(p.positions) + '">' + dn +
           '<button onclick="setDraftState(\'' + kSafe + '\',\'mine\')" title="Remove from your team">&times;</button></span>';
       }).join('');
       return '<div class="draft-mine-group"><div class="draft-mine-group-head">' + pos + ' <span>' + groupCount + '</span>' + bracket + '</div>' +
@@ -6999,10 +7384,25 @@ def generate_app_html(all_rounds, players_registry, fixture, current_round):
         e["is_injured"]   = e["player"] in injured_set
         e["is_suspended"] = e["player"] in suspended_set
 
+    nfl_players_data = build_nfl_players_data()
+    if nfl_players_data:
+        nfl_players_data += build_nfl_dst_data()
+        nfl_name_counts = defaultdict(int)
+        for p in nfl_players_data: nfl_name_counts[p["name"]] += 1
+        nfl_dupes = {n for n, c in nfl_name_counts.items() if c > 1}
+        for p in nfl_players_data:
+            p["display_name"] = f"{p['name']} ({p['team']})" if p["name"] in nfl_dupes else p["name"]
+    nfl_leaderboard = build_nfl_leaderboard(nfl_players_data)
+    nfl_games = build_nfl_games_data()
+    print(f"ℹ️  NFL data: {len(nfl_players_data)} players/DSTs, {len(nfl_games)} games" if nfl_players_data else "ℹ️  No nfl_data/ found — run fetch_nfl_data.py to enable the NFL side of the dashboard.")
+
     html = HTML_TEMPLATE
     html = html.replace('__LEADERBOARD__',        json.dumps(leaderboard))
     html = html.replace('__ROUNDS_DATA__',        json.dumps(rounds_data))
     html = html.replace('__PLAYERS_DATA__',       json.dumps(players_data))
+    html = html.replace('__NFL_PLAYERS_DATA__',   json.dumps(nfl_players_data))
+    html = html.replace('__NFL_LEADERBOARD__',    json.dumps(nfl_leaderboard))
+    html = html.replace('__NFL_GAMES__',          json.dumps(nfl_games))
     html = html.replace('__ARCHETYPE_TEAM_NOTES__', json.dumps(archetype_team_notes))
     html = html.replace('__ROUNDS_LOADED__',      json.dumps(sorted(all_rounds.keys())))
     html = html.replace('__OVERALL_DIFF__',       json.dumps(overall_diff))
